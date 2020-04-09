@@ -6,7 +6,7 @@ public final class CrCTools extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        System.out.println("JD");
 
     }
 
