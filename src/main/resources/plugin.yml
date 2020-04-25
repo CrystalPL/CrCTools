@@ -3,3 +3,6 @@ version: 1.0
 main: pl.crystalek.crctools.CrCTools
 authors: [Crystal]
 website: crystalek.pl
+
+commands:
+  feed:

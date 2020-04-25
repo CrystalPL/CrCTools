@@ -1,0 +1,5 @@
+config:
+  permission:
+    feed:
+      feed: "CrC.tools.feed"
+      player: "CrC.tools.feed.player"

@@ -1,0 +1,10 @@
+messages:
+  nopermission: "&cBrak uprawnien &7(&6{PERMISSION}&7)"
+  offlineplayer: "&6&lToolsy &8» &cGracz jest offline!"
+  notconsole: "&6&lToolsy &8» &cTa komenda nie moze zostac wywolana z konsoli."
+  feed:
+    feed: "&6&lToolsy &8» &7Zostales nakarmiony."
+    player: "&6&lToolsy &8» &7Nakarmiles gracza &6{PLAYER}&7."
+    error: "&6&lToolsy &8» &cTwoje glod jest pelny!"
+    errorplayer: "&6&lToolsy &8» &cGlod gracza &6{PLAYER} &cjest pelny!"
+    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/feed (gracz)."
