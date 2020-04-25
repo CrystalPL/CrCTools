@@ -3,3 +3,6 @@ config:
     feed:
       feed: "CrC.tools.feed"
       player: "CrC.tools.feed.player"
+    heal:
+      heal: "CrC.tools.heal"
+      player: "CrC.tools.heal.player"

@@ -8,3 +8,9 @@ messages:
     error: "&6&lToolsy &8» &cTwoje glod jest pelny!"
     errorplayer: "&6&lToolsy &8» &cGlod gracza &6{PLAYER} &cjest pelny!"
     usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/feed (gracz)."
+  heal:
+    heal: "&6&lToolsy &8» &7Zostales uleczony."
+    player: "&6&lToolsy &8» &7Uleczyles gracza &6{player}&7."
+    error: "&6&lToolsy &8» &cTwoje zycie jest pelne!"
+    errorplayer: "&6&lToolsy &8» &cZycie gracza &6{player} &cjest pelne!"
+    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/heal (gracz)."

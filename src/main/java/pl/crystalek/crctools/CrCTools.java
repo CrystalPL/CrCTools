@@ -2,6 +2,7 @@ package pl.crystalek.crctools;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.crystalek.commands.FeedCommand;
+import pl.crystalek.commands.HealCommand;
 import pl.crystalek.managers.FileManager;
 
 public final class CrCTools extends JavaPlugin {
@@ -19,6 +20,7 @@ public final class CrCTools extends JavaPlugin {
     public void onEnable() {
         FileManager.checkFiles();
         getCommand("feed").setExecutor(new FeedCommand());
+        getCommand("heal").setExecutor(new HealCommand());
         saveDefaultConfig();
     }
 
