@@ -14,3 +14,17 @@ messages:
     error: "&6&lToolsy &8» &cTwoje zycie jest pelne!"
     errorplayer: "&6&lToolsy &8» &cZycie gracza &6{player} &cjest pelne!"
     usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/heal (gracz)."
+  tppos:
+    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tppos <swiat> <x> <y> <z> (gracz)"
+    tppos:
+      - "&6&lToolsy &8» &7Zostales przeteleportowany na:"
+      - "&6&lToolsy &8» &7Swiat: &6{WORLD}"
+      - "&6&lToolsy &8» &7X: &6{X}"
+      - "&6&lToolsy &8» &7Y: &6{Y}"
+      - "&6&lToolsy &8» &7Z: &6{Z}"
+    player:
+      - "&6&lToolsy &8» &7Przeteleportowales gracza &6{PLAYER} &7na:"
+      - "&6&lToolsy &8» &7Swiat: &6{WORLD}"
+      - "&6&lToolsy &8» &7X: &6{X}"
+      - "&6&lToolsy &8» &7Y: &6{Y}"
+      - "&6&lToolsy &8» &7Z: &6{Z}"

@@ -1,27 +1,22 @@
 package pl.crystalek.crctools;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.crystalek.commands.FeedCommand;
-import pl.crystalek.commands.HealCommand;
-import pl.crystalek.managers.FileManager;
+import pl.crystalek.crctools.commands.FeedCommand;
+import pl.crystalek.crctools.commands.HealCommand;
+import pl.crystalek.crctools.commands.TpposCommand;
+import pl.crystalek.crctools.managers.FileManager;
 
 public final class CrCTools extends JavaPlugin {
-    public static CrCTools inst;
-
-    public CrCTools() {
-        inst = this;
-    }
-
-    public static CrCTools getInst() {
-        return inst;
-    }
 
     @Override
     public void onEnable() {
-        FileManager.checkFiles();
+        FileManager fileManager = new FileManager();
+        fileManager.checkFiles();
+        saveDefaultConfig();
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("heal").setExecutor(new HealCommand());
-        saveDefaultConfig();
+        getCommand("tppos").setExecutor(new TpposCommand());
+        System.out.println(fileManager.getMsg("heal.error"));
     }
 
     @Override

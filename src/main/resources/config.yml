@@ -6,3 +6,6 @@ config:
     heal:
       heal: "CrC.tools.heal"
       player: "CrC.tools.heal.player"
+    tppos:
+      tppos: "CrC.tools.tppos"
+      player: "CrC.tools.tppos.player"
