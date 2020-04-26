@@ -9,3 +9,6 @@ config:
     tppos:
       tppos: "CrC.tools.tppos"
       player: "CrC.tools.tppos.player"
+    exp:
+      exp: "CrC.tools.exp"
+      player: "CrC.tools.exp.player"

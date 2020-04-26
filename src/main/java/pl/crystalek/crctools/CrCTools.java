@@ -1,6 +1,7 @@
 package pl.crystalek.crctools;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.crystalek.crctools.commands.ExpCommand;
 import pl.crystalek.crctools.commands.FeedCommand;
 import pl.crystalek.crctools.commands.HealCommand;
 import pl.crystalek.crctools.commands.TpposCommand;
@@ -16,7 +17,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("tppos").setExecutor(new TpposCommand());
-        System.out.println(fileManager.getMsg("heal.error"));
+        getCommand("exp").setExecutor(new ExpCommand());
     }
 
     @Override
