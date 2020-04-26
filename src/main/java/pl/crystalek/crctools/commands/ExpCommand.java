@@ -14,7 +14,7 @@ public class ExpCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("exp")) {
-            if (sender.hasPermission("exp.exp")) {
+            if (sender.hasPermission(fileManager.getPermission("exp.exp"))) {
                 if (args.length == 2) {
                     if (args[0].equalsIgnoreCase("give") || args[0].equalsIgnoreCase("take") || args[0].equalsIgnoreCase("set")) {
                         if (sender instanceof Player) {
