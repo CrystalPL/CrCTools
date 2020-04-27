@@ -41,3 +41,9 @@ messages:
     usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/exp <give, take, set, reset, show> <ilosc (nie podaje sie wartosci przy reset i show)> (gracz)."
     error: "&6&lToolsy &8» &cLiczba musi byc wieksza od zera!"
     errortake: "&6&lToolsy &8» &cNie mozesz odjac tyle poziomu!"
+  fly:
+    takeon: "&6&lToolsy &8» &7Latanie zostalo wlaczone."
+    takeoff: "&6&lToolsy &8» &7Latanie zostalo wylaczone."
+    takeonplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wlaczone."
+    takeoffplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wylaczone."
+    usage: "&6&lToolsy &8» &7/fly (player)"

@@ -12,3 +12,6 @@ config:
     exp:
       exp: "CrC.tools.exp"
       player: "CrC.tools.exp.player"
+    fly:
+      fly: "CrC.tools.fly"
+      player: "CrC.tools.fly.player"
