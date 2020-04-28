@@ -16,6 +16,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("tppos").setExecutor(new TpposCommand());
         getCommand("exp").setExecutor(new ExpCommand());
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("speed").setExecutor(new SpeedCommand());
     }
 
     @Override

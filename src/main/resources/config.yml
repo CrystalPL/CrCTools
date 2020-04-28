@@ -15,3 +15,6 @@ config:
     fly:
       fly: "CrC.tools.fly"
       player: "CrC.tools.fly.player"
+    speed:
+      speed: "CrC.tools.speed"
+      player: "CrC.tools.speed.player"

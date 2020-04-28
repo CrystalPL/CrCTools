@@ -30,9 +30,9 @@ public class HealCommand implements CommandExecutor {
                     sender.sendMessage(fileManager.getMsg("notconsole"));
                 }
             } else if (args.length == 1) {
-                if (Bukkit.getPlayer(args[0]) != null) {
-                    Player player = Bukkit.getPlayer(args[0]);
-                    if (sender.hasPermission(fileManager.getPermission("heal.player"))) {
+                if (sender.hasPermission(fileManager.getPermission("heal.player"))) {
+                    if (Bukkit.getPlayer(args[0]) != null) {
+                        Player player = Bukkit.getPlayer(args[0]);
                         if (player.getHealth() != 20) {
                             player.setHealth(20);
                             sender.sendMessage(fileManager.getMsg("heal.player").replace("{PLAYER}", player.getName()));
@@ -41,10 +41,10 @@ public class HealCommand implements CommandExecutor {
                             sender.sendMessage(fileManager.getMsg("heal.errorplayer").replace("{PLAYER}", player.getName()));
                         }
                     } else {
-                        sender.sendMessage(fileManager.getMsgPermission("heal.player"));
+                        sender.sendMessage(fileManager.getMsg("offlineplayer"));
                     }
                 } else {
-                    sender.sendMessage(fileManager.getMsg("offlineplayer"));
+                    sender.sendMessage(fileManager.getMsgPermission("heal.player"));
                 }
             } else {
                 sender.sendMessage(fileManager.getMsg("heal.usage"));

@@ -47,3 +47,10 @@ messages:
     takeonplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wlaczone."
     takeoffplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wylaczone."
     usage: "&6&lToolsy &8» &7/fly (player)"
+  speed:
+    fly: "&6&lToolsy &8» &7Twoja szybkosc latania zostala ustawiona na &6{SPEED}&7."
+    flyplayer: "&6&lToolsy &8» &7Szybko latania gracza &6{PLAYER} &7zostala ustawiona na &6{SPEED}&7."
+    walk: "&6&lToolsy &8» &7Twoja szybkosc chodzenia zostala ustawiona na &6{SPEED}&7."
+    walkplayer: "&6&lToolsy &8» &7Szybko chodzenia gracza &6{PLAYER} &7zostala ustawiona na &6{SPEED}&7."
+    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/speed <szybkosc = 0 - 10> (player)."
+    error: "&6&lToolsy &8» &cLiczba musi byc z zakresu 0 - 10!"
