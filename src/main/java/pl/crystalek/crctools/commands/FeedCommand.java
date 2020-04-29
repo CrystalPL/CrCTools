@@ -8,7 +8,11 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
 public class FeedCommand implements CommandExecutor {
-    FileManager fileManager = new FileManager();
+    private final FileManager fileManager;
+
+    public FeedCommand(final FileManager fileManager) {
+        this.fileManager = fileManager;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

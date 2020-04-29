@@ -1,4 +1,6 @@
 config:
+  acceptteleport: 60
+  teleporttime: 10
   permission:
     feed:
       feed: "CrC.tools.feed"

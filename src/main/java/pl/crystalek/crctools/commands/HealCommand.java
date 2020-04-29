@@ -5,10 +5,15 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
 
 public class HealCommand implements CommandExecutor {
-    FileManager fileManager = new FileManager();
+    private final FileManager fileManager;
+
+    public HealCommand(final FileManager fileManager) {
+        this.fileManager = fileManager;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

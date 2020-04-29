@@ -7,13 +7,18 @@ import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class TpposCommand implements CommandExecutor {
-    FileManager fileManager = new FileManager();
+    private final FileManager fileManager;
+
+    public TpposCommand(final FileManager fileManager) {
+        this.fileManager = fileManager;
+    }
 
     @Override
     public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {

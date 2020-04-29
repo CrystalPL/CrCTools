@@ -10,3 +10,5 @@ commands:
   exp:
   fly:
   speed:
+  tpa:
+  tpaccept:

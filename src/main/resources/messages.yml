@@ -15,7 +15,7 @@ messages:
     errorplayer: "&6&lToolsy &8» &cZycie gracza &6{player} &cjest pelne!"
     usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/heal (gracz)."
   tppos:
-    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tppos <swiat> <x> <y> <z> (gracz)"
+    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tppos <swiat> <x> <y> <z> (gracz)."
     tppos:
       - "&6&lToolsy &8» &7Zostales przeteleportowany na:"
       - "&6&lToolsy &8» &7Swiat: &6{WORLD}"
@@ -46,7 +46,7 @@ messages:
     takeoff: "&6&lToolsy &8» &7Latanie zostalo wylaczone."
     takeonplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wlaczone."
     takeoffplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wylaczone."
-    usage: "&6&lToolsy &8» &7/fly (player)"
+    usage: "&6&lToolsy &8» &7/fly (player)."
   speed:
     fly: "&6&lToolsy &8» &7Twoja szybkosc latania zostala ustawiona na &6{SPEED}&7."
     flyplayer: "&6&lToolsy &8» &7Szybko latania gracza &6{PLAYER} &7zostala ustawiona na &6{SPEED}&7."
@@ -54,3 +54,20 @@ messages:
     walkplayer: "&6&lToolsy &8» &7Szybko chodzenia gracza &6{PLAYER} &7zostala ustawiona na &6{SPEED}&7."
     usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/speed <szybkosc = 0 - 10> (player)."
     error: "&6&lToolsy &8» &cLiczba musi byc z zakresu 0 - 10!"
+  tpa:
+    sender: "&6&lToolsy &8» &7Wyslano prosbe o teleportacje do gracza &6{PLAYER}&7."
+    usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tpa <gracz>."
+    error: "&6&lToolsy &8» &cNie mozesz teleportowac sie do siebie!"
+    player:
+      - "&6&lToolsy &8» &6{PLAYER} &7wysyla prosbe o teleportacje do Ciebie."
+      - "&6&lToolsy &8» &7Aby zaakceptowac teleport, wpisz &6/tpaccept&7."
+      - "&6&lToolsy &8» &7Aby odmowic teleportacji, wpisz &6/tpdeny&7."
+      - "&6&lToolsy &8» &7Prosba o teleportacje wygasnie za &6{TIME} &7sekund."
+  tpaccept:
+    usage: "&6&lToolsy &8» &cPoprTIawne uzycie: &7/tpaccept (gracz)."
+    clearlist: "&6&lToolsy &8» &cNie masz prosb o teleportacje!"
+    teleportlist: "&6&lToolsy &8» &7Gracze do teleportacji: &6{PLAYERS}&7."
+    teleport: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zaakceptowal twoja prosbe o teleportacje. Teleport nastapi za &6{TIME} &7sekund."
+    teleportsender: "&6&lToolsy &8» &7Prosba o teleportacje gracza &6{PLAYER} &7zostala zaakceptowana."
+    completeteleport: "&6&lToolsy &8» &7Wszyscy gracze oczekujacy na teleportacje zostali zaakceptowani."
+    playerclearlist: "&6&lToolsy &8» &cNie masz prosby o teleportacje od tego gracza."

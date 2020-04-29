@@ -9,7 +9,11 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.NumberUtil;
 
 public class SpeedCommand implements CommandExecutor {
-    FileManager fileManager = new FileManager();
+    private final FileManager fileManager;
+
+    public SpeedCommand(final FileManager fileManager) {
+        this.fileManager = fileManager;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

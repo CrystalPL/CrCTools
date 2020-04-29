@@ -35,7 +35,11 @@ public class FileManager {
         return ChatUtil.fixColor(yamlConfiguration.getString("messages." + pathMessage));
     }
 
-    public List<String> getMsgList(String pathMessage) {
+    public List<String> getMsgList(final String pathMessage) {
         return ChatUtil.fixColor(yamlConfiguration.getStringList("messages." + pathMessage));
+    }
+
+    public int getInt(final String path) {
+        return crCTools.getConfig().getInt("config." + path);
     }
 }
