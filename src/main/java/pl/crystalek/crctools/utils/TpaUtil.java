@@ -1,17 +1,14 @@
-package pl.crystalek.crctools.model;
+package pl.crystalek.crctools.utils;
 
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.exceptions.TeleportingPlayerNotExist;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
-public class TpaManager {
-    private HashMap<UUID, List<Player>> tpaList = new HashMap<>();
+public class TpaUtil {
+    private static Map<UUID, List<Player>> tpaList = new HashMap<>();
 
-    public void addTeleport(UUID teleporting, Player user) {
+    public static void addTeleport(UUID teleporting, Player user) {
         if (tpaList.containsKey(teleporting)) {
             tpaList.get(teleporting).add(user);
         } else {
@@ -21,7 +18,7 @@ public class TpaManager {
         }
     }
 
-    public boolean removeTeleport(UUID teleporting, Player user) {
+    public static boolean removeTeleport(UUID teleporting, Player user) {
         if (checkTeleport(teleporting, user)) {
             return tpaList.get(teleporting).remove(user);
         } else {
@@ -29,7 +26,7 @@ public class TpaManager {
         }
     }
 
-    public boolean checkTeleport(UUID teleporting, Player user) {
+    public static boolean checkTeleport(UUID teleporting, Player user) {
         if (tpaList.get(teleporting) == null) {
             return false;
         }
@@ -41,14 +38,14 @@ public class TpaManager {
         }
     }
 
-    public List<Player> getPlayerToTp(UUID teleporting) throws TeleportingPlayerNotExist {
+    public static List<Player> getPlayerToTp(UUID teleporting) throws TeleportingPlayerNotExist {
         if (tpaList.get(teleporting) == null) {
             throw new TeleportingPlayerNotExist("no such player");
         } else if (tpaList.get(teleporting).isEmpty()) {
             tpaList.remove(teleporting);
             throw new TeleportingPlayerNotExist("no such player");
         } else {
-            return tpaList.get(teleporting);
+            return new ArrayList<>(tpaList.get(teleporting));
         }
     }
 }

@@ -3,16 +3,16 @@ package pl.crystalek.crctools;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.crystalek.crctools.commands.*;
 import pl.crystalek.crctools.managers.FileManager;
-import pl.crystalek.crctools.model.TpaManager;
+import pl.crystalek.crctools.utils.ChatUtil;
 
 public final class CrCTools extends JavaPlugin {
-    private TpaManager tpamanager;
     private FileManager fileManager;
+    private ChatUtil chatUtil;
 
     @Override
     public void onEnable() {
-        fileManager = new FileManager();
-        tpamanager = new TpaManager();
+        chatUtil = new ChatUtil();
+        fileManager = new FileManager(this);
         saveDefaultConfig();
         fileManager.checkFiles();
         registerCommand();
@@ -30,8 +30,10 @@ public final class CrCTools extends JavaPlugin {
         getCommand("heal").setExecutor(new ExpCommand(fileManager));
         getCommand("speed").setExecutor(new SpeedCommand(fileManager));
         getCommand("tppos").setExecutor(new TpposCommand(fileManager));
-        getCommand("tpa").setExecutor(new TpaCommand(fileManager, tpamanager));
-        getCommand("tpaccept").setExecutor(new TpacceptCommand(fileManager, tpamanager));
+        getCommand("tpa").setExecutor(new TpaCommand(fileManager, this));
+        getCommand("tpaccept").setExecutor(new TpacceptCommand(fileManager, this));
+        getCommand("tools").setExecutor(new ToolsCommand(fileManager));
+        getCommand("tpdeny").setExecutor(new TpdenyCommand(fileManager));
     }
 
 

@@ -1,22 +1,23 @@
-config:
-  acceptteleport: 60
-  teleporttime: 10
-  permission:
-    feed:
-      feed: "CrC.tools.feed"
-      player: "CrC.tools.feed.player"
-    heal:
-      heal: "CrC.tools.heal"
-      player: "CrC.tools.heal.player"
-    tppos:
-      tppos: "CrC.tools.tppos"
-      player: "CrC.tools.tppos.player"
-    exp:
-      exp: "CrC.tools.exp"
-      player: "CrC.tools.exp.player"
-    fly:
-      fly: "CrC.tools.fly"
-      player: "CrC.tools.fly.player"
-    speed:
-      speed: "CrC.tools.speed"
-      player: "CrC.tools.speed.player"
+acceptteleport: 20
+teleporttime: 5
+permission:
+  feed:
+    feed: "CrC.tools.feed"
+    player: "CrC.tools.feed.player"
+  heal:
+    heal: "CrC.tools.heal"
+    player: "CrC.tools.heal.player"
+  tppos:
+    tppos: "CrC.tools.tppos"
+    player: "CrC.tools.tppos.player"
+  exp:
+    exp: "CrC.tools.exp"
+    player: "CrC.tools.exp.player"
+  fly:
+    fly: "CrC.tools.fly"
+    player: "CrC.tools.fly.player"
+  speed:
+    speed: "CrC.tools.speed"
+    player: "CrC.tools.speed.player"
+  tools:
+    tools: "CrC.tools.tools"

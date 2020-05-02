@@ -12,3 +12,5 @@ commands:
   speed:
   tpa:
   tpaccept:
+  tools:
+  tpdeny:
