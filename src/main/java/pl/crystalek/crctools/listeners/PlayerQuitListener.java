@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import pl.crystalek.crctools.managers.FileManager;
-import pl.crystalek.crctools.model.UserManager;
+import pl.crystalek.crctools.managers.UserManager;
 
 import java.io.IOException;
 

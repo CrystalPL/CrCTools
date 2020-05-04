@@ -15,45 +15,42 @@ public class FeedCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("feed")) {
-            if (args.length == 0) {
-                if (sender instanceof Player) {
-                    if (sender.hasPermission(fileManager.getPermission("feed.feed"))) {
-                        Player player = (Player) sender;
-                        if (player.getFoodLevel() != 20) {
-                            player.setFoodLevel(20);
-                            sender.sendMessage(fileManager.getMsg("feed.feed"));
-                        } else {
-                            sender.sendMessage(fileManager.getMsg("feed.error"));
-                        }
-                    } else {
-                        sender.sendMessage(fileManager.getMsgPermission("feed.feed"));
-                    }
-                } else {
-                    sender.sendMessage(fileManager.getMsg("notconsole"));
-                }
-            } else if (args.length == 1) {
-                if (sender.hasPermission(fileManager.getPermission("feed.player"))) {
-                    if (Bukkit.getPlayer(args[0]) != null) {
-                        Player player = Bukkit.getPlayer(args[0]);
-                        if (player.getFoodLevel() != 20) {
-                            player.setFoodLevel(20);
-                            sender.sendMessage(fileManager.getMsg("feed.player").replace("{PLAYER}", player.getName()));
-                            player.sendMessage(fileManager.getMsg("feed.feed"));
-                        } else {
-                            sender.sendMessage(fileManager.getMsg("feed.errorplayer").replace("{PLAYER}", player.getName()));
-                        }
-                    } else {
-                        sender.sendMessage(fileManager.getMsg("offlineplayer"));
-                    }
-
-                } else {
-                    sender.sendMessage(fileManager.getMsgPermission("feed.player"));
-                }
-            } else {
-                sender.sendMessage(fileManager.getMsg("feed.usage"));
+    public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
+        if (args.length == 0) {
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(fileManager.getMsg("notconsole"));
+                return true;
             }
+            final Player player = (Player) sender;
+            if (!player.hasPermission(fileManager.getPermission("feed.feed"))) {
+                player.sendMessage(fileManager.getMsgPermission("feed.feed"));
+                return true;
+            }
+            if (player.getFoodLevel() != 20) {
+                player.setFoodLevel(20);
+                player.sendMessage(fileManager.getMsg("feed.feed"));
+            } else {
+                player.sendMessage(fileManager.getMsg("feed.error"));
+            }
+        } else if (args.length == 1) {
+            if (!sender.hasPermission(fileManager.getPermission("feed.player"))) {
+                sender.sendMessage(fileManager.getMsgPermission("feed.player"));
+                return true;
+            }
+            if (Bukkit.getPlayer(args[0]) == null) {
+                sender.sendMessage(fileManager.getMsg("offlineplayer"));
+                return true;
+            }
+            final Player player = Bukkit.getPlayer(args[0]);
+            if (player.getFoodLevel() != 20) {
+                player.setFoodLevel(20);
+                sender.sendMessage(fileManager.getMsg("feed.player").replace("{PLAYER}", player.getName()));
+                player.sendMessage(fileManager.getMsg("feed.feed"));
+            } else {
+                sender.sendMessage(fileManager.getMsg("feed.errorplayer").replace("{PLAYER}", player.getName()));
+            }
+        } else {
+            sender.sendMessage(fileManager.getMsg("feed.usage"));
         }
         return true;
     }

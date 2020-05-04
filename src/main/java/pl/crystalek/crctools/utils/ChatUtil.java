@@ -12,19 +12,19 @@ import java.util.List;
 
 public class ChatUtil {
 
-    public static String fixColor(String string) {
+    public static String fixColor(final String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 
-    public static List<String> fixColor(List<String> list) {
+    public static List<String> fixColor(final List<String> list) {
         List<String> lists = new ArrayList<>();
-        for (String string : list) {
+        for (final String string : list) {
             lists.add(fixColor(string));
         }
         return lists;
     }
 
-    public static void sendHoverMessage(Player player, String text, String hover) {
+    public static void sendHoverMessage(final Player player, final String text, final String hover) {
         final BaseComponent[] baseComponents = TextComponent.fromLegacyText(fixColor(text));
         final TextComponent message = new TextComponent(baseComponents);
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(fixColor(hover)).create()));

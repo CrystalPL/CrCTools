@@ -5,7 +5,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.model.User;
-import pl.crystalek.crctools.model.UserManager;
 import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.io.File;
@@ -37,12 +36,12 @@ public class FileManager {
         yamlConfiguration = YamlConfiguration.loadConfiguration(file);
     }
 
-    public void loadPlayer(Player player) {
+    public void loadPlayer(final Player player) {
         yamlConfigurationUsers = YamlConfiguration.loadConfiguration(new File(users, player.getName() + ".yml"));
         userManager.addUser(player, yamlConfigurationUsers.getBoolean("msg"), yamlConfigurationUsers.getBoolean("tpa"));
     }
 
-    public void savePlayer(Player player) throws IOException {
+    public void savePlayer(final Player player) throws IOException {
         final File fileSave = new File(users, player.getName() + ".yml");
         if (!fileSave.exists()) {
             fileSave.createNewFile();
@@ -80,25 +79,23 @@ public class FileManager {
         return yamlConfiguration.getConfigurationSection(path);
     }
 
-    public boolean setValuePath(String path, String value) throws IOException {
+    public boolean setValuePath(final String path, final String value) throws IOException {
         if (!yamlConfiguration.contains(path)) {
             return false;
         }
-        if (yamlConfiguration.getStringList(path) != null) {
-            final List<String> stringList = yamlConfiguration.getStringList(path);
-            System.out.println(stringList.size());
-            if (stringList.size() == 0) {
-                yamlConfiguration.set(path, value);
-                return true;
+        if (yamlConfiguration.getStringList(path) == null) {
+            return false;
+        }
+        final List<String> stringList = yamlConfiguration.getStringList(path);
+        if (stringList.size() == 0) {
+            yamlConfiguration.set(path, value);
+        } else {
+            if (value.equals("clear")) {
+                stringList.remove(stringList.get(stringList.size() - 1));
             } else {
-                if (value.equals("clear")) {
-                    stringList.remove(stringList.get(stringList.size() - 1));
-                } else {
-                    stringList.add(value);
-                }
-                yamlConfiguration.set(path, stringList);
-                return true;
+                stringList.add(value);
             }
+            yamlConfiguration.set(path, stringList);
         }
         yamlConfiguration.save(file);
         return true;

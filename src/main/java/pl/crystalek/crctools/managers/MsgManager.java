@@ -1,4 +1,4 @@
-package pl.crystalek.crctools.model;
+package pl.crystalek.crctools.managers;
 
 import org.bukkit.entity.Player;
 
@@ -11,11 +11,11 @@ public class MsgManager {
     private Map<Player, Player> msg = new HashMap<>();
     private List<Player> socialspy = new ArrayList<>();
 
-    public Player getMsg(Player player) {
+    public Player getMsg(final Player player) {
         return msg.get(player);
     }
 
-    public void addMsg(Player sender, Player target) {
+    public void addMsg(final Player sender, final Player target) {
         msg.put(sender, target);
         msg.put(target, sender);
     }
@@ -24,7 +24,7 @@ public class MsgManager {
         return socialspy;
     }
 
-    public boolean addSpy(Player player) {
+    public boolean addSpy(final Player player) {
         if (socialspy.contains(player)) {
             socialspy.remove(player);
             return false;

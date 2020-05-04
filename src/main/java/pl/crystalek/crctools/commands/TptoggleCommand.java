@@ -5,15 +5,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
-import pl.crystalek.crctools.managers.MsgManager;
+import pl.crystalek.crctools.model.User;
+import pl.crystalek.crctools.managers.UserManager;
 
-public class SocialspyCommand implements CommandExecutor {
+public class TptoggleCommand implements CommandExecutor {
     private final FileManager fileManager;
-    private final MsgManager msgManager;
+    private final UserManager userManager;
 
-    public SocialspyCommand(final FileManager fileManager, final MsgManager msgManager) {
+    public TptoggleCommand(final FileManager fileManager, final UserManager userManager) {
         this.fileManager = fileManager;
-        this.msgManager = msgManager;
+        this.userManager = userManager;
     }
 
     @Override
@@ -23,14 +24,17 @@ public class SocialspyCommand implements CommandExecutor {
             return true;
         }
         final Player player = (Player) sender;
-        if (!sender.hasPermission(fileManager.getPermission("socialspy.socialspy"))) {
-            sender.sendMessage(fileManager.getMsgPermission("socialspy.socialspy"));
+        if (args.length != 0) {
+            player.sendMessage(fileManager.getMsg("tptoggle.usage"));
             return true;
         }
-        if (msgManager.addSpy(player)) {
-            player.sendMessage(fileManager.getMsg("socialspy.socialspyon"));
+        final User user = userManager.getUser(player);
+        if (user.isTpa()) {
+            user.setTpa(false);
+            player.sendMessage(fileManager.getMsg("tptoggle.tpoff"));
         } else {
-            player.sendMessage(fileManager.getMsg("socialspy.socialspyoff"));
+            user.setTpa(true);
+            player.sendMessage(fileManager.getMsg("tptoggle.tpon"));
         }
         return true;
     }

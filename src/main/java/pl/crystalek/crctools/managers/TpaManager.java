@@ -1,24 +1,24 @@
-package pl.crystalek.crctools.utils;
+package pl.crystalek.crctools.managers;
 
 import org.bukkit.entity.Player;
-import pl.crystalek.crctools.exceptions.TeleportingPlayerNotExist;
+import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmpty;
 
 import java.util.*;
 
-public class TpaUtil {
+public class TpaManager {
     private Map<UUID, List<Player>> tpaList = new HashMap<>();
 
-    public void addTeleport(UUID teleporting, Player user) {
+    public void addTeleport(final UUID teleporting, final Player user) {
         if (tpaList.containsKey(teleporting)) {
             tpaList.get(teleporting).add(user);
         } else {
-            List<Player> playerList = new ArrayList<>(1);
+            final List<Player> playerList = new ArrayList<>(1);
             playerList.add(user);
             tpaList.put(teleporting, playerList);
         }
     }
 
-    public boolean removeTeleport(UUID teleporting, Player user) {
+    public boolean removeTeleport(final UUID teleporting, final Player user) {
         if (checkTeleport(teleporting, user)) {
             return tpaList.get(teleporting).remove(user);
         } else {
@@ -26,7 +26,7 @@ public class TpaUtil {
         }
     }
 
-    public boolean checkTeleport(UUID teleporting, Player user) {
+    public boolean checkTeleport(final UUID teleporting, final Player user) {
         if (tpaList.get(teleporting) == null) {
             return false;
         }
@@ -38,12 +38,12 @@ public class TpaUtil {
         }
     }
 
-    public List<Player> getPlayerToTp(UUID teleporting) throws TeleportingPlayerNotExist {
+    public List<Player> getPlayerToTp(final UUID teleporting) throws TeleportingPlayerListEmpty {
         if (tpaList.get(teleporting) == null) {
-            throw new TeleportingPlayerNotExist("no such player");
+            throw new TeleportingPlayerListEmpty("no such player");
         } else if (tpaList.get(teleporting).isEmpty()) {
             tpaList.remove(teleporting);
-            throw new TeleportingPlayerNotExist("no such player");
+            throw new TeleportingPlayerListEmpty("no such player");
         } else {
             return new ArrayList<>(tpaList.get(teleporting));
         }
