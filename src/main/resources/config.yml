@@ -1,5 +1,6 @@
 acceptteleport: 20
 teleporttime: 5
+autosave: 300
 permission:
   feed:
     feed: "CrC.tools.feed"

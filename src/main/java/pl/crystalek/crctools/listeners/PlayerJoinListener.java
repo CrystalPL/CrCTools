@@ -7,6 +7,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.UserManager;
 
+import java.io.IOException;
+
 public class PlayerJoinListener implements Listener {
     private final FileManager fileManager;
     private final UserManager userManager;
@@ -17,12 +19,13 @@ public class PlayerJoinListener implements Listener {
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
+    public void onJoin(PlayerJoinEvent event) throws IOException {
         Player player = event.getPlayer();
         if (player.hasPlayedBefore()) {
             fileManager.loadPlayer(player);
         } else {
             userManager.addUser(player);
+            fileManager.savePlayer(player);
         }
     }
 }

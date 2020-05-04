@@ -34,6 +34,7 @@ public class FileManager {
             users.mkdir();
         }
         yamlConfiguration = YamlConfiguration.loadConfiguration(file);
+        crCTools.reloadConfig();
     }
 
     public void loadPlayer(final Player player) {
