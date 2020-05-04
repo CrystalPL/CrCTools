@@ -21,3 +21,5 @@ permission:
     player: "CrC.tools.speed.player"
   tools:
     tools: "CrC.tools.tools"
+  socialspy:
+    socialspy: "CrC.tools.socialspy"

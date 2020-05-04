@@ -10,12 +10,14 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.TpaUtil;
 
 public class TpaCommand implements CommandExecutor {
-    private FileManager fileManager;
-    private CrCTools crCTools;
+    private final FileManager fileManager;
+    private final CrCTools crCTools;
+    private final TpaUtil tpaUtil;
 
-    public TpaCommand(final FileManager fileManager, CrCTools crCTools) {
+    public TpaCommand(final FileManager fileManager, final CrCTools crCTools, final TpaUtil tpaUtil) {
         this.fileManager = fileManager;
         this.crCTools = crCTools;
+        this.tpaUtil = tpaUtil;
     }
 
     @Override
@@ -26,12 +28,12 @@ public class TpaCommand implements CommandExecutor {
                     if (Bukkit.getPlayer(args[0]) != null) {
                         Player player = Bukkit.getPlayer(args[0]);
                         Player target = (Player) sender;
-                        if (!TpaUtil.checkTeleport(player.getUniqueId(), target)) {
+                        if (!tpaUtil.checkTeleport(player.getUniqueId(), target)) {
                             if (!target.equals(player)) {
-                                TpaUtil.addTeleport(player.getUniqueId(), target);
+                                tpaUtil.addTeleport(player.getUniqueId(), target);
                                 target.sendMessage(fileManager.getMsg("tpa.sender").replace("{PLAYER}", player.getName()));
                                 Bukkit.getScheduler().scheduleSyncDelayedTask(crCTools, () -> {
-                                    if (TpaUtil.removeTeleport(player.getUniqueId(), target)) {
+                                    if (tpaUtil.removeTeleport(player.getUniqueId(), target)) {
                                         sender.sendMessage(fileManager.getMsg("tpa.barred"));
                                     }
 

@@ -6,9 +6,9 @@ import pl.crystalek.crctools.exceptions.TeleportingPlayerNotExist;
 import java.util.*;
 
 public class TpaUtil {
-    private static Map<UUID, List<Player>> tpaList = new HashMap<>();
+    private Map<UUID, List<Player>> tpaList = new HashMap<>();
 
-    public static void addTeleport(UUID teleporting, Player user) {
+    public void addTeleport(UUID teleporting, Player user) {
         if (tpaList.containsKey(teleporting)) {
             tpaList.get(teleporting).add(user);
         } else {
@@ -18,7 +18,7 @@ public class TpaUtil {
         }
     }
 
-    public static boolean removeTeleport(UUID teleporting, Player user) {
+    public boolean removeTeleport(UUID teleporting, Player user) {
         if (checkTeleport(teleporting, user)) {
             return tpaList.get(teleporting).remove(user);
         } else {
@@ -26,7 +26,7 @@ public class TpaUtil {
         }
     }
 
-    public static boolean checkTeleport(UUID teleporting, Player user) {
+    public boolean checkTeleport(UUID teleporting, Player user) {
         if (tpaList.get(teleporting) == null) {
             return false;
         }
@@ -38,7 +38,7 @@ public class TpaUtil {
         }
     }
 
-    public static List<Player> getPlayerToTp(UUID teleporting) throws TeleportingPlayerNotExist {
+    public List<Player> getPlayerToTp(UUID teleporting) throws TeleportingPlayerNotExist {
         if (tpaList.get(teleporting) == null) {
             throw new TeleportingPlayerNotExist("no such player");
         } else if (tpaList.get(teleporting).isEmpty()) {

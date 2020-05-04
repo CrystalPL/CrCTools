@@ -19,10 +19,12 @@ import java.util.stream.Collectors;
 public class TpacceptCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final CrCTools crCTools;
+    private final TpaUtil tpaUtil;
 
-    public TpacceptCommand(final FileManager fileManager, final CrCTools crCTools) {
+    public TpacceptCommand(final FileManager fileManager, final CrCTools crCTools, final TpaUtil tpaUtil) {
         this.fileManager = fileManager;
         this.crCTools = crCTools;
+        this.tpaUtil = tpaUtil;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class TpacceptCommand implements CommandExecutor {
                 final Player player = (Player) sender;
                 List<Player> playerToTp;
                 try {
-                    playerToTp = TpaUtil.getPlayerToTp(player.getUniqueId());
+                    playerToTp = tpaUtil.getPlayerToTp(player.getUniqueId());
                 } catch (TeleportingPlayerNotExist exception) {
                     sender.sendMessage(fileManager.getMsg("tpaccept.clearlist"));
                     return false;
@@ -76,7 +78,7 @@ public class TpacceptCommand implements CommandExecutor {
     }
 
     private void teleportPlayer(Player player, Player target) {
-        if (TpaUtil.removeTeleport(player.getUniqueId(), target)) {
+        if (tpaUtil.removeTeleport(player.getUniqueId(), target)) {
             target.sendMessage(fileManager.getMsg("tpaccept.teleport").replace("{PLAYER}", player.getName()).replace("{TIME}", String.valueOf(fileManager.getInt("teleporttime"))));
             player.sendMessage(fileManager.getMsg("tpaccept.teleportsender").replace("{PLAYER}", target.getName()));
             teleportTimer(player, target);

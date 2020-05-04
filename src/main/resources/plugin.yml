@@ -14,3 +14,7 @@ commands:
   tpaccept:
   tools:
   tpdeny:
+  msg:
+  r:
+  trybmsg:
+  socialspy:

@@ -85,3 +85,19 @@ tools:
   errorkey: "&6&lToolsy &8» &cTaki klucz nie istnieje!"
   startlist: "&l&8&m--------------- &7Klucze i ich wartosci - &6{PATH} &l&8&m---------------"
   success: "&6&lToolsy &8» &7Wartosc zostala zmieniona."
+msg:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/msg <gracz> <wiadomosc>."
+  sender: "&3Ja -> {PLAYER}&b: {MESSAGE}"
+  player: "&3{PLAYER} -> Ja&b: {MESSAGE}"
+  block: "&6&lToolsy &8» &cTa osoba ma wylaczone prywatne wiadomosci!"
+reply:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/r <wiadomosc>."
+  error: "&6&lToolsy &8» &cNie masz komu odpisac!"
+socialspy:
+  socialspyon: "&6&lToolsy &8» &7Wszystkie wiadomosci pisane przez graczy beda od teraz widoczne."
+  socialspyoff: "&6&lToolsy &8» &7Wszystkie wiadomosci pisane przez graczy beda od teraz niewidoczne."
+  socialspy: "&6&lSocialspy &8» &3{PLAYER1} -> {PLAYER2}&b: {MESSAGE}"
+trybmsg:
+  msgon: "&6&lToolsy &8» &7Wiadomosci prywatne zostaly wlaczone!"
+  msgoff: "&6&lToolsy &8» &7Wiadomosci prywatne zostaly wylaczone!"
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/trybmsg."

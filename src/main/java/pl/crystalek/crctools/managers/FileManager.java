@@ -2,7 +2,10 @@ package pl.crystalek.crctools.managers;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.model.User;
+import pl.crystalek.crctools.model.UserManager;
 import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.io.File;
@@ -11,18 +14,46 @@ import java.util.List;
 
 public class FileManager {
     private final CrCTools crCTools;
+    private final UserManager userManager;
+    private final File file;
+    private final File users;
     private YamlConfiguration yamlConfiguration;
+    private YamlConfiguration yamlConfigurationUsers;
 
-    public FileManager(final CrCTools crCTools) {
+    public FileManager(final CrCTools crCTools, final UserManager userManager) {
         this.crCTools = crCTools;
+        this.userManager = userManager;
+        file = new File(crCTools.getDataFolder(), "messages.yml");
+        users = new File(crCTools.getDataFolder(), "users");
     }
 
     public void checkFiles() {
-        if (!(new File(crCTools.getDataFolder(), "messages.yml").exists())) {
+        if (!file.exists()) {
             crCTools.saveResource("messages.yml", true);
         }
-        yamlConfiguration = YamlConfiguration.loadConfiguration(new File(crCTools.getDataFolder(), "messages.yml"));
-        crCTools.reloadConfig();
+        if (!users.exists()) {
+            users.mkdir();
+        }
+        yamlConfiguration = YamlConfiguration.loadConfiguration(file);
+    }
+
+    public void loadPlayer(Player player) {
+        yamlConfigurationUsers = YamlConfiguration.loadConfiguration(new File(users, player.getName() + ".yml"));
+        userManager.addUser(player, yamlConfigurationUsers.getBoolean("msg"), yamlConfigurationUsers.getBoolean("tpa"));
+    }
+
+    public void savePlayer(Player player) throws IOException {
+        final File fileSave = new File(users, player.getName() + ".yml");
+        if (!fileSave.exists()) {
+            fileSave.createNewFile();
+        }
+        final User user = userManager.getUser(player);
+        yamlConfigurationUsers = YamlConfiguration.loadConfiguration(new File(users, player.getName() + ".yml"));
+        yamlConfigurationUsers.set("uuid", user.getUuid().toString());
+        yamlConfigurationUsers.set("nick", user.getLastName());
+        yamlConfigurationUsers.set("msg", user.isMsg());
+        yamlConfigurationUsers.set("tpa", user.isTpa());
+        yamlConfigurationUsers.save(fileSave);
     }
 
     public String getPermission(final String pathPermission) {
@@ -69,7 +100,7 @@ public class FileManager {
                 return true;
             }
         }
-        yamlConfiguration.save(new File(crCTools.getDataFolder(), "messages.yml"));
+        yamlConfiguration.save(file);
         return true;
     }
 }

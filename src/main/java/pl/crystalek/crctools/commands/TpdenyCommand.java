@@ -15,9 +15,11 @@ import java.util.stream.Collectors;
 
 public class TpdenyCommand implements CommandExecutor {
     private final FileManager fileManager;
+    private final TpaUtil tpaUtil;
 
-    public TpdenyCommand(FileManager fileManager) {
+    public TpdenyCommand(FileManager fileManager, final TpaUtil tpaUtil) {
         this.fileManager = fileManager;
+        this.tpaUtil = tpaUtil;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class TpdenyCommand implements CommandExecutor {
                 final Player player = (Player) sender;
                 List<Player> playerToTp;
                 try {
-                    playerToTp = TpaUtil.getPlayerToTp(player.getUniqueId());
+                    playerToTp = tpaUtil.getPlayerToTp(player.getUniqueId());
                 } catch (TeleportingPlayerNotExist exception) {
                     sender.sendMessage(fileManager.getMsg("tpaccept.clearlist"));
                     return false;
@@ -66,7 +68,7 @@ public class TpdenyCommand implements CommandExecutor {
     }
 
     private void denyPlayer(Player player, Player target) {
-        TpaUtil.removeTeleport(player.getUniqueId(), target);
+        tpaUtil.removeTeleport(player.getUniqueId(), target);
         player.sendMessage(fileManager.getMsg("tpdeny.tpdeny").replace("{PLAYER}", target.getName()));
         if (target.isOnline()) {
             target.sendMessage(fileManager.getMsg("tpdeny.tpdenyplayer"));
