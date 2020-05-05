@@ -26,3 +26,7 @@ commands:
   socialspy:
   gamemode:
     aliases: gm
+  repair:
+    aliases: fix
+  tp:
+  s:

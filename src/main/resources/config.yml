@@ -27,3 +27,10 @@ permission:
   gamemode:
     gamemode: "CrC.tools.gamemode"
     player: "CrC.tools.gamemode.player"
+  repair:
+    repair: "CrC.tools.repair"
+  tp:
+    tp: "CrC.tools.tp"
+    player: "CrC.tools.tp.player"
+  s:
+    s: "CrC.tools.s"

@@ -110,3 +110,14 @@ gamemode:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/gamemode <0, 1, 2, 3 (survival, creative, adventure, spectator)> (gracz)."
   sender: "&6&lToolsy &8» &7Tryb gracza &6{PLAYER} &7zostal zmieniony na: &6{GAMEMODE}&7."
   player: "&6&lToolsy &8» &7Twoj tryb zostal zmieniony na: &6{GAMEMODE}&7."
+repair:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/repair."
+  error: "&6&lToolsy &8» &cTen przedmiot nie może byc naprawiony!"
+  repair: "&6&lToolsy &8» &7Przedmiot zostal naprawiony."
+tp:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tp <gracz> (gracz)."
+  sender: "&6&lToolsy &8» &7Gracz &6{PLAYER1} &7zostal przeteleportowany do gracza &6{PLAYER2}&7."
+  player: "&6&lToolsy &8» &7Zostales przeteleportowany do gracza &6{PLAYER}&7."
+s:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/s <gracz>."
+  success: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zostal do ciebie przeteleportowany."

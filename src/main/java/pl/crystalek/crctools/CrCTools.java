@@ -48,6 +48,9 @@ public final class CrCTools extends JavaPlugin {
         getCommand("trybmsg").setExecutor(new TrybmsgCommand(fileManager, userManager));
         getCommand("socialspy").setExecutor(new SocialspyCommand(fileManager, msgManager));
         getCommand("gamemode").setExecutor(new GamemodeCommand(fileManager));
+        getCommand("repair").setExecutor(new RepairCommand(fileManager));
+        getCommand("tp").setExecutor(new TpCommand(fileManager));
+        getCommand("s").setExecutor(new SCommand(fileManager));
     }
 
     private void registerListeners() {

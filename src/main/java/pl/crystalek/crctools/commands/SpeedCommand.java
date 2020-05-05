@@ -55,6 +55,10 @@ public class SpeedCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("notconsole"));
             return true;
         }
+        if (!sender.hasPermission(fileManager.getPermission("speed.speed"))) {
+            sender.sendMessage(fileManager.getMsgPermission("speed.speed"));
+            return true;
+        }
         final Player player = (Player) sender;
         if (player.isFlying()) {
             player.setFlySpeed(speed);
