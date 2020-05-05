@@ -12,10 +12,17 @@ commands:
   speed:
   tpa:
   tpaccept:
+    aliases: tak
   tools:
   tpdeny:
+    aliases: nie
   tptoggle:
   msg:
+    aliases:
+      - w
+      - tell
   r:
   trybmsg:
   socialspy:
+  gamemode:
+    aliases: gm

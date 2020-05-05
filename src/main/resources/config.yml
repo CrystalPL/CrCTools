@@ -24,3 +24,6 @@ permission:
     tools: "CrC.tools.tools"
   socialspy:
     socialspy: "CrC.tools.socialspy"
+  gamemode:
+    gamemode: "CrC.tools.gamemode"
+    player: "CrC.tools.gamemode.player"

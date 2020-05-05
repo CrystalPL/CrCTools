@@ -106,3 +106,7 @@ trybmsg:
   msgon: "&6&lToolsy &8» &7Wiadomosci prywatne zostaly wlaczone!"
   msgoff: "&6&lToolsy &8» &7Wiadomosci prywatne zostaly wylaczone!"
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/trybmsg."
+gamemode:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/gamemode <0, 1, 2, 3 (survival, creative, adventure, spectator)> (gracz)."
+  sender: "&6&lToolsy &8» &7Tryb gracza &6{PLAYER} &7zostal zmieniony na: &6{GAMEMODE}&7."
+  player: "&6&lToolsy &8» &7Twoj tryb zostal zmieniony na: &6{GAMEMODE}&7."
