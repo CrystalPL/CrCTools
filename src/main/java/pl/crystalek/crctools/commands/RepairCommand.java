@@ -11,7 +11,7 @@ import pl.crystalek.crctools.managers.FileManager;
 public class RepairCommand implements CommandExecutor {
     private final FileManager fileManager;
 
-    final private Material[] canRepair = new Material[]{
+    final private Material[] repairableMaterials = new Material[]{
             Material.DIAMOND_PICKAXE, Material.DIAMOND_SWORD, Material.DIAMOND_SPADE,
             Material.DIAMOND_AXE, Material.DIAMOND_HOE, Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE,
             Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS, Material.IRON_PICKAXE,
@@ -62,7 +62,7 @@ public class RepairCommand implements CommandExecutor {
     }
 
     private boolean checkItem(final Material material) {
-        for (final Material sought : canRepair) {
+        for (final Material sought : repairableMaterials) {
             if (sought.equals(material)) {
                 return true;
             }

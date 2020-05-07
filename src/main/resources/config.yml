@@ -34,3 +34,7 @@ permission:
     player: "CrC.tools.tp.player"
   s:
     s: "CrC.tools.s"
+  give:
+    give: "CrC.tools.give"
+  item:
+    item: "CrC.tools.item"

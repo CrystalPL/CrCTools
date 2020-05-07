@@ -51,6 +51,8 @@ public final class CrCTools extends JavaPlugin {
         getCommand("repair").setExecutor(new RepairCommand(fileManager));
         getCommand("tp").setExecutor(new TpCommand(fileManager));
         getCommand("s").setExecutor(new SCommand(fileManager));
+        getCommand("give").setExecutor(new GiveCommand(fileManager));
+        getCommand("i").setExecutor(new ItemCommand(fileManager));
     }
 
     private void registerListeners() {

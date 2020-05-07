@@ -30,3 +30,6 @@ commands:
     aliases: fix
   tp:
   s:
+  give:
+  i:
+    aliases: item

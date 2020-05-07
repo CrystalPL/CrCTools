@@ -121,3 +121,9 @@ tp:
 s:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/s <gracz>."
   success: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zostal do ciebie przeteleportowany."
+give:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/give <gracz> <item> <ilosc>."
+  fulleq: "&6&lToolsy &8» &cEkwipunek tego gracza jest pełny!"
+  give: "&6&lToolsy &8» &7Otrzymales &6{ITEM}&7:&6{DATA} &7w ilosci &6{AMOUNT}&7."
+item:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/i <item> <ilosc>."
