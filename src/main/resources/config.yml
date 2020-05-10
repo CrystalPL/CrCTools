@@ -38,3 +38,5 @@ permission:
     give: "CrC.tools.give"
   item:
     item: "CrC.tools.item"
+  ip:
+    player: "CrC.tools.ip"

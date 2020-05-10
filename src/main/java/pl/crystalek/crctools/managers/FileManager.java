@@ -9,7 +9,10 @@ import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class FileManager {
     private final CrCTools crCTools;
@@ -17,7 +20,7 @@ public class FileManager {
     private final File file;
     private final File users;
     private YamlConfiguration yamlConfiguration;
-    private YamlConfiguration yamlConfigurationUsers;
+    private Map<String, YamlConfiguration> usersConfiguration = new HashMap<>();
 
     public FileManager(final CrCTools crCTools, final UserManager userManager) {
         this.crCTools = crCTools;
@@ -38,22 +41,33 @@ public class FileManager {
     }
 
     public void loadPlayer(final Player player) {
-        yamlConfigurationUsers = YamlConfiguration.loadConfiguration(new File(users, player.getName() + ".yml"));
-        userManager.addUser(player, yamlConfigurationUsers.getBoolean("msg"), yamlConfigurationUsers.getBoolean("tpa"));
+        YamlConfiguration file = usersConfiguration.get(player.getName());
+        userManager.addUser(player,
+                UUID.fromString(file.getString("uuid")),
+                file.getString("nick"),
+                file.getString("ip"),
+                file.getBoolean("msg"),
+                file.getBoolean("tpa"));
     }
 
     public void savePlayer(final Player player) throws IOException {
-        final File fileSave = new File(users, player.getName() + ".yml");
-        if (!fileSave.exists()) {
-            fileSave.createNewFile();
-        }
+        YamlConfiguration file = usersConfiguration.get(player.getName());
         final User user = userManager.getUser(player);
-        yamlConfigurationUsers = YamlConfiguration.loadConfiguration(new File(users, player.getName() + ".yml"));
-        yamlConfigurationUsers.set("uuid", user.getUuid().toString());
-        yamlConfigurationUsers.set("nick", user.getLastName());
-        yamlConfigurationUsers.set("msg", user.isMsg());
-        yamlConfigurationUsers.set("tpa", user.isTpa());
-        yamlConfigurationUsers.save(fileSave);
+        file.set("uuid", user.getUuid().toString());
+        file.set("nick", user.getLastName());
+        file.set("msg", user.isMsg());
+        file.set("tpa", user.isTpa());
+        file.set("ip", user.getIp());
+        file.save(new File(users, player + ".yml"));
+    }
+
+    public String getIp(final String player) {
+        final File fileSave = new File(users, player + ".yml");
+        if (!fileSave.exists()) {
+            throw new NullPointerException("player doesn't exist");
+        }
+        YamlConfiguration file = usersConfiguration.get(player);
+        return file.getString("ip");
     }
 
     public String getPermission(final String pathPermission) {
@@ -100,5 +114,13 @@ public class FileManager {
         }
         yamlConfiguration.save(file);
         return true;
+    }
+
+    public void addConfiguration(final Player player) {
+        usersConfiguration.put(player.getName(), YamlConfiguration.loadConfiguration(new File(users, player + ".yml")));
+    }
+
+    public void removeConfiguration(final Player player) {
+        usersConfiguration.remove(player.getName());
     }
 }

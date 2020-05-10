@@ -53,6 +53,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("s").setExecutor(new SCommand(fileManager));
         getCommand("give").setExecutor(new GiveCommand(fileManager));
         getCommand("i").setExecutor(new ItemCommand(fileManager));
+        getCommand("ip").setExecutor(new IpCommand(fileManager));
     }
 
     private void registerListeners() {

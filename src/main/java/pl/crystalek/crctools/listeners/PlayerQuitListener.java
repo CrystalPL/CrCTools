@@ -23,5 +23,6 @@ public class PlayerQuitListener implements Listener {
         final Player player = event.getPlayer();
         fileManager.savePlayer(player);
         userManager.removeUser(player);
+        fileManager.removeConfiguration(player);
     }
 }

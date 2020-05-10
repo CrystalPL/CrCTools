@@ -33,3 +33,4 @@ commands:
   give:
   i:
     aliases: item
+  ip:
