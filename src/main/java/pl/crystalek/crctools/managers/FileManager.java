@@ -41,24 +41,24 @@ public class FileManager {
     }
 
     public void loadPlayer(final Player player) {
-        YamlConfiguration file = usersConfiguration.get(player.getName());
+        YamlConfiguration configuration = usersConfiguration.get(player.getName());
         userManager.addUser(player,
-                UUID.fromString(file.getString("uuid")),
-                file.getString("nick"),
-                file.getString("ip"),
-                file.getBoolean("msg"),
-                file.getBoolean("tpa"));
+                UUID.fromString(configuration.getString("uuid")),
+                configuration.getString("nick"),
+                configuration.getString("ip"),
+                configuration.getBoolean("msg"),
+                configuration.getBoolean("tpa"));
     }
 
     public void savePlayer(final Player player) throws IOException {
-        YamlConfiguration file = usersConfiguration.get(player.getName());
+        YamlConfiguration configuration = usersConfiguration.get(player.getName());
         final User user = userManager.getUser(player);
-        file.set("uuid", user.getUuid().toString());
-        file.set("nick", user.getLastName());
-        file.set("msg", user.isMsg());
-        file.set("tpa", user.isTpa());
-        file.set("ip", user.getIp());
-        file.save(new File(users, player + ".yml"));
+        configuration.set("uuid", user.getUuid().toString());
+        configuration.set("nick", user.getLastName());
+        configuration.set("msg", user.isMsg());
+        configuration.set("tpa", user.isTpa());
+        configuration.set("ip", user.getIp());
+        configuration.save(new File(users, player.getName() + ".yml"));
     }
 
     public String getIp(final String player) {
@@ -66,8 +66,9 @@ public class FileManager {
         if (!fileSave.exists()) {
             throw new NullPointerException("player doesn't exist");
         }
-        YamlConfiguration file = usersConfiguration.get(player);
-        return file.getString("ip");
+        YamlConfiguration configuration = YamlConfiguration.loadConfiguration(fileSave);
+        ;
+        return configuration.getString("ip");
     }
 
     public String getPermission(final String pathPermission) {
@@ -117,7 +118,7 @@ public class FileManager {
     }
 
     public void addConfiguration(final Player player) {
-        usersConfiguration.put(player.getName(), YamlConfiguration.loadConfiguration(new File(users, player + ".yml")));
+        usersConfiguration.put(player.getName(), YamlConfiguration.loadConfiguration(new File(users, player.getName() + ".yml")));
     }
 
     public void removeConfiguration(final Player player) {
