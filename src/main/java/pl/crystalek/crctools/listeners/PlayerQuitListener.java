@@ -19,7 +19,7 @@ public class PlayerQuitListener implements Listener {
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent event) throws IOException {
+    public void onQuit(final PlayerQuitEvent event) throws IOException {
         final Player player = event.getPlayer();
         fileManager.savePlayer(player);
         userManager.removeUser(player);

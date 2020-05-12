@@ -10,13 +10,15 @@ public class User {
     private String ip;
     private boolean msg = true;
     private boolean tpa = true;
+    private boolean god = false;
 
-    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa) {
+    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god) {
         this.uuid = uuid;
         this.lastName = lastName;
         this.ip = ip;
         this.msg = msg;
         this.tpa = tpa;
+        this.god = god;
     }
 
     public User(final Player player) {
@@ -27,10 +29,6 @@ public class User {
 
     public String getIp() {
         return ip;
-    }
-
-    public void setIp(final String ip) {
-        this.ip = ip;
     }
 
     public UUID getUuid() {
@@ -55,5 +53,13 @@ public class User {
 
     public void setTpa(final boolean tpa) {
         this.tpa = tpa;
+    }
+
+    public boolean isGod() {
+        return god;
+    }
+
+    public void setGod(boolean god) {
+        this.god = god;
     }
 }

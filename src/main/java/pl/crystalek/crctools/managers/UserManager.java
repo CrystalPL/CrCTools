@@ -13,8 +13,8 @@ public class UserManager {
         users.put(player.getUniqueId(), new User(player));
     }
 
-    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa) {
-        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa));
+    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god) {
+        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god));
     }
 
     public void removeUser(final Player player) {

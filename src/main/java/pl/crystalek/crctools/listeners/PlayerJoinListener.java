@@ -19,7 +19,7 @@ public class PlayerJoinListener implements Listener {
     }
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent event) throws IOException {
+    public void onJoin(final PlayerJoinEvent event) throws IOException {
         Player player = event.getPlayer();
         fileManager.addConfiguration(player);
         if (player.hasPlayedBefore()) {

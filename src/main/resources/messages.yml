@@ -131,3 +131,27 @@ item:
 ip:
   ip: "&6&lToolsy &8» &7Twoje ip: &6{IP}&7."
   player: "&6&lToolsy &8» &7Ip gracza &6{PLAYER}&7: &6{IP}&7."
+kick:
+  kick: "&6&lToolsy &8» &cZostales wyrzucony z serwera!"
+  all: "&6&lToolsy &8» &7Wszyscy gracze z serwer zostali wyrzuceni."
+god:
+  godon: "&6&lToolsy &8» &7Tryb Boga zostal wlaczony!"
+  godoff: "&6&lToolsy &8» &7Tryb Boga zostal wylaczony!"
+whois:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/whois <gracz>."
+  whois:
+    - "&6&lToolsy &8» &6Nick: &7{PLAYER}"
+    - "&6&lToolsy &8» &6Ban: &7{BAN}"
+    - "&6&lToolsy &8» &6Poziom: &7{LEVEL}"
+    - "&6&lToolsy &8» &6Latanie: &7{FLY}"
+    - "&6&lToolsy &8» &6Gamemode: &7{GAMEMODE}"
+    - "&6&lToolsy &8» &6Lokalizacja: &7{WORLD}"
+    - "&8» &6X: &7{X}"
+    - "&8» &6Y: &7{Y}"
+    - "&8» &6Z: &7{Z}"
+    - "&6&lToolsy &8» &6God: &7{GOD}"
+    - "&6&lToolsy &8» &6Zycie: &7{HEALTH}"
+    - "&6&lToolsy &8» &6Glod: &7{GLOD}"
+    - "&6&lToolsy &8» &6Operator: &7{OP}"
+    - "&6&lToolsy &8» &6Ip: &7{IP}"
+    - "&6&lToolsy &8» &6Uuid: &7{UUID}"

@@ -34,3 +34,6 @@ commands:
   i:
     aliases: item
   ip:
+  kickall:
+  god:
+  whois:

@@ -1,7 +1,7 @@
 acceptteleport: 20
 teleporttime: 5
 autosave: 300
-automessagetime: 2
+automessagetime: 60
 automessage:
   - "&1&lJebać krystala"
   - "&2&lJebać krystala"
@@ -55,3 +55,11 @@ permission:
     item: "CrC.tools.item"
   ip:
     player: "CrC.tools.ip"
+  kick:
+    all: "CrC.tools.kick.all"
+    player: "CrC.tools.kick.player"
+    bypass: "CrC.tools.kick.bypass"
+  god:
+    god: "CrC.tools.god"
+  whois:
+    whois: "CrC.tools.whois"

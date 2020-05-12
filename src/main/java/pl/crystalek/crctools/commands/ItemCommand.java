@@ -45,7 +45,7 @@ public class ItemCommand implements CommandExecutor {
             final ItemStack material = MaterialUtil.getMaterial(args);
             player.getInventory().addItem(material);
             player.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", String.valueOf(material.getAmount())).replace("{DATA}", String.valueOf(material.getData().getData())));
-        } catch (NullPointerException exception) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException exception) {
             sender.sendMessage(fileManager.getMsg("item.usage"));
         }
         return true;

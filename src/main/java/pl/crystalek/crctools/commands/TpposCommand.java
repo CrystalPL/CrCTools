@@ -14,9 +14,11 @@ import java.util.List;
 
 public class TpposCommand implements CommandExecutor {
     private final FileManager fileManager;
+    private final DecimalFormat decimalFormat;
 
-    public TpposCommand(final FileManager fileManager) {
+    public TpposCommand(final FileManager fileManager, final DecimalFormat decimalFormat) {
         this.fileManager = fileManager;
+        this.decimalFormat = decimalFormat;
     }
 
     @Override
@@ -69,13 +71,13 @@ public class TpposCommand implements CommandExecutor {
     }
 
     private void sendMessage(final Player player, final List<String> lists) {
-        final DecimalFormat decimalFormat = new DecimalFormat();
+        final Location location = player.getLocation();
         for (final String string : lists) {
             player.sendMessage(string
-                    .replace("{WORLD}", player.getWorld().getName())
-                    .replace("{X}", decimalFormat.format(player.getLocation().getX()))
-                    .replace("{Y}", decimalFormat.format(player.getLocation().getY()))
-                    .replace("{Z}", decimalFormat.format(player.getLocation().getZ()))
+                    .replace("{WORLD}", location.getWorld().getName())
+                    .replace("{X}", decimalFormat.format(location.getX()))
+                    .replace("{Y}", decimalFormat.format(location.getY()))
+                    .replace("{Z}", decimalFormat.format(location.getZ()))
                     .replace("{PLAYER}", player.getName()));
         }
     }
