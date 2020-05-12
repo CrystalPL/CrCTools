@@ -19,8 +19,8 @@ public class FileManager {
     private final UserManager userManager;
     private final File file;
     private final File users;
+    private final Map<String, YamlConfiguration> usersConfiguration = new HashMap<>();
     private YamlConfiguration yamlConfiguration;
-    private Map<String, YamlConfiguration> usersConfiguration = new HashMap<>();
 
     public FileManager(final CrCTools crCTools, final UserManager userManager) {
         this.crCTools = crCTools;

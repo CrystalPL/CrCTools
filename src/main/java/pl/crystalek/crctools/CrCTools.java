@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.crystalek.crctools.commands.*;
 import pl.crystalek.crctools.listeners.*;
 import pl.crystalek.crctools.managers.*;
+import pl.crystalek.crctools.tasks.AutoMessage;
 import pl.crystalek.crctools.tasks.AutoSave;
 
 public final class CrCTools extends JavaPlugin {
@@ -24,6 +25,7 @@ public final class CrCTools extends JavaPlugin {
         registerCommand();
         registerListeners();
         new AutoSave(this, fileManager);
+        new AutoMessage(this, fileManager);
     }
 
     @Override

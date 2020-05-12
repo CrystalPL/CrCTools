@@ -1,6 +1,21 @@
 acceptteleport: 20
 teleporttime: 5
 autosave: 300
+automessagetime: 2
+automessage:
+  - "&1&lJebać krystala"
+  - "&2&lJebać krystala"
+  - "&3&lJebać krystala"
+  - "&4&lJebać krystala"
+  - "&5&lJebać krystala"
+  - "&6&lJebać krystala"
+  - "&7&lJebać krystala"
+  - "&8&lJebać krystala"
+  - "&9&lJebać krystala"
+  - "&a&lJebać krystala"
+  - "&d&lJebać krystala"
+  - "&f&lJebać krystala"
+  - "&c&lJebać krystala"
 permission:
   feed:
     feed: "CrC.tools.feed"

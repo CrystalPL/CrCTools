@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class AutoSave {
 
-    @Deprecated
     public AutoSave(final CrCTools crCTools, final FileManager fileManager) {
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(crCTools, () -> {
             for (final Player player : Bukkit.getOnlinePlayers()) {
