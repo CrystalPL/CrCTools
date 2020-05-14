@@ -37,17 +37,18 @@ public class ItemCommand implements CommandExecutor {
             return true;
         }
         final PlayerInventory inventory = player.getInventory();
-        if (inventory.firstEmpty() == -1) {
+        ItemStack material;
+        try {
+            material = MaterialUtil.getMaterial(args, 0, inventory);
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException | NumberFormatException exception) {
+            player.sendMessage(fileManager.getMsg("item.usage"));
+            return true;
+        } catch (IllegalArgumentException exception) {
             player.sendMessage(fileManager.getMsg("give.fulleq"));
             return true;
         }
-        try {
-            final ItemStack material = MaterialUtil.getMaterial(args);
-            player.getInventory().addItem(material);
-            player.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", String.valueOf(material.getAmount())).replace("{DATA}", String.valueOf(material.getData().getData())));
-        } catch (NullPointerException | ArrayIndexOutOfBoundsException exception) {
-            sender.sendMessage(fileManager.getMsg("item.usage"));
-        }
+        inventory.addItem(material);
+        player.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", args[1]).replace("{DATA}", String.valueOf(material.getData().getData())));
         return true;
     }
 }

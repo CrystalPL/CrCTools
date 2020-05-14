@@ -61,5 +61,6 @@ permission:
     bypass: "CrC.tools.kick.bypass"
   god:
     god: "CrC.tools.god"
+    player: "CrC.tools.god.player"
   whois:
     whois: "CrC.tools.whois"

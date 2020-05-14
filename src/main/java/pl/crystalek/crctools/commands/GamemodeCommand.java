@@ -28,8 +28,8 @@ public class GamemodeCommand implements CommandExecutor {
         }
         final GameMode gamemode = getGamemode(args[0]);
         if (args.length == 2) {
-            if (!sender.hasPermission(fileManager.getPermission("gamemode.gamemode"))) {
-                sender.sendMessage(fileManager.getMsgPermission("gamemode.gamemode"));
+            if (!sender.hasPermission(fileManager.getPermission("gamemode.player"))) {
+                sender.sendMessage(fileManager.getMsgPermission("gamemode.player"));
                 return true;
             }
             if (Bukkit.getPlayer(args[1]) == null) {
@@ -47,8 +47,8 @@ public class GamemodeCommand implements CommandExecutor {
             return true;
         }
         final Player player = (Player) sender;
-        if (!player.hasPermission(fileManager.getPermission("gamemode.player"))) {
-            player.sendMessage(fileManager.getMsgPermission("gamemode.player"));
+        if (!player.hasPermission(fileManager.getPermission("gamemode.gamemode"))) {
+            player.sendMessage(fileManager.getMsgPermission("gamemode.gamemode"));
             return true;
         }
         player.setGameMode(gamemode);

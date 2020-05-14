@@ -26,11 +26,11 @@ public class IpCommand implements CommandExecutor {
                 sender.sendMessage(fileManager.getMsgPermission("ip.player"));
                 return true;
             }
-            if (fileManager.getIp(args[0]) == null) {
+            try {
+                sender.sendMessage(fileManager.getMsg("ip.player").replace("{PLAYER}", args[0]).replace("{IP}", fileManager.getIp(args[0])));
+            } catch (NullPointerException exception) {
                 sender.sendMessage(fileManager.getMsg("cantexist"));
-                return true;
             }
-            sender.sendMessage(fileManager.getMsg("ip.player").replace("{PLAYER}", args[0]).replace("{IP}", fileManager.getIp(args[0])));
         }
         return true;
     }

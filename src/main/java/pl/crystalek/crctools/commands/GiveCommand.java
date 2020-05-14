@@ -1,7 +1,6 @@
 package pl.crystalek.crctools.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -39,18 +38,19 @@ public class GiveCommand implements CommandExecutor {
         }
         final Player target = Bukkit.getPlayer(args[0]);
         final PlayerInventory inventory = target.getInventory();
-        if (inventory.firstEmpty() == -1) {
+        ItemStack material;
+        try {
+            material = MaterialUtil.getMaterial(args, 1, inventory);
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException | NumberFormatException exception) {
+            sender.sendMessage(fileManager.getMsg("give.usage"));
+            return true;
+        } catch (IllegalArgumentException exception) {
             sender.sendMessage(fileManager.getMsg("give.fulleq"));
             return true;
         }
-
-        try {
-            final ItemStack material = MaterialUtil.getMaterial(args);
-            target.getInventory().addItem(material);
-            target.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", String.valueOf(material.getAmount())).replace("{DATA}", String.valueOf(material.getData().getData())));
-        } catch (NullPointerException exception) {
-            sender.sendMessage(fileManager.getMsg("give.usage"));
-        }
+        inventory.addItem(material);
+        target.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", args[2]).replace("{DATA}", String.valueOf(material.getData().getData())));
+        sender.sendMessage(fileManager.getMsg("give.player").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", args[2]).replace("{DATA}", String.valueOf(material.getData().getData())).replace("{PLAYER}", target.getName()));
         return true;
     }
 }

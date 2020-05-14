@@ -105,7 +105,7 @@ public class ExpCommand implements CommandExecutor {
                         player.setLevel(player.getLevel() - level);
                         player.sendMessage(fileManager.getMsg("exp.take").replace("{LEVELCHANGE}", String.valueOf(level)).replace("{LEVEL}", String.valueOf(player.getLevel())));
                     } else {
-                        player.sendMessage(fileManager.getMsg("exp.errortake"));
+                        sender.sendMessage(fileManager.getMsg("exp.errortake"));
                     }
                     break;
                 case "set":

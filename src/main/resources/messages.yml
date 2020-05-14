@@ -46,7 +46,7 @@ fly:
   takeoff: "&6&lToolsy &8» &7Latanie zostalo wylaczone."
   takeonplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wlaczone."
   takeoffplayer: "&6&lToolsy &8» &7Latanie graczowi &6{PLAYER} &7zostalo wylaczone."
-  usage: "&6&lToolsy &8» &7/fly (player)."
+  usage: "&6&lToolsy &8» &7/fly (gracz)."
 speed:
   fly: "&6&lToolsy &8» &7Twoja szybkosc latania zostala ustawiona na &6{SPEED}&7."
   flyplayer: "&6&lToolsy &8» &7Szybko latania gracza &6{PLAYER} &7zostala ustawiona na &6{SPEED}&7."
@@ -113,7 +113,7 @@ gamemode:
   player: "&6&lToolsy &8» &7Twoj tryb zostal zmieniony na: &6{GAMEMODE}&7."
 repair:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/repair."
-  error: "&6&lToolsy &8» &cTen przedmiot nie może byc naprawiony!"
+  error: "&6&lToolsy &8» &cTen przedmiot nie moze byc naprawiony!"
   repair: "&6&lToolsy &8» &7Przedmiot zostal naprawiony."
 tp:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tp <gracz> (gracz)."
@@ -126,6 +126,7 @@ give:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/give <gracz> <item> <ilosc>."
   fulleq: "&6&lToolsy &8» &cEkwipunek tego gracza jest pełny!"
   give: "&6&lToolsy &8» &7Otrzymales &6{ITEM}&7:&6{DATA} &7w ilosci &6{AMOUNT}&7."
+  player: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7otrzymal &6{ITEM}&7:&6{DATA} &7w ilosci &6{AMOUNT}&7."
 item:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/i <item> <ilosc>."
 ip:
@@ -137,6 +138,8 @@ kick:
 god:
   godon: "&6&lToolsy &8» &7Tryb Boga zostal wlaczony!"
   godoff: "&6&lToolsy &8» &7Tryb Boga zostal wylaczony!"
+  playeron: "&6&lToolsy &8» &7Tryb Boga dla gracza &6{PLAYER} &7zostal wlaczony."
+  playeroff: "&6&lToolsy &8» &7Tryb Boga dla gracza &6{PLAYER} &7zostal wylaczony."
 whois:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/whois <gracz>."
   whois:

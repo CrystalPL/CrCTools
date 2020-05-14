@@ -22,12 +22,12 @@ public class ToolsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
-        if (!(args.length >= 1)) {
-            sender.sendMessage(fileManager.getMsg("tools.usage"));
-            return true;
-        }
         if (!sender.hasPermission(fileManager.getPermission("tools.tools"))) {
             sender.sendMessage(fileManager.getMsgPermission("tools.tools"));
+            return true;
+        }
+        if (!(args.length >= 1)) {
+            sender.sendMessage(fileManager.getMsg("tools.usage"));
             return true;
         }
         if (args[0].equalsIgnoreCase("reload")) {
