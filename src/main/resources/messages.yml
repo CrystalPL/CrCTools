@@ -158,3 +158,10 @@ whois:
     - "&6&lToolsy &8» &6Operator: &7{OP}"
     - "&6&lToolsy &8» &6Ip: &7{IP}"
     - "&6&lToolsy &8» &6Uuid: &7{UUID}"
+suicide:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/suicide."
+  suicide: "&6&lToolsy &8» &7Zostales zabity."
+kill:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/kill <gracz>."
+  kill: "&6&lToolsy &8» &7Zostales zabity przez &6{PLAYER}&7."
+  player: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zostal zabity."

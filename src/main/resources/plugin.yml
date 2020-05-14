@@ -37,3 +37,5 @@ commands:
   kickall:
   god:
   whois:
+  suicide:
+  kill:

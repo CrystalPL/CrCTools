@@ -65,6 +65,8 @@ public final class CrCTools extends JavaPlugin {
         getCommand("kickall").setExecutor(new KickallCommand(fileManager));
         getCommand("god").setExecutor(new GodCommand(fileManager, userManager));
         getCommand("whois").setExecutor(new WhoisCommand(fileManager, userManager, decimalFormat));
+        getCommand("suicide").setExecutor(new SuicideCommand(fileManager));
+        getCommand("kill").setExecutor(new KillCommand(fileManager));
     }
 
     private void registerListeners() {

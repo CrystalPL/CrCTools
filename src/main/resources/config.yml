@@ -3,19 +3,19 @@ teleporttime: 5
 autosave: 300
 automessagetime: 60
 automessage:
-  - "&1&lJebać krystala"
-  - "&2&lJebać krystala"
-  - "&3&lJebać krystala"
-  - "&4&lJebać krystala"
-  - "&5&lJebać krystala"
-  - "&6&lJebać krystala"
-  - "&7&lJebać krystala"
-  - "&8&lJebać krystala"
-  - "&9&lJebać krystala"
-  - "&a&lJebać krystala"
-  - "&d&lJebać krystala"
-  - "&f&lJebać krystala"
-  - "&c&lJebać krystala"
+  - "&1&lTEST 5G MOC 500%"
+  - "&2&lTEST 5G MOC 500%"
+  - "&3&lTEST 5G MOC 500%"
+  - "&4&lTEST 5G MOC 500%"
+  - "&5&lTEST 5G MOC 500%"
+  - "&6&lTEST 5G MOC 500%"
+  - "&7&lTEST 5G MOC 500%"
+  - "&8&lTEST 5G MOC 500%"
+  - "&9&lTEST 5G MOC 500%"
+  - "&a&lTEST 5G MOC 500%"
+  - "&d&lTEST 5G MOC 500%"
+  - "&f&lTEST 5G MOC 500%"
+  - "&c&lTEST 5G MOC 500%"
 permission:
   feed:
     feed: "CrC.tools.feed"
@@ -64,3 +64,5 @@ permission:
     player: "CrC.tools.god.player"
   whois:
     whois: "CrC.tools.whois"
+  kill:
+    kill: "CrC.tools.kill"
