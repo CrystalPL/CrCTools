@@ -71,7 +71,7 @@ tpaccept:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tpaccept (gracz)."
   clearlist: "&6&lToolsy &8» &cNie masz prosb o teleportacje!"
   teleportlist: "&6&lToolsy &8» &7Gracze do teleportacji: &6{PLAYERS}&7."
-  teleport: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zaakceptowal twoja prosbe o teleportacje. Teleport nastapi za &6{TIME} &7sekund."
+  teleport: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zaakceptowal twoja prosbe o teleportacje."
   teleportsender: "&6&lToolsy &8» &7Prosba o teleportacje gracza &6{PLAYER} &7zostala zaakceptowana."
   playerclearlist: "&6&lToolsy &8» &cNie masz prosby o teleportacje od tego gracza."
   success: "&6&lToolsy &8» &7Teleportacja zakonczona pomyslnie."
@@ -165,3 +165,24 @@ kill:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/kill <gracz>."
   kill: "&6&lToolsy &8» &7Zostales zabity przez &6{PLAYER}&7."
   player: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zostal zabity."
+setwarp:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/setwarp <nazwa>."
+  create: "&6&lToolsy &8» &7Warp zostal pomyslnie utworzony!"
+delwarp:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/delwarp <nazwa>."
+  delete: "&6&lToolsy &8» &7Warp zostal pomyslnie usuniety!"
+  warpexist: "&6&lToolsy &8» &cTen warp nie istnieje!"
+warp:
+  list: "&6&lToolsy &8» &7Lista warpow: &6{WARPS}&7."
+  warp: "&6&lToolsy &8» &7Teleportacja nastapi za &6{TIME}&7."
+  error: "&6&lToolsy &8» &cBrak warpow!"
+warpinfo:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/warpinfo <nazwa>."
+  info:
+    - "&6&lToolsy &8» &7Informacje o: &6{WARP}&7."
+    - "&6&lToolsy &8» &7Data stworzenia: &6{TIME}&7."
+    - "&6&lToolsy &8» &7Autor: &6{AUTHOR}&7."
+    - "&6&lToolsy &8» &7Lokalizacja: &7{WORLD}"
+    - "&8» &6X: &7{X}"
+    - "&8» &6Y: &7{Y}"
+    - "&8» &6Z: &7{Z}"

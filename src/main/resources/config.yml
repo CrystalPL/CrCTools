@@ -16,6 +16,7 @@ automessage:
   - "&d&lTEST 5G MOC 500%"
   - "&f&lTEST 5G MOC 500%"
   - "&c&lTEST 5G MOC 500%"
+
 permission:
   feed:
     feed: "CrC.tools.feed"
@@ -66,3 +67,7 @@ permission:
     whois: "CrC.tools.whois"
   kill:
     kill: "CrC.tools.kill"
+  warp:
+    setwarp: "CrC.tools.warp.set"
+    delwarp: "CrC.tools.warp.del"
+    info: "CrC.tools.warp.info"

@@ -24,5 +24,4 @@ public class UserManager {
     public User getUser(final Player player) {
         return users.get(player.getUniqueId());
     }
-
 }

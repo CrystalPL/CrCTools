@@ -39,3 +39,7 @@ commands:
   whois:
   suicide:
   kill:
+  setwarp:
+  delwarp:
+  warp:
+  warpinfo:

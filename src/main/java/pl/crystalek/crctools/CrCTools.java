@@ -4,10 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.crystalek.crctools.commands.*;
 import pl.crystalek.crctools.listeners.*;
-import pl.crystalek.crctools.managers.FileManager;
-import pl.crystalek.crctools.managers.MsgManager;
-import pl.crystalek.crctools.managers.TpaManager;
-import pl.crystalek.crctools.managers.UserManager;
+import pl.crystalek.crctools.managers.*;
 import pl.crystalek.crctools.tasks.AutoMessage;
 import pl.crystalek.crctools.tasks.AutoSave;
 
@@ -19,6 +16,7 @@ public final class CrCTools extends JavaPlugin {
     private MsgManager msgManager;
     private UserManager userManager;
     private DecimalFormat decimalFormat;
+    private WarpManager warpManager;
 
     @Override
     public void onEnable() {
@@ -28,11 +26,13 @@ public final class CrCTools extends JavaPlugin {
         fileManager = new FileManager(this, userManager, decimalFormat);
         tpaManager = new TpaManager();
         msgManager = new MsgManager();
+        warpManager = new WarpManager(this, decimalFormat);
         fileManager.checkFiles();
         registerCommand();
         registerListeners();
         new AutoSave(this, fileManager);
         new AutoMessage(this, fileManager);
+        warpManager.loadWarps();
     }
 
     @Override
@@ -67,6 +67,10 @@ public final class CrCTools extends JavaPlugin {
         getCommand("whois").setExecutor(new WhoisCommand(fileManager, userManager, decimalFormat));
         getCommand("suicide").setExecutor(new SuicideCommand(fileManager));
         getCommand("kill").setExecutor(new KillCommand(fileManager));
+        getCommand("setwarp").setExecutor(new SetwarpCommand(fileManager, warpManager));
+        getCommand("warp").setExecutor(new WarpCommand(fileManager, warpManager, this));
+        getCommand("delwarp").setExecutor(new DelwarpCommand(fileManager, warpManager));
+        getCommand("warpinfo").setExecutor(new WarpinfoCommand(fileManager, warpManager, decimalFormat));
     }
 
     private void registerListeners() {
