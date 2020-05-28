@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmpty;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.TpaManager;
-import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,7 +40,7 @@ public class TpdenyCommand implements CommandExecutor {
             if (playerToTp.size() == 1) {
                 denyPlayer(player, playerToTp.get(0));
             } else {
-                final String playerToList = playerToTp.stream().map(Player::getName).collect(Collectors.joining(ChatUtil.fixColor("&7, &6")));
+                final String playerToList = playerToTp.stream().map(Player::getName).collect(Collectors.joining(fileManager.getMsg("interlude")));
                 sender.sendMessage(fileManager.getMsg("tpaccept.teleportlist").replace("{PLAYERS}", playerToList));
             }
         } else if (args.length == 1) {

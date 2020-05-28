@@ -8,7 +8,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.model.Warp;
-import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
@@ -83,7 +82,7 @@ public class WarpManager {
                 sender.sendMessage(fileManager.getMsg("warp.error"));
                 return true;
             }
-            final String warps = warpList.stream().collect(Collectors.joining(ChatUtil.fixColor("&7, &6")));
+            final String warps = warpList.stream().collect(Collectors.joining(fileManager.getMsg("interlude")));
             sender.sendMessage(fileManager.getMsg("warp.list").replace("{WARPS}", warps));
             return true;
         }

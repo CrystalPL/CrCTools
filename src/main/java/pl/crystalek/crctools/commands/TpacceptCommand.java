@@ -11,7 +11,6 @@ import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmpty;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.TpaManager;
-import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,7 +42,7 @@ public class TpacceptCommand implements CommandExecutor {
         }
         if (args.length == 0) {
             if (!(playerToTp.size() == 1)) {
-                final String playerToList = playerToTp.stream().map(Player::getName).collect(Collectors.joining(ChatUtil.fixColor("&7, &6")));
+                final String playerToList = playerToTp.stream().map(Player::getName).collect(Collectors.joining(fileManager.getMsg("interlude")));
                 sender.sendMessage(fileManager.getMsg("tpaccept.teleportlist").replace("{PLAYERS}", playerToList));
                 return true;
             }
@@ -94,10 +93,10 @@ public class TpacceptCommand implements CommandExecutor {
 
                 final Location newLocation = target.getLocation();
                 if (location.getX() == newLocation.getX() && location.getY() == newLocation.getY() && location.getZ() == newLocation.getZ()) {
-                    player.sendMessage(fileManager.getMsg("warp.warp").replace("{TIME}", String.valueOf(fileManager.getInt("teleporttime") - i)));
+                    player.sendMessage(fileManager.getMsg("teleport.counter").replace("{TIME}", String.valueOf(fileManager.getInt("teleporttime") - i)));
                     i++;
                 } else {
-                    target.sendMessage(fileManager.getMsg("tpaccept.error"));
+                    target.sendMessage(fileManager.getMsg("teleport.error"));
                     cancel();
                 }
 
@@ -106,7 +105,7 @@ public class TpacceptCommand implements CommandExecutor {
                         sender = player.getLocation();
                     }
                     target.teleport(sender);
-                    target.sendMessage(fileManager.getMsg("tpaccept.success"));
+                    target.sendMessage(fileManager.getMsg("teleport.success"));
                     cancel();
                 }
             }

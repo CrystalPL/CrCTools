@@ -1,9 +1,11 @@
 package pl.crystalek.crctools.managers;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.model.User;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class UserManager {
@@ -11,6 +13,10 @@ public class UserManager {
 
     public void addUser(final Player player) {
         users.put(player.getUniqueId(), new User(player));
+    }
+
+    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList) {
+        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, homeList));
     }
 
     public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god) {

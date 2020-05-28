@@ -27,7 +27,7 @@ public class IpCommand implements CommandExecutor {
                 return true;
             }
             try {
-                sender.sendMessage(fileManager.getMsg("ip.player").replace("{PLAYER}", args[0]).replace("{IP}", fileManager.getIp(args[0])));
+                sender.sendMessage(fileManager.getMsg("ip.player").replace("{PLAYER}", args[0]).replace("{IP}", fileManager.getPlayerFile(args[0]).getString("ip")));
             } catch (NullPointerException exception) {
                 sender.sendMessage(fileManager.getMsg("cantexist"));
             }

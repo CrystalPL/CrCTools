@@ -8,6 +8,7 @@ import pl.crystalek.crctools.managers.*;
 import pl.crystalek.crctools.tasks.AutoMessage;
 import pl.crystalek.crctools.tasks.AutoSave;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
@@ -37,6 +38,12 @@ public final class CrCTools extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            try {
+                fileManager.savePlayer(player);
+            } catch (IOException ignored) {
+            }
+        });
     }
 
     private void registerCommand() {
@@ -71,6 +78,9 @@ public final class CrCTools extends JavaPlugin {
         getCommand("warp").setExecutor(new WarpCommand(fileManager, warpManager, this));
         getCommand("delwarp").setExecutor(new DelwarpCommand(fileManager, warpManager));
         getCommand("warpinfo").setExecutor(new WarpinfoCommand(fileManager, warpManager, decimalFormat));
+        getCommand("sethome").setExecutor(new SethomeCommand(fileManager, userManager, decimalFormat));
+        getCommand("home").setExecutor(new HomeCommand(fileManager, userManager, this));
+        getCommand("delhome").setExecutor(new DelhomeCommand(fileManager, userManager));
     }
 
     private void registerListeners() {

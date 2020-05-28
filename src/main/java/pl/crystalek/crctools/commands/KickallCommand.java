@@ -22,9 +22,10 @@ public class KickallCommand implements CommandExecutor {
         }
         String msg = fileManager.getMsg("kick.kick");
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (!player.hasPermission(fileManager.getPermission("kick.bypass"))) {
-                player.kickPlayer(fileManager.getMsg("kick.kick"));
-            }
+            player.kickPlayer(fileManager.getMsg("kick.kick"));
+//            if (!player.hasPermission(fileManager.getPermission("kick.bypass"))) {
+//                player.kickPlayer(fileManager.getMsg("kick.kick"));
+//            }
         }
         sender.sendMessage(fileManager.getMsg("kick.all"));
         return true;

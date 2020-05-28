@@ -43,3 +43,6 @@ commands:
   delwarp:
   warp:
   warpinfo:
+  home:
+  delhome:
+  sethome:

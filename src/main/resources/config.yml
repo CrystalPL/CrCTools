@@ -71,3 +71,9 @@ permission:
     setwarp: "CrC.tools.warp.set"
     delwarp: "CrC.tools.warp.del"
     info: "CrC.tools.warp.info"
+  sethome:
+    player: "CrC.tools.sethome.player"
+  delhome:
+    player: "CrC.tools.delhome.player"
+  home:
+    player: "CrC.tools.home.player"

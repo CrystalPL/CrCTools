@@ -2,6 +2,7 @@ nopermission: "&cBrak uprawnien &7(&6{PERMISSION}&7)"
 offlineplayer: "&6&lToolsy &8» &cGracz jest offline!"
 notconsole: "&6&lToolsy &8» &cTa komenda nie moze zostac wywolana z konsoli."
 cantexist: "&6&lToolsy &8» &cTen gracz nigdy nie był na serwerze."
+interlude: "&7, &6"
 feed:
   feed: "&6&lToolsy &8» &7Zostales nakarmiony."
   player: "&6&lToolsy &8» &7Nakarmiles gracza &6{PLAYER}&7."
@@ -74,8 +75,6 @@ tpaccept:
   teleport: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zaakceptowal twoja prosbe o teleportacje."
   teleportsender: "&6&lToolsy &8» &7Prosba o teleportacje gracza &6{PLAYER} &7zostala zaakceptowana."
   playerclearlist: "&6&lToolsy &8» &cNie masz prosby o teleportacje od tego gracza."
-  success: "&6&lToolsy &8» &7Teleportacja zakonczona pomyslnie."
-  error: "&6&lToolsy &8» &cRuszyles sie! Teleportacja przerwana."
 tpdeny:
   tpdeny: "&6&lToolsy &8» &7Prosba o teleportacje gracza &6{PLAYER} &7zostala odrzucona."
   tpdenyplayer: "&6&lToolsy &8» &7Twoja prosba o teleportacje zostala odrzucona"
@@ -174,7 +173,6 @@ delwarp:
   warpexist: "&6&lToolsy &8» &cTen warp nie istnieje!"
 warp:
   list: "&6&lToolsy &8» &7Lista warpow: &6{WARPS}&7."
-  warp: "&6&lToolsy &8» &7Teleportacja nastapi za &6{TIME}&7."
   error: "&6&lToolsy &8» &cBrak warpow!"
 warpinfo:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/warpinfo <nazwa>."
@@ -186,3 +184,23 @@ warpinfo:
     - "&8» &6X: &7{X}"
     - "&8» &6Y: &7{Y}"
     - "&8» &6Z: &7{Z}"
+sethome:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/sethome <nazwa> (gracz)."
+  sethome: "&6&lToolsy &8» &7Nowy dom zostal ustawiony!"
+  sethomeplayersender: "&6&lToolsy &8» &7Nowy dom &6{HOME} &7zostal ustawiony przez &6{PLAYER}&7."
+  player: "&6&lToolsy &8» &7Nowy dom &6{HOME} &7dla gracza &6{PLAYER} &7zostal ustawiony!"
+delhome:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/delhome <nazwa> (gracz)."
+  error: "&6&lToolsy &8» &cNie masz takiego domu!"
+  delhome: "&6&lToolsy &8» &7Dom zostal pomyslnie usuniety."
+  errorplayer: "&6&lToolsy &8» &cTen gracz nie ma takiego domu!"
+  delhomeplayersender: "&6&lToolsy &8» &7Dom &6{HOME} &7zostal usuniety przez &6{PLAYER}&7."
+  player: "&6&lToolsy &8» &7Dom &6{HOME} &7gracza gracza &6{PLAYER} &7zostal usuniety!"
+home:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/home <nazwa> (gracz)."
+  list: "&6&lToolsy &8» &7Lista domow: &6{LIST}&7."
+  error: "&6&lToolsy &8» &cBrak domow!"
+teleport:
+  success: "&6&lToolsy &8» &7Teleportacja zakonczona pomyslnie."
+  error: "&6&lToolsy &8» &cRuszyles sie! Teleportacja przerwana."
+  counter: "&6&lToolsy &8» &7Teleportacja nastapi za &6{TIME}&7."

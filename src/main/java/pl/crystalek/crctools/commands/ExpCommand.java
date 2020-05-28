@@ -27,14 +27,7 @@ public class ExpCommand implements CommandExecutor {
                     sender.sendMessage(fileManager.getMsg("notconsole"));
                     return true;
                 }
-                if (!NumberUtil.isInt(args[1])) {
-                    sender.sendMessage(fileManager.getMsg("speed.errornumber"));
-                    return true;
-                }
-                if (!(Integer.parseInt(args[1]) > 0)) {
-                    sender.sendMessage(fileManager.getMsg("exp.error"));
-                    return true;
-                }
+                if (checkNumber(sender, args)) return true;
                 final Player player = (Player) sender;
                 final int level = Integer.parseInt(args[1]);
                 switch (args[0].toLowerCase()) {
@@ -79,14 +72,7 @@ public class ExpCommand implements CommandExecutor {
                 sender.sendMessage(fileManager.getMsgPermission("exp.player"));
                 return true;
             }
-            if (!NumberUtil.isInt(args[1])) {
-                sender.sendMessage(fileManager.getMsg("speed.errornumber"));
-                return true;
-            }
-            if (!(Integer.parseInt(args[1]) > 0)) {
-                sender.sendMessage(fileManager.getMsg("exp.error"));
-                return true;
-            }
+            if (checkNumber(sender, args)) return true;
             if (Bukkit.getPlayer(args[2]) == null) {
                 sender.sendMessage(fileManager.getMsg("offlineplayer"));
                 return true;
@@ -120,5 +106,17 @@ public class ExpCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("exp.usage"));
         }
         return true;
+    }
+
+    private boolean checkNumber(final CommandSender sender, final String[] args) {
+        if (!NumberUtil.isInt(args[1])) {
+            sender.sendMessage(fileManager.getMsg("speed.errornumber"));
+            return true;
+        }
+        if (!(Integer.parseInt(args[1]) > 0)) {
+            sender.sendMessage(fileManager.getMsg("exp.error"));
+            return true;
+        }
+        return false;
     }
 }

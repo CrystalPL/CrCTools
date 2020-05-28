@@ -1,5 +1,6 @@
 package pl.crystalek.crctools.managers;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,10 +12,7 @@ import pl.crystalek.crctools.utils.ChatUtil;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class FileManager {
     private final CrCTools crCTools;
@@ -22,8 +20,8 @@ public class FileManager {
     private final File file;
     private final File users;
     private final Map<String, YamlConfiguration> usersConfiguration = new HashMap<>();
-    private YamlConfiguration yamlConfiguration;
     private final DecimalFormat decimalFormat;
+    private YamlConfiguration yamlConfiguration;
 
     public FileManager(final CrCTools crCTools, final UserManager userManager, final DecimalFormat decimalFormat) {
         this.crCTools = crCTools;
@@ -45,18 +43,42 @@ public class FileManager {
     }
 
     public void loadPlayer(final Player player) {
-        YamlConfiguration configuration = usersConfiguration.get(player.getName());
-        userManager.addUser(player,
-                UUID.fromString(configuration.getString("uuid")),
-                configuration.getString("nick"),
-                configuration.getString("ip"),
-                configuration.getBoolean("msg"),
-                configuration.getBoolean("tpa"),
-                configuration.getBoolean("god"));
+        final YamlConfiguration configuration = usersConfiguration.get(player.getName());
+        if (configuration.getConfigurationSection("homes") == null) {
+            userManager.addUser(player,
+                    UUID.fromString(configuration.getString("uuid")),
+                    configuration.getString("nick"),
+                    configuration.getString("ip"),
+                    configuration.getBoolean("msg"),
+                    configuration.getBoolean("tpa"),
+                    configuration.getBoolean("god"));
+        } else {
+            final List<String> keyList = new ArrayList<>(configuration.getConfigurationSection("homes").getKeys(false));
+            Map<String, Location> homes = new HashMap<>();
+            for (String s : keyList) {
+                String string = "homes." + s;
+                homes.put(s, new Location(Bukkit.getWorld(configuration.getString(string + ".world")),
+                        Double.parseDouble(configuration.getString(string + ".x")),
+                        Double.parseDouble(configuration.getString(string + ".y")),
+                        Double.parseDouble(configuration.getString(string + ".z"))));
+            }
+            userManager.addUser(player,
+                    UUID.fromString(configuration.getString("uuid")),
+                    configuration.getString("nick"),
+                    configuration.getString("ip"),
+                    configuration.getBoolean("msg"),
+                    configuration.getBoolean("tpa"),
+                    configuration.getBoolean("god"),
+                    homes);
+        }
+    }
+
+    public YamlConfiguration getPlayerConfiguration(final Player player) {
+        return usersConfiguration.get(player.getName());
     }
 
     public void savePlayer(final Player player) throws IOException {
-        YamlConfiguration configuration = usersConfiguration.get(player.getName());
+        final YamlConfiguration configuration = usersConfiguration.get(player.getName());
         final User user = userManager.getUser(player);
         configuration.set("uuid", user.getUuid().toString());
         configuration.set("nick", user.getLastName());
@@ -73,6 +95,18 @@ public class FileManager {
         configuration.set("location.z", decimalFormat.format(location.getZ()));
         configuration.set("health", (int) player.getHealth());
         configuration.set("food", player.getFoodLevel());
+        final Map<String, Location> home = user.getHome();
+        final List<String> keys = new ArrayList<>(home.keySet());
+        if (!home.isEmpty() || !keys.isEmpty()) {
+            for (String string : keys) {
+                final Location homeLocation = home.get(string);
+                string = "homes." + string;
+                configuration.set(string + ".world", homeLocation.getWorld().getName());
+                configuration.set(string + ".x", decimalFormat.format(homeLocation.getX()));
+                configuration.set(string + ".y", decimalFormat.format(homeLocation.getY()));
+                configuration.set(string + ".z", decimalFormat.format(homeLocation.getZ()));
+            }
+        }
         configuration.save(new File(users, player.getName() + ".yml"));
     }
 
@@ -82,14 +116,6 @@ public class FileManager {
             throw new NullPointerException("player doesn't exist");
         }
         return YamlConfiguration.loadConfiguration(fileSave);
-    }
-
-    public String getIp(final String player) {
-        final File fileSave = new File(users, player + ".yml");
-        if (!fileSave.exists()) {
-            throw new NullPointerException("player doesn't exist");
-        }
-        return YamlConfiguration.loadConfiguration(fileSave).getString("ip");
     }
 
     public String getPermission(final String pathPermission) {
@@ -144,5 +170,9 @@ public class FileManager {
 
     public void removeConfiguration(final Player player) {
         usersConfiguration.remove(player.getName());
+    }
+
+    public File getUsers() {
+        return users;
     }
 }
