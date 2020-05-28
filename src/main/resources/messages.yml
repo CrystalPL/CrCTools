@@ -181,9 +181,9 @@ warpinfo:
     - "&6&lToolsy &8» &7Data stworzenia: &6{TIME}&7."
     - "&6&lToolsy &8» &7Autor: &6{AUTHOR}&7."
     - "&6&lToolsy &8» &7Lokalizacja: &7{WORLD}"
-    - "&8» &6X: &7{X}"
-    - "&8» &6Y: &7{Y}"
-    - "&8» &6Z: &7{Z}"
+    - "&8» &7X: &6{X}"
+    - "&8» &7Y: &6{Y}"
+    - "&8» &7Z: &6{Z}"
 sethome:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/sethome <nazwa> (gracz)."
   sethome: "&6&lToolsy &8» &7Nowy dom zostal ustawiony!"
@@ -204,3 +204,11 @@ teleport:
   success: "&6&lToolsy &8» &7Teleportacja zakonczona pomyslnie."
   error: "&6&lToolsy &8» &cRuszyles sie! Teleportacja przerwana."
   counter: "&6&lToolsy &8» &7Teleportacja nastapi za &6{TIME}&7."
+setspawn:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/setspawn."
+  setspawn:
+    - "&6&lToolsy &8» &7Spawn zostal ustawiony."
+    - "&6&lToolsy &8» &7Lokalizacja: &7{WORLD}"
+    - "&8» &7X: &6{X}"
+    - "&8» &7Y: &6{Y}"
+    - "&8» &7Z: &6{Z}"

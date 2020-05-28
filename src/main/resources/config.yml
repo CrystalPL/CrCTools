@@ -77,3 +77,7 @@ permission:
     player: "CrC.tools.delhome.player"
   home:
     player: "CrC.tools.home.player"
+  setspawn:
+    setspawn: "CrC.tools.setspawn"
+  spawn:
+    player: "CrC.tools.spawn.player"

@@ -81,6 +81,8 @@ public final class CrCTools extends JavaPlugin {
         getCommand("sethome").setExecutor(new SethomeCommand(fileManager, userManager, decimalFormat));
         getCommand("home").setExecutor(new HomeCommand(fileManager, userManager, this));
         getCommand("delhome").setExecutor(new DelhomeCommand(fileManager, userManager));
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(fileManager, decimalFormat, this));
+        getCommand("spawn").setExecutor(new SpawnCommand(fileManager, this));
     }
 
     private void registerListeners() {

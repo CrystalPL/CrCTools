@@ -46,3 +46,5 @@ commands:
   home:
   delhome:
   sethome:
+  setspawn:
+  spawn:
