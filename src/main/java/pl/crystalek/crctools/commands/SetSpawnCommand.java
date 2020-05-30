@@ -40,13 +40,16 @@ public class SetSpawnCommand implements CommandExecutor {
         final FileConfiguration configuration = crCTools.getConfig();
         final Location location = player.getLocation();
         final String string = "spawn";
+        final String x = decimalFormat.format(location.getX());
+        final String y = decimalFormat.format(location.getY());
+        final String z = decimalFormat.format(location.getZ());
         configuration.set(string + ".world", location.getWorld().getName());
-        configuration.set(string + ".x", decimalFormat.format(location.getX()));
-        configuration.set(string + ".y", decimalFormat.format(location.getY()));
-        configuration.set(string + ".z", decimalFormat.format(location.getZ()));
+        configuration.set(string + ".x", x);
+        configuration.set(string + ".y", y);
+        configuration.set(string + ".z", z);
         crCTools.saveConfig();
         for (final String message : fileManager.getMsgList("setspawn.setspawn")) {
-            player.sendMessage(message.replace("{WORLD}", location.getWorld().getName()).replace("{X}", String.valueOf(location.getX())).replace("{Y}", String.valueOf(location.getY())).replace("{Z}", String.valueOf(location.getZ())));
+            player.sendMessage(message.replace("{WORLD}", location.getWorld().getName()).replace("{X}", x).replace("{Y}", y).replace("{Z}", z));
         }
         return true;
     }

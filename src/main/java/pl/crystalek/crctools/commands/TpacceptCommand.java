@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import pl.crystalek.crctools.CrCTools;
-import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmpty;
+import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmptyException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.TpaManager;
 
@@ -36,7 +36,7 @@ public class TpacceptCommand implements CommandExecutor {
         final List<Player> playerToTp;
         try {
             playerToTp = tpaManager.getPlayerToTp(player.getUniqueId());
-        } catch (TeleportingPlayerListEmpty exception) {
+        } catch (TeleportingPlayerListEmptyException exception) {
             sender.sendMessage(fileManager.getMsg("tpaccept.clearlist"));
             return true;
         }

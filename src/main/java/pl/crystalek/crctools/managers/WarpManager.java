@@ -57,13 +57,14 @@ public class WarpManager {
     }
 
     public void loadWarps() {
-        if (crCTools.getConfig().getConfigurationSection("warps") != null) {
-            final ConfigurationSection configurationSection = crCTools.getConfig().getConfigurationSection("warps");
+        final FileConfiguration config = crCTools.getConfig();
+        if (config.getConfigurationSection("warps") != null) {
+            final ConfigurationSection configurationSection = config.getConfigurationSection("warps");
             final List<String> keyList = new ArrayList<>(configurationSection.getKeys(false));
-            final FileConfiguration config = crCTools.getConfig();
             for (String string : keyList) {
+                final String name = string;
                 string = "warps." + string;
-                warpList.put(config.getString(string + ".name"),
+                warpList.put(name,
                         new Warp(LocalDateTime.parse(config.getString(string + ".date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                                 config.getString(string + ".author"),
                                 new Location(Bukkit.getWorld(config.getString(string + ".location.world")),

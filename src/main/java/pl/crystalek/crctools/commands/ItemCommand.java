@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import pl.crystalek.crctools.exceptions.NotDetectedItemException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.MaterialUtil;
 import pl.crystalek.crctools.utils.NumberUtil;
@@ -37,13 +38,13 @@ public class ItemCommand implements CommandExecutor {
             return true;
         }
         final PlayerInventory inventory = player.getInventory();
-        ItemStack material;
+        final ItemStack material;
         try {
             material = MaterialUtil.getMaterial(args, 0, inventory);
-        } catch (NullPointerException | ArrayIndexOutOfBoundsException | NumberFormatException exception) {
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException | IllegalArgumentException exception) {
             player.sendMessage(fileManager.getMsg("item.usage"));
             return true;
-        } catch (IllegalArgumentException exception) {
+        } catch (NotDetectedItemException exception) {
             player.sendMessage(fileManager.getMsg("give.fulleq"));
             return true;
         }

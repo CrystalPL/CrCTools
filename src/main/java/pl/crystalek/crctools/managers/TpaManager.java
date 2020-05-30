@@ -1,7 +1,7 @@
 package pl.crystalek.crctools.managers;
 
 import org.bukkit.entity.Player;
-import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmpty;
+import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmptyException;
 
 import java.util.*;
 
@@ -38,12 +38,12 @@ public class TpaManager {
         }
     }
 
-    public List<Player> getPlayerToTp(final UUID teleporting) throws TeleportingPlayerListEmpty {
+    public List<Player> getPlayerToTp(final UUID teleporting) throws TeleportingPlayerListEmptyException {
         if (tpaList.get(teleporting) == null) {
-            throw new TeleportingPlayerListEmpty("no such player");
+            throw new TeleportingPlayerListEmptyException("no such player");
         } else if (tpaList.get(teleporting).isEmpty()) {
             tpaList.remove(teleporting);
-            throw new TeleportingPlayerListEmpty("no such player");
+            throw new TeleportingPlayerListEmptyException("no such player");
         } else {
             return new ArrayList<>(tpaList.get(teleporting));
         }

@@ -5,7 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmpty;
+import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmptyException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.TpaManager;
 
@@ -32,7 +32,7 @@ public class TpdenyCommand implements CommandExecutor {
         final List<Player> playerToTp;
         try {
             playerToTp = tpaManager.getPlayerToTp(player.getUniqueId());
-        } catch (TeleportingPlayerListEmpty exception) {
+        } catch (TeleportingPlayerListEmptyException exception) {
             sender.sendMessage(fileManager.getMsg("tpaccept.clearlist"));
             return true;
         }

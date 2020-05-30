@@ -17,10 +17,14 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compileOnly name: 'ID-Library'
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens
