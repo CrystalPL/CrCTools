@@ -212,3 +212,6 @@ setspawn:
     - "&8» &7X: &6{X}"
     - "&8» &7Y: &6{Y}"
     - "&8» &7Z: &6{Z}"
+entity:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/entity clear <items, mobs>."
+  entity: "&6&lToolsy &8» &7Czyszczenie zostalo zakonczone. Usunieto: &6{NUMBER} &7obiektow."

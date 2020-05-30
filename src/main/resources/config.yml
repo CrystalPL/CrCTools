@@ -81,3 +81,5 @@ permission:
     setspawn: "CrC.tools.setspawn"
   spawn:
     player: "CrC.tools.spawn.player"
+  entity:
+    clear: "CrC.tools.entity.clear"
