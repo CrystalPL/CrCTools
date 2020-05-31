@@ -26,6 +26,7 @@ public class ReloadCommand implements CommandExecutor {
         }
         if (args.length == 0) {
             Bukkit.reload();
+            sender.sendMessage(fileManager.getMsg("reload.reload"));
         } else if (args.length == 1) {
             if (!NumberUtil.isInt(args[0])) {
                 sender.sendMessage(fileManager.getMsg("reload.usage"));

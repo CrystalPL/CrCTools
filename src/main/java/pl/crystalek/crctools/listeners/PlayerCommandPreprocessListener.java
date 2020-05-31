@@ -1,5 +1,6 @@
 package pl.crystalek.crctools.listeners;
 
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import pl.crystalek.crctools.managers.FileManager;
@@ -11,10 +12,10 @@ public class PlayerCommandPreprocessListener implements Listener {
         this.fileManager = fileManager;
     }
 
+    @EventHandler
     public void onCommand(final PlayerCommandPreprocessEvent event) {
-        final String message = "/" + event.getMessage();
-        if (message.startsWith("reload") || message.equalsIgnoreCase("rl")) {
-            System.out.println("0YUVAISDYHADYVHIAYID");
+        final String message = event.getMessage();
+        if (message.equalsIgnoreCase("/reload") || message.equalsIgnoreCase("/rl")) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(fileManager.getMsg("reload.usage"));
         }
