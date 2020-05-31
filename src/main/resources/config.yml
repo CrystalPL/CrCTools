@@ -83,3 +83,5 @@ permission:
     player: "CrC.tools.spawn.player"
   entity:
     clear: "CrC.tools.entity.clear"
+  reload:
+    reload: "CrC.tools.reload"

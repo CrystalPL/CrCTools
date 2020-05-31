@@ -215,3 +215,7 @@ setspawn:
 entity:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/entity clear <items, mobs>."
   entity: "&6&lToolsy &8» &7Czyszczenie zostalo zakonczone. Usunieto: &6{NUMBER} &7obiektow."
+reload:
+  reload: "&6&lToolsy &8» &7Serwer zostal pomyslnie przeladowany!"
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/rlc (czas)."
+  broadcast: "&6&lToolsy &8» &7Serwer zostanie zrestartowany za: &6{TIME}&7."

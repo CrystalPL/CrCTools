@@ -17,6 +17,6 @@ public class AutoSave {
                 }
             });
             System.out.println("ZAPIS ZOSTAL ZAKOŃCZONY!");
-        }, 0, fileManager.getInt("autosave") * 20L);
+        }, 200, fileManager.getInt("autosave") * 20L);
     }
 }

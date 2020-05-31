@@ -1,6 +1,7 @@
 package pl.crystalek.crctools;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.crystalek.crctools.commands.*;
 import pl.crystalek.crctools.listeners.*;
@@ -31,19 +32,20 @@ public final class CrCTools extends JavaPlugin {
         fileManager.checkFiles();
         registerCommand();
         registerListeners();
-        new AutoSave(this, fileManager);
         new AutoMessage(this, fileManager);
         warpManager.loadWarps();
+        reloadServer();
+        new AutoSave(this, fileManager);
     }
 
     @Override
     public void onDisable() {
-        Bukkit.getOnlinePlayers().forEach(player -> {
+        for (final Player player : Bukkit.getOnlinePlayers()) {
             try {
                 fileManager.savePlayer(player);
             } catch (IOException ignored) {
             }
-        });
+        }
     }
 
     private void registerCommand() {
@@ -84,6 +86,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("setspawn").setExecutor(new SetSpawnCommand(fileManager, decimalFormat, this));
         getCommand("spawn").setExecutor(new SpawnCommand(fileManager, this));
         getCommand("entity").setExecutor(new EntityCommand(fileManager));
+        getCommand("rlc").setExecutor(new ReloadCommand(fileManager, this));
     }
 
     private void registerListeners() {
@@ -93,5 +96,13 @@ public final class CrCTools extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(userManager), this);
         Bukkit.getPluginManager().registerEvents(new EntityTargetLivingEntityListener(userManager), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerCommandPreprocessListener(fileManager), this);
+    }
+
+    private void reloadServer() {
+        for (final Player player : Bukkit.getOnlinePlayers()) {
+            fileManager.addConfiguration(player);
+            fileManager.loadPlayer(player);
+        }
     }
 }
