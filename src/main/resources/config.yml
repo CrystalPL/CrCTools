@@ -85,3 +85,6 @@ permission:
     clear: "CrC.tools.entity.clear"
   reload:
     reload: "CrC.tools.reload"
+  chat:
+    chat: "CrC.tools.chat"
+    bypass: "CrC.tools.chat.bypass"

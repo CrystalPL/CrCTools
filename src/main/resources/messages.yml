@@ -88,7 +88,7 @@ tools:
   succsess: "&6&lToolsy &8» &7Config zostal pomyslnie przeladowany."
   list: "&6&lToolsy &8» &7Nazwa klucza: &6{HOVER}&7."
   errorkey: "&6&lToolsy &8» &cTaki klucz nie istnieje!"
-  startlist: "&l&8&m--------------- &7Klucze i ich wartosci - &6{PATH} &l&8&m---------------"
+  startlist: "&l&8&m---------- &7Klucze i ich wartosci - &6{PATH} &l&8&m----------"
   success: "&6&lToolsy &8» &7Wartosc zostala zmieniona."
 msg:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/msg <gracz> <wiadomosc>."
@@ -219,3 +219,26 @@ reload:
   reload: "&6&lToolsy &8» &7Serwer zostal pomyslnie przeladowany!"
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/rlc (czas)."
   broadcast: "&6&lToolsy &8» &7Serwer zostanie zrestartowany za: &6{TIME}&7."
+chat:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/chat <clear, on, off, onc, offc>."
+  error: "&6&lToolsy &8» &cChat jest wylaczony!"
+  erroroff: "&6&lToolsy &8» &cChat jest juz wylaczony!"
+  erroron: "&6&lToolsy &8» &cChat jest juz wlaczony!"
+  clear:
+    - "&8&m----------&6Toolsy&8&m----------"
+    - ""
+    - "&8» &7Chat zostal wyczyszczony przez &6{PLAYER}&7."
+    - ""
+    - "&8&m----------&6Toolsy&8&m----------"
+  chatoff:
+    - "&8&m----------&6Toolsy&8&m----------"
+    - ""
+    - "&8» &7Chat zostal wylaczony przez &6{PLAYER}&7."
+    - ""
+    - "&8&m----------&6Toolsy&8&m----------"
+  chaton:
+    - "&8&m----------&6Toolsy&8&m----------"
+    - ""
+    - "&8» &7Chat zostal wlaczony przez &6{PLAYER}&7."
+    - ""
+    - "&8&m----------&6Toolsy&8&m----------"

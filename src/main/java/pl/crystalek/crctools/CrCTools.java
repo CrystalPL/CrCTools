@@ -19,6 +19,7 @@ public final class CrCTools extends JavaPlugin {
     private UserManager userManager;
     private DecimalFormat decimalFormat;
     private WarpManager warpManager;
+    public static boolean CHAT = false;
 
     @Override
     public void onEnable() {
@@ -87,6 +88,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("spawn").setExecutor(new SpawnCommand(fileManager, this));
         getCommand("entity").setExecutor(new EntityCommand(fileManager));
         getCommand("rlc").setExecutor(new ReloadCommand(fileManager, this));
+        getCommand("chat").setExecutor(new ChatCommand(fileManager));
     }
 
     private void registerListeners() {
@@ -97,6 +99,7 @@ public final class CrCTools extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(userManager), this);
         Bukkit.getPluginManager().registerEvents(new EntityTargetLivingEntityListener(userManager), this);
         Bukkit.getPluginManager().registerEvents(new PlayerCommandPreprocessListener(fileManager), this);
+        Bukkit.getPluginManager().registerEvents(new AsyncPlayerChatListener(fileManager), this);
     }
 
     private void reloadServer() {

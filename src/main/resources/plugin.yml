@@ -51,3 +51,4 @@ commands:
   spawn:
   entity:
   rlc:
+  chat:
