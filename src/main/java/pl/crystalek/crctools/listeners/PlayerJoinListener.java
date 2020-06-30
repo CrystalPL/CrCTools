@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.exceptions.GroupExistException;
+import pl.crystalek.crctools.exceptions.GroupHasException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.PermissionManager;
 import pl.crystalek.crctools.managers.UserManager;
