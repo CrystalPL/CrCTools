@@ -13,7 +13,8 @@ public class AutoSave {
             Bukkit.getOnlinePlayers().forEach(player -> {
                 try {
                     fileManager.savePlayer(player);
-                } catch (IOException ignored) {
+                } catch (final IOException exception) {
+                    exception.printStackTrace();
                 }
             });
             System.out.println("ZAPIS ZOSTAL ZAKOŃCZONY!");

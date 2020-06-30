@@ -52,3 +52,6 @@ commands:
   entity:
   rlc:
   chat:
+  #  rank:
+  perms:
+    aliases: [cp, cperms, crystalperms]

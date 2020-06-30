@@ -34,6 +34,7 @@ public class TpCommand implements CommandExecutor {
                 sender.sendMessage(fileManager.getMsg("offlineplayer"));
                 return true;
             }
+            //TODO ZABLOKOWANIE MOZLIWOSCI TELEPORTACJI GRACZA DO SIEBIE, OD TEGO JEST /S
             final Player player2 = Bukkit.getPlayer(args[1]);
             player1.teleport(player2);
             sender.sendMessage(fileManager.getMsg("tp.sender").replace("{PLAYER1}", player1.getName()).replace("{PLAYER2}", player2.getName()));

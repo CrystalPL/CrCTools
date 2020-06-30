@@ -13,26 +13,29 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
+    public static boolean CHAT = true;
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;
     private UserManager userManager;
     private DecimalFormat decimalFormat;
     private WarpManager warpManager;
-    public static boolean CHAT = false;
+    private PermissionManager permissionManager;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         decimalFormat = new DecimalFormat();
-        userManager = new UserManager();
+        userManager = new UserManager(this);
         fileManager = new FileManager(this, userManager, decimalFormat);
         tpaManager = new TpaManager();
         msgManager = new MsgManager();
         warpManager = new WarpManager(this, decimalFormat);
+        permissionManager = new PermissionManager(fileManager, this, userManager);
         fileManager.checkFiles();
         registerCommand();
         registerListeners();
+        permissionManager.loadGroups();
         new AutoMessage(this, fileManager);
         warpManager.loadWarps();
         reloadServer();
@@ -44,7 +47,8 @@ public final class CrCTools extends JavaPlugin {
         for (final Player player : Bukkit.getOnlinePlayers()) {
             try {
                 fileManager.savePlayer(player);
-            } catch (IOException ignored) {
+            } catch (final IOException exception) {
+                exception.printStackTrace();
             }
         }
     }
@@ -89,11 +93,13 @@ public final class CrCTools extends JavaPlugin {
         getCommand("entity").setExecutor(new EntityCommand(fileManager));
         getCommand("rlc").setExecutor(new ReloadCommand(fileManager, this));
         getCommand("chat").setExecutor(new ChatCommand(fileManager));
+        getCommand("perms").setExecutor(new PermissionCommand(fileManager, permissionManager, userManager));
+//        getCommand("rank").setExecutor(new RankCommand(fileManager, this));
     }
 
     private void registerListeners() {
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(fileManager, userManager), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(fileManager, userManager), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(fileManager, userManager, permissionManager, this), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(fileManager, userManager, permissionManager), this);
         Bukkit.getPluginManager().registerEvents(new ThunderChangeListener(), this);
         Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(userManager), this);
@@ -106,6 +112,7 @@ public final class CrCTools extends JavaPlugin {
         for (final Player player : Bukkit.getOnlinePlayers()) {
             fileManager.addConfiguration(player);
             fileManager.loadPlayer(player);
+            permissionManager.loadPermission(player);
         }
     }
 }

@@ -38,8 +38,8 @@ public class SethomeCommand implements CommandExecutor {
             final Location location = player.getLocation();
             try {
                 addLocation(args, player.getName(), location, fileManager.getPlayerFile(player.getName()));
-            } catch (final IOException ignored) {
-                return true;
+            } catch (final IOException exception) {
+                exception.printStackTrace();
             }
             user.addHome(args[0], location);
             sender.sendMessage(fileManager.getMsg("sethome.sethome"));
@@ -48,7 +48,9 @@ public class SethomeCommand implements CommandExecutor {
                 sender.sendMessage(fileManager.getMsgPermission("sethome.player"));
                 return true;
             }
-            if (fileManager.getPlayerFile(args[1]) == null) {
+            try {
+                fileManager.getPlayerFile(args[1]);
+            } catch (final NullPointerException exception) {
                 sender.sendMessage(fileManager.getMsg("cantexist"));
                 return true;
             }
@@ -56,7 +58,8 @@ public class SethomeCommand implements CommandExecutor {
             if (Bukkit.getPlayer(args[1]) == null) {
                 try {
                     addLocation(args, args[1], ((Player) sender).getLocation(), playerFile);
-                } catch (IOException ignored) {
+                } catch (final IOException exception) {
+                    exception.printStackTrace();
                 }
             } else {
                 final Player player = Bukkit.getPlayer(args[1]);
@@ -64,7 +67,8 @@ public class SethomeCommand implements CommandExecutor {
                 try {
                     addLocation(args, player.getName(), ((Player) sender).getLocation(), playerFile);
                     user.addHome(args[0], ((Player) sender).getLocation());
-                } catch (IOException ignored) {
+                } catch (final IOException exception) {
+                    exception.printStackTrace();
                 }
                 player.sendMessage(fileManager.getMsg("sethome.sethomeplayersender").replace("{PLAYER}", sender.getName()).replace("{HOME}", args[0]));
             }

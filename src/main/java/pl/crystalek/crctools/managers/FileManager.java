@@ -17,7 +17,7 @@ import java.util.*;
 public class FileManager {
     private final CrCTools crCTools;
     private final UserManager userManager;
-    private final File file;
+    private final File messagesFile;
     private final File users;
     private final Map<String, YamlConfiguration> usersConfiguration = new HashMap<>();
     private final DecimalFormat decimalFormat;
@@ -26,19 +26,19 @@ public class FileManager {
     public FileManager(final CrCTools crCTools, final UserManager userManager, final DecimalFormat decimalFormat) {
         this.crCTools = crCTools;
         this.userManager = userManager;
-        file = new File(crCTools.getDataFolder(), "messages.yml");
+        messagesFile = new File(crCTools.getDataFolder(), "messages.yml");
         users = new File(crCTools.getDataFolder(), "users");
         this.decimalFormat = decimalFormat;
     }
 
     public void checkFiles() {
-        if (!file.exists()) {
+        if (!messagesFile.exists()) {
             crCTools.saveResource("messages.yml", true);
         }
         if (!users.exists()) {
             users.mkdir();
         }
-        yamlConfiguration = YamlConfiguration.loadConfiguration(file);
+        yamlConfiguration = YamlConfiguration.loadConfiguration(messagesFile);
         crCTools.reloadConfig();
     }
 
@@ -51,10 +51,11 @@ public class FileManager {
                     configuration.getString("ip"),
                     configuration.getBoolean("msg"),
                     configuration.getBoolean("tpa"),
-                    configuration.getBoolean("god"));
+                    configuration.getBoolean("god"),
+                    configuration.getStringList("groups"));
         } else {
             final List<String> keyList = new ArrayList<>(configuration.getConfigurationSection("homes").getKeys(false));
-            Map<String, Location> homes = new HashMap<>();
+            final Map<String, Location> homes = new HashMap<>();
             for (String s : keyList) {
                 String string = "homes." + s;
                 homes.put(s, new Location(Bukkit.getWorld(configuration.getString(string + ".world")),
@@ -80,6 +81,7 @@ public class FileManager {
     public void savePlayer(final Player player) throws IOException {
         final YamlConfiguration configuration = usersConfiguration.get(player.getName());
         final User user = userManager.getUser(player);
+        final List<String> permissions = new ArrayList<>(user.getPermissionAttachment().getPermissions().keySet());
         configuration.set("uuid", user.getUuid().toString());
         configuration.set("nick", user.getLastName());
         configuration.set("msg", user.isMsg());
@@ -95,6 +97,8 @@ public class FileManager {
         configuration.set("location.z", decimalFormat.format(location.getZ()));
         configuration.set("health", (int) player.getHealth());
         configuration.set("food", player.getFoodLevel());
+        configuration.set("permissions", permissions);
+        configuration.set("groups", user.getPermissionGroups());
         final Map<String, Location> home = user.getHome();
         final List<String> keys = new ArrayList<>(home.keySet());
         if (!home.isEmpty() || !keys.isEmpty()) {
@@ -160,7 +164,7 @@ public class FileManager {
             }
             yamlConfiguration.set(path, stringList);
         }
-        yamlConfiguration.save(file);
+        yamlConfiguration.save(messagesFile);
         return true;
     }
 

@@ -5,9 +5,9 @@ import org.bukkit.Location;
 import java.time.LocalDateTime;
 
 public class Warp {
-    private LocalDateTime createTime;
-    private String author;
-    private Location location;
+    private final LocalDateTime createTime;
+    private final String author;
+    private final Location location;
 
     public Warp(final LocalDateTime createTime, final String author, final Location location) {
         this.createTime = createTime;

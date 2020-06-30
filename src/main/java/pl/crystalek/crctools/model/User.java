@@ -1,22 +1,25 @@
 package pl.crystalek.crctools.model;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
+import pl.crystalek.crctools.CrCTools;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class User {
     private final UUID uuid;
     private final String lastName;
-    private String ip;
+    private final String ip;
     private boolean msg = true;
     private boolean tpa = true;
     private boolean god = false;
+    private final PermissionAttachment permissionAttachment;
     private Map<String, Location> homeList = new HashMap<>();
+    private List<String> permissionGroups = new ArrayList<>();
 
-    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList) {
+    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList, final CrCTools crCTools) {
         this.uuid = uuid;
         this.lastName = lastName;
         this.ip = ip;
@@ -24,33 +27,37 @@ public class User {
         this.tpa = tpa;
         this.god = god;
         this.homeList = homeList;
+        this.permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(crCTools);
     }
 
-    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god) {
+    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final CrCTools crCTools, final List<String> listGroups) {
         this.uuid = uuid;
         this.lastName = lastName;
         this.ip = ip;
         this.msg = msg;
         this.tpa = tpa;
         this.god = god;
+        this.permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(crCTools);
+        this.permissionGroups = listGroups;
     }
 
-    public User(final Player player) {
+    public User(final Player player, final CrCTools crCTools) {
         this.uuid = player.getUniqueId();
         this.lastName = player.getName();
         this.ip = player.getAddress().getAddress().getHostAddress();
+        this.permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(crCTools);
     }
 
     public void addHome(final String name, final Location location) {
-        homeList.put(name, location);
+        this.homeList.put(name, location);
     }
 
     public Location getHome(final String name) {
-        return homeList.get(name);
+        return this.homeList.get(name);
     }
 
     public void removeHome(final String name) {
-        homeList.remove(name);
+        this.homeList.remove(name);
     }
 
     public Map<String, Location> getHome() {
@@ -91,5 +98,13 @@ public class User {
 
     public void setGod(boolean god) {
         this.god = god;
+    }
+
+    public PermissionAttachment getPermissionAttachment() {
+        return permissionAttachment;
+    }
+
+    public List<String> getPermissionGroups() {
+        return permissionGroups;
     }
 }

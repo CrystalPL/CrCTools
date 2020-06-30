@@ -29,10 +29,16 @@ public class SpawnCommand implements CommandExecutor {
         Player player = (Player) sender;
         final FileConfiguration configuration = crCTools.getConfig();
         final String string = "spawn";
-        final Location location = new Location(Bukkit.getWorld(configuration.getString(string + ".world")),
-                Double.parseDouble(configuration.getString(string + ".x")),
-                Double.parseDouble(configuration.getString(string + ".y")),
-                Double.parseDouble(configuration.getString(string + ".z")));
+        final Location location;
+        try {
+            location = new Location(Bukkit.getWorld(configuration.getString(string + ".world")),
+                    Double.parseDouble(configuration.getString(string + ".x")),
+                    Double.parseDouble(configuration.getString(string + ".y")),
+                    Double.parseDouble(configuration.getString(string + ".z")));
+        } catch (final IllegalArgumentException exception) {
+            sender.sendMessage(fileManager.getMsg("spawn.error"));
+            return true;
+        }
         if (args.length == 1) {
             if (!player.hasPermission(fileManager.getPermission("spawn.player"))) {
                 player.sendMessage(fileManager.getMsgPermission("spawn.player"));

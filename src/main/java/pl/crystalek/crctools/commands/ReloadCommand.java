@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
 import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
@@ -24,8 +25,9 @@ public class ReloadCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsgPermission("reload.reload"));
             return true;
         }
+        final ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         if (args.length == 0) {
-            Bukkit.reload();
+            Bukkit.dispatchCommand(console, "rl confirm");
             sender.sendMessage(fileManager.getMsg("reload.reload"));
         } else if (args.length == 1) {
             if (!NumberUtil.isInt(args[0])) {
@@ -41,7 +43,7 @@ public class ReloadCommand implements CommandExecutor {
                     i++;
                     if (i == time) {
                         cancel();
-                        Bukkit.reload();
+                        Bukkit.dispatchCommand(console, "rl confirm");
                         sender.sendMessage(fileManager.getMsg("reload.reload"));
                     }
                 }

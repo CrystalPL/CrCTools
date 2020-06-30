@@ -43,14 +43,17 @@ public class DelhomeCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("delhome.delhome"));
             try {
                 playerFile.save(new File(fileManager.getUsers(), player.getName() + ".yml"));
-            } catch (IOException ignored) {
+            } catch (final IOException exception) {
+                exception.printStackTrace();
             }
         } else if (args.length == 2) {
             if (!sender.hasPermission(fileManager.getPermission("delhome.player"))) {
                 sender.sendMessage(fileManager.getMsgPermission("delhome.player"));
                 return true;
             }
-            if (fileManager.getPlayerFile(args[1]) == null) {
+            try {
+                fileManager.getPlayerFile(args[1]);
+            } catch (final NullPointerException exception) {
                 sender.sendMessage(fileManager.getMsg("cantexist"));
                 return true;
             }
@@ -76,7 +79,8 @@ public class DelhomeCommand implements CommandExecutor {
             }
             try {
                 playerFile.save(new File(fileManager.getUsers(), args[1] + ".yml"));
-            } catch (IOException ignored) {
+            } catch (final IOException exception) {
+                exception.printStackTrace();
             }
             sender.sendMessage(fileManager.getMsg("delhome.player").replace("{PLAYER}", args[1]).replace("{HOME}", args[0]));
         } else {

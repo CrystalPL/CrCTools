@@ -2,25 +2,32 @@ package pl.crystalek.crctools.managers;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.model.User;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class UserManager {
-    private HashMap<UUID, User> users = new HashMap<>();
+    private final CrCTools crCTools;
+    private final HashMap<UUID, User> users = new HashMap<>();
+
+    public UserManager(final CrCTools crCTools) {
+        this.crCTools = crCTools;
+    }
 
     public void addUser(final Player player) {
-        users.put(player.getUniqueId(), new User(player));
+        users.put(player.getUniqueId(), new User(player, crCTools));
     }
 
     public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList) {
-        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, homeList));
+        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, homeList, crCTools));
     }
 
-    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god) {
-        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god));
+    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final List<String> groupList) {
+        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, crCTools, groupList));
     }
 
     public void removeUser(final Player player) {

@@ -59,7 +59,9 @@ public class HomeCommand implements CommandExecutor {
                 sender.sendMessage(fileManager.getMsgPermission("home.player"));
                 return true;
             }
-            if (fileManager.getPlayerFile(args[1]) == null) {
+            try {
+                fileManager.getPlayerFile(args[1]);
+            } catch (final NullPointerException exception) {
                 sender.sendMessage(fileManager.getMsg("cantexist"));
                 return true;
             }

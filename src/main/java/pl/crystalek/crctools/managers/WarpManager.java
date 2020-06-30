@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class WarpManager {
     private final CrCTools crCTools;
     private final DecimalFormat decimalFormat;
-    private Map<String, Warp> warpList = new HashMap<>();
+    private final Map<String, Warp> warpList = new HashMap<>();
 
     public WarpManager(final CrCTools crCTools, final DecimalFormat decimalFormat) {
         this.crCTools = crCTools;
@@ -31,14 +31,15 @@ public class WarpManager {
         final String date = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         warpList.put(name, new Warp(localDateTime, player.getName(), location));
         final FileConfiguration config = crCTools.getConfig();
-        config.createSection("warps." + name);
-        config.set("warps." + name + ".date", date);
-        config.set("warps." + name + ".author", player.getName());
-        config.createSection("warps." + name + ".location");
-        config.set("warps." + name + ".location.world", location.getWorld().getName());
-        config.set("warps." + name + ".location.x", decimalFormat.format(location.getX()));
-        config.set("warps." + name + ".location.y", decimalFormat.format(location.getY()));
-        config.set("warps." + name + ".location.z", decimalFormat.format(location.getZ()));
+        final String warpPath = "warps." + name;
+        config.createSection(warpPath);
+        config.set(warpPath + ".date", date);
+        config.set(warpPath + ".author", player.getName());
+        config.createSection(warpPath + ".location");
+        config.set(warpPath + ".location.world", location.getWorld().getName());
+        config.set(warpPath + ".location.x", decimalFormat.format(location.getX()));
+        config.set(warpPath + ".location.y", decimalFormat.format(location.getY()));
+        config.set(warpPath + ".location.z", decimalFormat.format(location.getZ()));
         crCTools.saveConfig();
     }
 

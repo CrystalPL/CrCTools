@@ -2,6 +2,7 @@ acceptteleport: 20
 teleporttime: 5
 autosave: 300
 automessagetime: 60
+defaultgroup: "DZBAN"
 automessage:
   - "&1&lTEST 5G MOC 500%"
   - "&2&lTEST 5G MOC 500%"
@@ -88,3 +89,5 @@ permission:
   chat:
     chat: "CrC.tools.chat"
     bypass: "CrC.tools.chat.bypass"
+  permissions:
+    permission: "CrC.tools.permission"
