@@ -6,7 +6,8 @@ import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmptyException;
 import java.util.*;
 
 public class TpaManager {
-    private Map<UUID, List<Player>> tpaList = new HashMap<>();
+    private final Map<UUID, List<Player>> tpaList = new HashMap<>();
+    //TODO USUWANIE GRACZA Z MAPY, GDY WYJDZIE Z SERWERA
 
     public void addTeleport(final UUID teleporting, final Player user) {
         if (tpaList.containsKey(teleporting)) {
