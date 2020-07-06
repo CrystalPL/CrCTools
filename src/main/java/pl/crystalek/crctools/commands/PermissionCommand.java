@@ -44,14 +44,7 @@ public class PermissionCommand implements CommandExecutor {
         }
         if (args[0].equalsIgnoreCase("group")) {
             if (args.length == 3) {
-                if (args[1].equalsIgnoreCase("create")) {
-                    try {
-                        permissionManager.createGroup(sender.getName(), args[2]);
-                        sender.sendMessage(fileManager.getMsg("permissions.creategroup").replace("{NAME}", args[2]));
-                    } catch (final GroupExistException exception) {
-                        sender.sendMessage(fileManager.getMsg("permissions.groupexist"));
-                    }
-                } else if (args[1].equalsIgnoreCase("delete")) {
+                if (args[1].equalsIgnoreCase("delete")) {
                     try {
                         permissionManager.deleteGroup(args[2]);
                         sender.sendMessage(fileManager.getMsg("permissions.deletegroup").replace("{NAME}", args[2]));
@@ -77,7 +70,9 @@ public class PermissionCommand implements CommandExecutor {
                                 .replace("{NAME}", args[2])
                                 .replace("{PLAYER}", group.getAuthor())
                                 .replace("{DATE}", group.getCreateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                                .replace("{PREFIX}", group.getPrefix()).replace("{MEMBERS}", membersList));
+                                .replace("{PREFIX}", group.getPrefix())
+                                .replace("{PRIORITY}", String.valueOf(group.getPriority()))
+                                .replace("{MEMBERS}", membersList));
                     }
                 } else if (args[1].equalsIgnoreCase("permissions")) {
                     final Group group = permissionManager.getGroup(args[2]);
@@ -117,7 +112,7 @@ public class PermissionCommand implements CommandExecutor {
                 }
                 return true;
             }
-            if (args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("clone")) {
+            if (args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("clone") || args[1].equalsIgnoreCase("create") || args[1].equalsIgnoreCase("priority") || args[1].equalsIgnoreCase("prefix")) {
                 if (args.length != 4) {
                     printHelp(sender);
                     return true;
@@ -173,6 +168,27 @@ public class PermissionCommand implements CommandExecutor {
                 try {
                     permissionManager.cloneGroup(args[2], args[3]);
                     sender.sendMessage(fileManager.getMsg("permissions.clonegroup").replace("{GROUPFROM}", args[2]).replace("{GROUPTO}", args[3]));
+                } catch (final GroupExistException exception) {
+                    sender.sendMessage(fileManager.getMsg("permissions.groupdoesntexist"));
+                }
+            } else if (args[1].equalsIgnoreCase("create")) {
+                try {
+                    permissionManager.createGroup(sender.getName(), args[2], Byte.parseByte(args[3]));
+                    sender.sendMessage(fileManager.getMsg("permissions.creategroup").replace("{NAME}", args[2]));
+                } catch (final GroupExistException exception) {
+                    sender.sendMessage(fileManager.getMsg("permissions.groupexist"));
+                }
+            } else if (args[1].equalsIgnoreCase("priority")) {
+                try {
+                    permissionManager.setPriority(args[2], Byte.parseByte(args[3]));
+                    sender.sendMessage(fileManager.getMsg("permissions.setpriority").replace("{GROUP}", args[2]).replace("{PRIORITY}", args[3]));
+                } catch (final GroupExistException exception) {
+                    sender.sendMessage(fileManager.getMsg("permissions.groupdoesntexist"));
+                }
+            } else if (args[1].equalsIgnoreCase("prefix")) {
+                try {
+                    permissionManager.setPrefix(args[2], args[3]);
+                    sender.sendMessage(fileManager.getMsg("permissions.setprefix").replace("{GROUP}", args[2]).replace("{PREFIX}", args[3]));
                 } catch (final GroupExistException exception) {
                     sender.sendMessage(fileManager.getMsg("permissions.groupdoesntexist"));
                 }

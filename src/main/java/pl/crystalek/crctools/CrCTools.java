@@ -94,7 +94,6 @@ public final class CrCTools extends JavaPlugin {
         getCommand("rlc").setExecutor(new ReloadCommand(fileManager, this));
         getCommand("chat").setExecutor(new ChatCommand(fileManager));
         getCommand("perms").setExecutor(new PermissionCommand(fileManager, permissionManager, userManager));
-//        getCommand("rank").setExecutor(new RankCommand(fileManager, this));
     }
 
     private void registerListeners() {
@@ -105,7 +104,7 @@ public final class CrCTools extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(userManager), this);
         Bukkit.getPluginManager().registerEvents(new EntityTargetLivingEntityListener(userManager), this);
         Bukkit.getPluginManager().registerEvents(new PlayerCommandPreprocessListener(fileManager), this);
-        Bukkit.getPluginManager().registerEvents(new AsyncPlayerChatListener(fileManager), this);
+        Bukkit.getPluginManager().registerEvents(new AsyncPlayerChatListener(fileManager, permissionManager, userManager), this);
     }
 
     private void reloadServer() {

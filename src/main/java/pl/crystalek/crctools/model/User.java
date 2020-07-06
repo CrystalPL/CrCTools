@@ -12,14 +12,14 @@ public class User {
     private final UUID uuid;
     private final String lastName;
     private final String ip;
+    private final PermissionAttachment permissionAttachment;
     private boolean msg = true;
     private boolean tpa = true;
     private boolean god = false;
-    private final PermissionAttachment permissionAttachment;
     private Map<String, Location> homeList = new HashMap<>();
     private List<String> permissionGroups = new ArrayList<>();
 
-    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList, final CrCTools crCTools) {
+    public User(final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList, final CrCTools crCTools, final List<String> listGroups) {
         this.uuid = uuid;
         this.lastName = lastName;
         this.ip = ip;
@@ -27,6 +27,7 @@ public class User {
         this.tpa = tpa;
         this.god = god;
         this.homeList = homeList;
+        this.permissionGroups = listGroups;
         this.permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(crCTools);
     }
 

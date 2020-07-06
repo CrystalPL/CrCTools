@@ -56,8 +56,8 @@ public class FileManager {
         } else {
             final List<String> keyList = new ArrayList<>(configuration.getConfigurationSection("homes").getKeys(false));
             final Map<String, Location> homes = new HashMap<>();
-            for (String s : keyList) {
-                String string = "homes." + s;
+            for (final String s : keyList) {
+                final String string = "homes." + s;
                 homes.put(s, new Location(Bukkit.getWorld(configuration.getString(string + ".world")),
                         Double.parseDouble(configuration.getString(string + ".x")),
                         Double.parseDouble(configuration.getString(string + ".y")),
@@ -70,7 +70,8 @@ public class FileManager {
                     configuration.getBoolean("msg"),
                     configuration.getBoolean("tpa"),
                     configuration.getBoolean("god"),
-                    homes);
+                    homes,
+                    configuration.getStringList("groups"));
         }
     }
 

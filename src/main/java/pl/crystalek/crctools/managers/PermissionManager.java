@@ -21,7 +21,7 @@ public class PermissionManager {
     private final FileManager fileManager;
     private final CrCTools crCTools;
     private final UserManager userManager;
-    private final HashMap<String, Group> groups = new HashMap<>();
+    private final Map<String, Group> groups = new HashMap<>();
 
     public PermissionManager(final FileManager fileManager, final CrCTools crCTools, final UserManager userManager) {
         this.fileManager = fileManager;
@@ -149,7 +149,7 @@ public class PermissionManager {
         crCTools.saveConfig();
     }
 
-    public void createGroup(final String player, final String groupName) throws GroupExistException {
+    public void createGroup(final String player, final String groupName, final byte priority) throws GroupExistException {
         if (groups.containsKey(groupName)) {
             throw new GroupExistException("Group doesn't exist!");
         }
@@ -157,11 +157,12 @@ public class PermissionManager {
         final String groupPath = "groups." + groupName;
         final LocalDateTime localDateTime = LocalDateTime.now();
         final String date = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        groups.put(groupName, new Group(localDateTime, player, groupName));
+        groups.put(groupName, new Group(localDateTime, player, groupName, priority));
         config.createSection(groupPath);
         config.set(groupPath + ".date", date);
         config.set(groupPath + ".author", player);
         config.set(groupPath + ".prefix", groupName);
+        config.set(groupPath + ".priority", priority);
         config.createSection(groupPath + ".permissions");
         config.createSection(groupPath + ".members");
         crCTools.saveConfig();
@@ -215,6 +216,7 @@ public class PermissionManager {
                         new Group(LocalDateTime.parse(config.getString(string + ".date"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                                 config.getString(string + ".author"),
                                 config.getString(string + ".prefix"),
+                                (byte) config.getInt(string + ".priority"),
                                 config.getStringList(string + ".members"),
                                 config.getStringList(string + ".permissions")));
             }
@@ -237,7 +239,27 @@ public class PermissionManager {
         return getGroup(groupName).getPermissions();
     }
 
-    public HashMap<String, Group> getGroups() {
+    public Map<String, Group> getGroups() {
         return groups;
+    }
+
+    public void setPrefix(final String groupName, final String prefix) throws GroupExistException {
+        if (!groups.containsKey(groupName)) {
+            throw new GroupExistException("Group doesn't exist!");
+        }
+        getGroup(groupName).setPrefix(prefix);
+        final FileConfiguration config = crCTools.getConfig();
+        config.set("groups." + groupName + ".prefix", prefix);
+        crCTools.saveConfig();
+    }
+
+    public void setPriority(final String groupName, final byte priority) throws GroupExistException {
+        if (!groups.containsKey(groupName)) {
+            throw new GroupExistException("Group doesn't exist!");
+        }
+        getGroup(groupName).setPriority(priority);
+        final FileConfiguration config = crCTools.getConfig();
+        config.set("groups." + groupName + ".priority", priority);
+        crCTools.saveConfig();
     }
 }

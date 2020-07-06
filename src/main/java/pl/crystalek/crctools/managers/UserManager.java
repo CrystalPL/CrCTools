@@ -22,8 +22,8 @@ public class UserManager {
         users.put(player.getUniqueId(), new User(player, crCTools));
     }
 
-    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList) {
-        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, homeList, crCTools));
+    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList, final List<String> groupList) {
+        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, homeList, crCTools, groupList));
     }
 
     public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final List<String> groupList) {

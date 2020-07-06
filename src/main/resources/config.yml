@@ -91,3 +91,19 @@ permission:
     bypass: "CrC.tools.chat.bypass"
   permissions:
     permission: "CrC.tools.permission"
+
+groups:
+  DZBAN:
+    date: '2020-06-30 10:19:52'
+    author: Crystal_PL
+    prefix: DZBAN
+    priority: 2
+    permissions: {}
+    members: []
+  DZBANEK:
+    date: '2020-06-30 10:19:52'
+    author: Crystal_PL
+    prefix: DZBANEK123
+    priority: 1
+    permissions: {}
+    members: []
