@@ -301,3 +301,9 @@ permissions:
     - "&6&lToolsy &8» &6/cp clear <gracz> &7- czysci grupy lub permisje gracza"
     - "&6&lToolsy &8» &6/cp add <gracz> <permisja> &7- dodaje uprawnienie graczowi"
     - "&6&lToolsy &8» &6/cp remove <gracz> <permisja> &7- zabiera uprawnienie graczowi"
+alert:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/alert <chat, title, bossbar, actionbar> <tekst>."
+  chat: "&8&l[&4&LALERT&8&l] &c&l{MESSAGE}"
+  title: "&8&l[&4&LALERT&8&l] &c&l{MESSAGE}"
+  actionbar: "&8&l[&4&LALERT&8&l] &c&l{MESSAGE}"
+  bossbar: "&8&l[&4&LALERT&8&l] &c&l{MESSAGE}"

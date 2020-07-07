@@ -54,3 +54,4 @@ commands:
   chat:
   perms:
     aliases: [cp, cperms, crystalperms]
+  alert:

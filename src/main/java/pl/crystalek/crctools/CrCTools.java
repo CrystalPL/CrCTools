@@ -94,6 +94,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("rlc").setExecutor(new ReloadCommand(fileManager, this));
         getCommand("chat").setExecutor(new ChatCommand(fileManager));
         getCommand("perms").setExecutor(new PermissionCommand(fileManager, permissionManager, userManager));
+        getCommand("alert").setExecutor(new AlertCommand(fileManager, this));
     }
 
     private void registerListeners() {

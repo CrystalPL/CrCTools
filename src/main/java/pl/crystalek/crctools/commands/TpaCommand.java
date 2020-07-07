@@ -53,7 +53,7 @@ public class TpaCommand implements CommandExecutor {
         }
         tpaManager.addTeleport(target.getUniqueId(), player);
         player.sendMessage(fileManager.getMsg("tpa.sender").replace("{PLAYER}", target.getName()));
-        Bukkit.getScheduler().scheduleSyncDelayedTask(crCTools, () -> {
+        Bukkit.getScheduler().scheduleAsyncDelayedTask(crCTools, () -> {
             if (tpaManager.removeTeleport(target.getUniqueId(), player)) {
                 player.sendMessage(fileManager.getMsg("tpa.barred"));
             }
