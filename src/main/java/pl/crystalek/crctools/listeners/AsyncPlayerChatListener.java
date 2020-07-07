@@ -42,7 +42,9 @@ public class AsyncPlayerChatListener implements Listener {
             final String format = "{PREFIX} {NICK} &8» &7{MESSAGE}"
                     .replace("{PREFIX}", permissionManager.getGroup(permissionGroups.get(0)).getPrefix())
                     .replace("{NICK}", "%1$s")
-                    .replace("{MESSAGE}", "%2$s");
+                    .replace("{MESSAGE}", "%2$s")
+                    .replace("{LVL}", String.valueOf(player.getLevel()))
+                    .replace("{FOODLVL}", String.valueOf(player.getFoodLevel()));
             event.setFormat(ChatUtil.fixColor(format));
             event.setMessage(ChatUtil.fixColor(event.getMessage()));
         }

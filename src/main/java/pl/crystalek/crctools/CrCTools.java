@@ -95,11 +95,12 @@ public final class CrCTools extends JavaPlugin {
         getCommand("chat").setExecutor(new ChatCommand(fileManager));
         getCommand("perms").setExecutor(new PermissionCommand(fileManager, permissionManager, userManager));
         getCommand("alert").setExecutor(new AlertCommand(fileManager, this));
+        getCommand("tpall").setExecutor(new TpAllCommand(fileManager));
     }
 
     private void registerListeners() {
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(fileManager, userManager, permissionManager, this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(fileManager, userManager, permissionManager), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(fileManager, userManager), this);
         Bukkit.getPluginManager().registerEvents(new ThunderChangeListener(), this);
         Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(userManager), this);

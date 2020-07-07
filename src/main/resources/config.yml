@@ -94,6 +94,9 @@ permission:
     permission: "CrC.tools.permission"
   alert:
     alert: "CrC.tools.alert"
+  tpall:
+    tpall: "CrC.tools.tpall"
+    bypass: "CrC.tools.tpall.bypass"
 
 groups:
   DZBAN:

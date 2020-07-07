@@ -55,3 +55,4 @@ commands:
   perms:
     aliases: [cp, cperms, crystalperms]
   alert:
+  tpall:

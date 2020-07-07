@@ -93,7 +93,7 @@ public class TpacceptCommand implements CommandExecutor {
 
                 final Location newLocation = target.getLocation();
                 if (location.getX() == newLocation.getX() && location.getY() == newLocation.getY() && location.getZ() == newLocation.getZ()) {
-                    player.sendMessage(fileManager.getMsg("teleport.counter").replace("{TIME}", String.valueOf(fileManager.getInt("teleporttime") - i)));
+                    target.sendMessage(fileManager.getMsg("teleport.counter").replace("{TIME}", String.valueOf(fileManager.getInt("teleporttime") - i)));
                     i++;
                 } else {
                     target.sendMessage(fileManager.getMsg("teleport.error"));
