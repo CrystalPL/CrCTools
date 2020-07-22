@@ -4,11 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
 
 public class ChatCommand implements CommandExecutor {
     private final FileManager fileManager;
+    public static boolean CHAT = true;
 
     public ChatCommand(final FileManager fileManager) {
         this.fileManager = fileManager;
@@ -29,33 +29,33 @@ public class ChatCommand implements CommandExecutor {
             clearChat();
             printMessage(sender, "chat.clear");
         } else if (args[0].equalsIgnoreCase("off")) {
-            if (!CrCTools.CHAT) {
+            if (!CHAT) {
                 sender.sendMessage(fileManager.getMsg("chat.erroroff"));
                 return true;
             }
-            CrCTools.CHAT = false;
+            CHAT = false;
             printMessage(sender, "chat.chatoff");
         } else if (args[0].equalsIgnoreCase("on")) {
-            if (CrCTools.CHAT) {
+            if (CHAT) {
                 sender.sendMessage(fileManager.getMsg("chat.erroron"));
                 return true;
             }
-            CrCTools.CHAT = true;
+            CHAT = true;
             printMessage(sender, "chat.chaton");
         } else if (args[0].equalsIgnoreCase("offc")) {
-            if (!CrCTools.CHAT) {
+            if (!CHAT) {
                 sender.sendMessage(fileManager.getMsg("chat.erroroff"));
                 return true;
             }
-            CrCTools.CHAT = false;
+            CHAT = false;
             clearChat();
             printMessage(sender, "chat.chatoff");
         } else if (args[0].equalsIgnoreCase("onc")) {
-            if (CrCTools.CHAT) {
+            if (CHAT) {
                 sender.sendMessage(fileManager.getMsg("chat.erroron"));
                 return true;
             }
-            CrCTools.CHAT = true;
+            CHAT = true;
             clearChat();
             printMessage(sender, "chat.chaton");
         } else {

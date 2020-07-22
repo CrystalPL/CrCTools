@@ -30,7 +30,6 @@ public final class CrCTools extends JavaPlugin {
     //TODO DODANIE WYBORU, CZY MAJA BYC ZAPISYWANE DATY LOGOWAN GRACZY
     //TODO ZAPISYWANIE WSZYSTKICH IP, DAT Z JAKICH GRACZ SIE LOGUJE
     //TODO WYJEBAC ZMIENIANIE WIADOMOSCI Z FILEMANAGER DO TOOLSCOMMAND
-    public static boolean CHAT = true; //TODO WYJEBAC TO STAD I PRZENIESC TO CHATCOMMAND, BADZ ZEWNETRZNEGO PLUGINU
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;

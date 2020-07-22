@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.commands.ChatCommand;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.PermissionManager;
 import pl.crystalek.crctools.managers.UserManager;
@@ -28,7 +28,7 @@ public class AsyncPlayerChatListener implements Listener {
     @EventHandler
     public void onChat(final AsyncPlayerChatEvent event) {
         final Player player = event.getPlayer();
-        if (!CrCTools.CHAT) {
+        if (!ChatCommand.CHAT) {
             if (!player.hasPermission(fileManager.getPermission("chat.bypass"))) {
                 event.setCancelled(true);
                 player.sendMessage(fileManager.getMsg("chat.error"));
