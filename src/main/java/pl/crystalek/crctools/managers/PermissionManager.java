@@ -22,6 +22,7 @@ public class PermissionManager {
     private final CrCTools crCTools;
     private final UserManager userManager;
     private final Map<String, Group> groups = new HashMap<>();
+    //TODO DODANIE RANG TYMCZASOWYCH
 
     public PermissionManager(final FileManager fileManager, final CrCTools crCTools, final UserManager userManager) {
         this.fileManager = fileManager;
@@ -224,7 +225,7 @@ public class PermissionManager {
     }
 
     public void loadPermission(final Player player) {
-        final YamlConfiguration playerFile = fileManager.getPlayerConfiguration(player);
+        final YamlConfiguration playerFile = fileManager.getPlayerFile(player.getName());
         final List<String> permissions = playerFile.getStringList("permissions");
         for (final String permission : permissions) {
             userManager.getUser(player).getPermissionAttachment().setPermission(permission, true);

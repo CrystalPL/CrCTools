@@ -8,6 +8,7 @@ import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.exceptions.GroupExistException;
 import pl.crystalek.crctools.exceptions.GroupHasException;
 import pl.crystalek.crctools.managers.FileManager;
+import pl.crystalek.crctools.managers.MailManager;
 import pl.crystalek.crctools.managers.PermissionManager;
 import pl.crystalek.crctools.managers.UserManager;
 
@@ -17,12 +18,14 @@ public class PlayerJoinListener implements Listener {
     private final FileManager fileManager;
     private final UserManager userManager;
     private final PermissionManager permissionManager;
+    private final MailManager mailManager;
     private final CrCTools crCTools;
 
-    public PlayerJoinListener(final FileManager fileManager, final UserManager userManager, final PermissionManager permissionManager, final CrCTools crCTools) {
+    public PlayerJoinListener(final FileManager fileManager, final UserManager userManager, final PermissionManager permissionManager, final MailManager mailManager, final CrCTools crCTools) {
         this.fileManager = fileManager;
         this.userManager = userManager;
         this.permissionManager = permissionManager;
+        this.mailManager = mailManager;
         this.crCTools = crCTools;
     }
 
@@ -38,5 +41,6 @@ public class PlayerJoinListener implements Listener {
             permissionManager.addGroup(player.getName(), crCTools.getConfig().getString("defaultgroup"));
         }
         permissionManager.loadPermission(player);
+        mailManager.loadMessage(player);
     }
 }

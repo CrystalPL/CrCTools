@@ -17,7 +17,7 @@ public class ChatUtil {
     }
 
     public static List<String> fixColor(final List<String> list) {
-        List<String> lists = new ArrayList<>();
+        final List<String> lists = new ArrayList<>();
         for (final String string : list) {
             lists.add(fixColor(string));
         }

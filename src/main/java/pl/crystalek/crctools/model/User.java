@@ -16,6 +16,8 @@ public class User {
     private boolean msg = true;
     private boolean tpa = true;
     private boolean god = false;
+    private Map<UUID, List<Mail>> receivedMails = new HashMap<>();
+    private Map<UUID, List<Mail>> sentMails = new HashMap<>();
     private Map<String, Location> homeList = new HashMap<>();
     private List<String> permissionGroups = new ArrayList<>();
 
@@ -47,6 +49,22 @@ public class User {
         this.lastName = player.getName();
         this.ip = player.getAddress().getAddress().getHostAddress();
         this.permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(crCTools);
+    }
+
+    public Map<UUID, List<Mail>> getReceivedMails() {
+        return receivedMails;
+    }
+
+    public void setReceivedMails(final Map<UUID, List<Mail>> receivedMails) {
+        this.receivedMails = receivedMails;
+    }
+
+    public Map<UUID, List<Mail>> getSentMails() {
+        return sentMails;
+    }
+
+    public void setSentMails(final Map<UUID, List<Mail>> sentMails) {
+        this.sentMails = sentMails;
     }
 
     public void addHome(final String name, final Location location) {

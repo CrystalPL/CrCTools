@@ -47,6 +47,8 @@ public class AlertCommand implements CommandExecutor {
             final BossBar bossBar = Bukkit.createBossBar(fileManager.getMsg("alert.bossbar").replace("{MESSAGE}", ChatUtil.fixColor(join)), BarColor.GREEN, BarStyle.SEGMENTED_10);
             Bukkit.getOnlinePlayers().forEach(bossBar::addPlayer);
             Bukkit.getScheduler().scheduleAsyncDelayedTask(crCTools, () -> Bukkit.getOnlinePlayers().forEach(bossBar::removePlayer), fileManager.getInt("alerttime") * 20L);
+        } else {
+            sender.sendMessage(fileManager.getMsg("alert.usage"));
         }
         return true;
     }

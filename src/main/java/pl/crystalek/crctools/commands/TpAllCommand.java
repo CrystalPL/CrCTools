@@ -30,6 +30,6 @@ public class TpAllCommand implements CommandExecutor {
                 player.sendMessage(fileManager.getMsg("tp.player").replace("{PLAYER}", sender.getName()));
             }
         }
-        return false;
+        return true;
     }
 }

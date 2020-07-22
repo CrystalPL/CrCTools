@@ -18,7 +18,11 @@ automessage:
   - "&d&lTEST 5G MOC 500%"
   - "&f&lTEST 5G MOC 500%"
   - "&c&lTEST 5G MOC 500%"
-
+spawn:
+  world: world
+  x: '95.3'
+  y: '77'
+  z: '418.3'
 permission:
   feed:
     feed: "CrC.tools.feed"

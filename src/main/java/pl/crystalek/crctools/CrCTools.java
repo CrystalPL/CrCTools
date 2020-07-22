@@ -13,7 +13,24 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
-    public static boolean CHAT = true;
+    //TODO DODANIE KOMENDY /LORE
+    //TODO DODANIE KOMENDY /RENAME
+    //TODO DODANIE KOMENDY /NICK
+    //TODO DODANIE KOMENDY /TPAHERE
+    //TODO DODANIE MOZLIWOSCI DAWANIA PRZEDMIOTU WSZYSTKIM GRACZOM DO /GIVE
+    //TODO ZROBIENIE ZARZADZANIA KOLORAMI NICKU
+    //TODO ZROBIENIE ZARZADZANIA KOLORAMI CHATU
+    //TODO ZROBIENIE MOZLIWOSCI TELEPORTOWANIA DO GRACZA OFFLINE
+    //TODO FORMAT CHATU
+    //TODO ZABLOKOWANIE MOZLIWOSCI DAWANIA KROPEK DO WARPOW, HOME'OW, I INNYCH RZECZY W KTORYCH ZAPISYWANY JEST STRING DO YML'A
+    //TODO DODANIE LIMITU WIADOMOSCI WYSYLANYCH/ODBIERANYCH
+    //TODO DADANIE KOMENDY /LIST, KTORA POKAZUJE GRACZE UWZGLEDNIAJAC PODZIAL NA GRUPY
+    //TODO DODANIE WYBORU, CZY PRZY KAZDYM WCHODZENIU NA SERWER, GRACZ MA BYC TELEPORTOWANY NA SPAWN
+    //TODO DODANIE WYBORU, CZY W MAILACH PRZECZYTANE MA BYC NAPISANE TAK/NIE, CZY TRUE/FALSE
+    //TODO DODANIE WYBORU, CZY MAJA BYC ZAPISYWANE DATY LOGOWAN GRACZY
+    //TODO ZAPISYWANIE WSZYSTKICH IP, DAT Z JAKICH GRACZ SIE LOGUJE
+    //TODO WYJEBAC ZMIENIANIE WIADOMOSCI Z FILEMANAGER DO TOOLSCOMMAND
+    public static boolean CHAT = true; //TODO WYJEBAC TO STAD I PRZENIESC TO CHATCOMMAND, BADZ ZEWNETRZNEGO PLUGINU
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;
@@ -21,6 +38,7 @@ public final class CrCTools extends JavaPlugin {
     private DecimalFormat decimalFormat;
     private WarpManager warpManager;
     private PermissionManager permissionManager;
+    private MailManager mailManager;
 
     @Override
     public void onEnable() {
@@ -32,6 +50,7 @@ public final class CrCTools extends JavaPlugin {
         msgManager = new MsgManager();
         warpManager = new WarpManager(this, decimalFormat);
         permissionManager = new PermissionManager(fileManager, this, userManager);
+        mailManager = new MailManager(fileManager, userManager);
         fileManager.checkFiles();
         registerCommand();
         registerListeners();
@@ -96,10 +115,11 @@ public final class CrCTools extends JavaPlugin {
         getCommand("perms").setExecutor(new PermissionCommand(fileManager, permissionManager, userManager));
         getCommand("alert").setExecutor(new AlertCommand(fileManager, this));
         getCommand("tpall").setExecutor(new TpAllCommand(fileManager));
+        getCommand("mail").setExecutor(new MailCommand(fileManager, mailManager));
     }
 
     private void registerListeners() {
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(fileManager, userManager, permissionManager, this), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(fileManager, userManager, permissionManager, mailManager, this), this);
         Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(fileManager, userManager), this);
         Bukkit.getPluginManager().registerEvents(new ThunderChangeListener(), this);
         Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), this);
@@ -114,6 +134,7 @@ public final class CrCTools extends JavaPlugin {
             fileManager.addConfiguration(player);
             fileManager.loadPlayer(player);
             permissionManager.loadPermission(player);
+            mailManager.loadMessage(player);
         }
     }
 }

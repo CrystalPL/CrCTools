@@ -36,8 +36,6 @@ public class DelhomeCommand implements CommandExecutor {
                 return true;
             }
             user.removeHome(args[0]);
-            final YamlConfiguration playerConfiguration = fileManager.getPlayerConfiguration(player);
-            playerConfiguration.set("homes." + args[0], null);
             final YamlConfiguration playerFile = fileManager.getPlayerFile(player.getName());
             playerFile.set("homes." + args[0], null);
             sender.sendMessage(fileManager.getMsg("delhome.delhome"));
@@ -71,8 +69,6 @@ public class DelhomeCommand implements CommandExecutor {
                     sender.sendMessage(fileManager.getMsg("delhome.errorplayer"));
                     return true;
                 }
-                final YamlConfiguration playerConfiguration = fileManager.getPlayerConfiguration(player);
-                playerConfiguration.set("homes." + args[0], null);
                 user.removeHome(args[0]);
                 playerFile.set("homes." + args[0], null);
                 player.sendMessage(fileManager.getMsg("delhome.delhomeplayersender").replace("{PLAYER}", sender.getName()).replace("{HOME}", args[0]));

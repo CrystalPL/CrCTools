@@ -6,12 +6,14 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.model.Mail;
 import pl.crystalek.crctools.model.User;
 import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class FileManager {
@@ -75,14 +77,12 @@ public class FileManager {
         }
     }
 
-    public YamlConfiguration getPlayerConfiguration(final Player player) {
-        return usersConfiguration.get(player.getName());
-    }
-
     public void savePlayer(final Player player) throws IOException {
         final YamlConfiguration configuration = usersConfiguration.get(player.getName());
         final User user = userManager.getUser(player);
         final List<String> permissions = new ArrayList<>(user.getPermissionAttachment().getPermissions().keySet());
+        final Map<UUID, List<Mail>> receivedMails = user.getReceivedMails();
+        final Map<UUID, List<Mail>> sentMails = user.getSentMails();
         configuration.set("uuid", user.getUuid().toString());
         configuration.set("nick", user.getLastName());
         configuration.set("msg", user.isMsg());
@@ -112,15 +112,21 @@ public class FileManager {
                 configuration.set(string + ".z", decimalFormat.format(homeLocation.getZ()));
             }
         }
+        saveMail(receivedMails, "received", configuration);
+        saveMail(sentMails, "sent", configuration);
         configuration.save(new File(users, player.getName() + ".yml"));
     }
 
     public YamlConfiguration getPlayerFile(final String player) {
-        final File fileSave = new File(users, player + ".yml");
-        if (!fileSave.exists()) {
-            throw new NullPointerException("player doesn't exist");
+        if (Bukkit.getPlayer(player) != null) {
+            return usersConfiguration.get(Bukkit.getPlayer(player).getName());
+        } else {
+            final File fileSave = new File(users, player + ".yml");
+            if (!fileSave.exists()) {
+                throw new NullPointerException("player doesn't exist");
+            }
+            return YamlConfiguration.loadConfiguration(fileSave);
         }
-        return YamlConfiguration.loadConfiguration(fileSave);
     }
 
     public String getPermission(final String pathPermission) {
@@ -179,5 +185,21 @@ public class FileManager {
 
     public File getUsers() {
         return users;
+    }
+
+    private void saveMail(final Map<UUID, List<Mail>> uuidListMap, final String option, final YamlConfiguration configuration) {
+        String name;
+        for (final UUID uuid : uuidListMap.keySet()) {
+            if (Bukkit.getPlayer(uuid) != null) {
+                name = Bukkit.getPlayer(uuid).getName();
+            } else {
+                name = Bukkit.getOfflinePlayer(uuid).getName();
+            }
+            for (final Mail mail : uuidListMap.get(uuid)) {
+                configuration.set("mail." + option + "." + name + "." + mail.getTopic() + ".sendtime", mail.getSendMessageTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                configuration.set("mail." + option + "." + name + "." + mail.getTopic() + ".contents", mail.getMail());
+                configuration.set("mail." + option + "." + name + "." + mail.getTopic() + ".read", mail.isRead());
+            }
+        }
     }
 }

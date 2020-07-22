@@ -36,9 +36,7 @@ public class AsyncPlayerChatListener implements Listener {
         } else {
             final User user = userManager.getUser(player);
             final List<String> permissionGroups = user.getPermissionGroups();
-            System.out.println(permissionGroups);
             permissionGroups.sort(Comparator.comparing(permissionManager::getGroup));
-            System.out.println(permissionGroups);
             final String format = "{PREFIX} {NICK} &8» &7{MESSAGE}"
                     .replace("{PREFIX}", permissionManager.getGroup(permissionGroups.get(0)).getPrefix())
                     .replace("{NICK}", "%1$s")

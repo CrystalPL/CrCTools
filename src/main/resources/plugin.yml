@@ -56,3 +56,4 @@ commands:
     aliases: [cp, cperms, crystalperms]
   alert:
   tpall:
+  mail:
