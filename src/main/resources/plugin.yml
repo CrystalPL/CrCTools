@@ -57,3 +57,7 @@ commands:
   alert:
   tpall:
   mail:
+  lore:
+  rename:
+  nick:
+  tpahere:

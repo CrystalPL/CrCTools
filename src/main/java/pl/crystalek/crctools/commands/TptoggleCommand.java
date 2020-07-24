@@ -5,8 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
-import pl.crystalek.crctools.model.User;
 import pl.crystalek.crctools.managers.UserManager;
+import pl.crystalek.crctools.model.User;
 
 public class TptoggleCommand implements CommandExecutor {
     private final FileManager fileManager;
@@ -21,6 +21,10 @@ public class TptoggleCommand implements CommandExecutor {
     public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage(fileManager.getMsg("notconsole"));
+            return true;
+        }
+        if (!sender.hasPermission(fileManager.getPermission("tptoggle.tptoggle"))) {
+            sender.sendMessage(fileManager.getMsgPermission("tptoggle.tptoggle"));
             return true;
         }
         final Player player = (Player) sender;

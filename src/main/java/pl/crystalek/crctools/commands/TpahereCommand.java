@@ -11,17 +11,17 @@ import pl.crystalek.crctools.managers.TpaManager;
 import pl.crystalek.crctools.managers.UserManager;
 import pl.crystalek.crctools.model.User;
 
-public class TpaCommand implements CommandExecutor {
+public class TpahereCommand implements CommandExecutor {
     private final FileManager fileManager;
-    private final CrCTools crCTools;
-    private final TpaManager tpaManager;
     private final UserManager userManager;
+    private final TpaManager tpaManager;
+    private final CrCTools crCTools;
 
-    public TpaCommand(final FileManager fileManager, final CrCTools crCTools, final TpaManager tpaManager, final UserManager userManager) {
+    public TpahereCommand(final FileManager fileManager, final UserManager userManager, final TpaManager tpaManager, final CrCTools crCTools) {
         this.fileManager = fileManager;
-        this.crCTools = crCTools;
-        this.tpaManager = tpaManager;
         this.userManager = userManager;
+        this.tpaManager = tpaManager;
+        this.crCTools = crCTools;
     }
 
     @Override
@@ -30,8 +30,8 @@ public class TpaCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("notconsole"));
             return true;
         }
-        if (!sender.hasPermission(fileManager.getPermission("tpa.tpa"))) {
-            sender.sendMessage(fileManager.getMsgPermission("tpa.tpa"));
+        if (!sender.hasPermission(fileManager.getPermission("tpahere.tpahere"))) {
+            sender.sendMessage(fileManager.getMsgPermission("tpahere.tpahere"));
             return true;
         }
         if (args.length != 1) {
@@ -58,16 +58,15 @@ public class TpaCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("tpa.error"));
             return true;
         }
-        tpaManager.addTeleport(targetUser, senderUser, false);
-        player.sendMessage(fileManager.getMsg("tpa.sender").replace("{PLAYER}", target.getName()));
+        tpaManager.addTeleport(targetUser, senderUser, true);
+        player.sendMessage(fileManager.getMsg("tpahere.sender").replace("{PLAYER}", target.getName()));
         Bukkit.getScheduler().scheduleAsyncDelayedTask(crCTools, () -> {
             if (tpaManager.removeTeleport(targetUser, senderUser)) {
                 player.sendMessage(fileManager.getMsg("tpa.barred"));
-                sender.sendMessage(fileManager.getMsg("tpa.barred"));
             }
 
         }, fileManager.getInt("acceptteleport") * 20L);
-        for (final String string : fileManager.getMsgList("tpa.player")) {
+        for (final String string : fileManager.getMsgList("tpahere.player")) {
             target.sendMessage(string.replace("{PLAYER}", player.getName()).replace("{TIME}", String.valueOf(fileManager.getInt("acceptteleport"))));
         }
         return true;

@@ -13,10 +13,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
-    //TODO DODANIE KOMENDY /LORE
-    //TODO DODANIE KOMENDY /RENAME
-    //TODO DODANIE KOMENDY /NICK
-    //TODO DODANIE KOMENDY /TPAHERE
     //TODO DODANIE MOZLIWOSCI DAWANIA PRZEDMIOTU WSZYSTKIM GRACZOM DO /GIVE
     //TODO ZROBIENIE ZARZADZANIA KOLORAMI NICKU
     //TODO ZROBIENIE ZARZADZANIA KOLORAMI CHATU
@@ -29,7 +25,8 @@ public final class CrCTools extends JavaPlugin {
     //TODO DODANIE WYBORU, CZY W MAILACH PRZECZYTANE MA BYC NAPISANE TAK/NIE, CZY TRUE/FALSE
     //TODO DODANIE WYBORU, CZY MAJA BYC ZAPISYWANE DATY LOGOWAN GRACZY
     //TODO ZAPISYWANIE WSZYSTKICH IP, DAT Z JAKICH GRACZ SIE LOGUJE
-    //TODO WYJEBAC ZMIENIANIE WIADOMOSCI Z FILEMANAGER DO TOOLSCOMMAND
+    //TODO WYJEBAC ZMIENIANIE WIADOMOSCI PRZEZ TOOLSCOMMAND Z FILEMANAGER DO TOOLSCOMMAND
+    //TODO DODANIE WYBORU, CZY GRACZ MA BYC TELEPORTOWANY, W KTOREJ TARGET WPISAL /TPACCEPT, CZY OD RAZU DO GRACZA
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;
@@ -79,10 +76,10 @@ public final class CrCTools extends JavaPlugin {
         getCommand("speed").setExecutor(new SpeedCommand(fileManager));
         getCommand("tppos").setExecutor(new TpposCommand(fileManager, decimalFormat));
         getCommand("tpa").setExecutor(new TpaCommand(fileManager, this, tpaManager, userManager));
-        getCommand("tpaccept").setExecutor(new TpacceptCommand(fileManager, this, tpaManager));
+        getCommand("tpaccept").setExecutor(new TpacceptCommand(fileManager, this, tpaManager, userManager));
         getCommand("tptoggle").setExecutor(new TptoggleCommand(fileManager, userManager));
         getCommand("tools").setExecutor(new ToolsCommand(fileManager));
-        getCommand("tpdeny").setExecutor(new TpdenyCommand(fileManager, tpaManager));
+        getCommand("tpdeny").setExecutor(new TpdenyCommand(fileManager, tpaManager, userManager));
         getCommand("msg").setExecutor(new MsgCommand(fileManager, msgManager, userManager));
         getCommand("r").setExecutor(new ReplyCommand(fileManager, msgManager));
         getCommand("trybmsg").setExecutor(new TrybmsgCommand(fileManager, userManager));
@@ -115,6 +112,10 @@ public final class CrCTools extends JavaPlugin {
         getCommand("alert").setExecutor(new AlertCommand(fileManager, this));
         getCommand("tpall").setExecutor(new TpAllCommand(fileManager));
         getCommand("mail").setExecutor(new MailCommand(fileManager, mailManager));
+        getCommand("lore").setExecutor(new LoreCommand(fileManager));
+        getCommand("rename").setExecutor(new RenameCommand(fileManager));
+        getCommand("nick").setExecutor(new NickCommand(fileManager));
+        getCommand("tpahere").setExecutor(new TpahereCommand(fileManager, userManager, tpaManager, this));
     }
 
     private void registerListeners() {

@@ -68,6 +68,14 @@ tpa:
     - "&6&lToolsy &8» &7Aby zaakceptowac teleport, wpisz &6/tpaccept&7."
     - "&6&lToolsy &8» &7Aby odmowic teleportacji, wpisz &6/tpdeny&7."
     - "&6&lToolsy &8» &7Prosba o teleportacje wygasnie za &6{TIME} &7sekund."
+tpahere:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tpahere <gracz>."
+  sender: "&6&lToolsy &8» &7Wyslano prosbe o przeteleportowanie się gracza &6{PLAYER} &7do ciebie."
+  player:
+    - "&6&lToolsy &8» &6{PLAYER} &7prosi, abys przeteleportowal się do Niego."
+    - "&6&lToolsy &8» &7Aby zaakceptowac teleport, wpisz &6/tpaccept&7."
+    - "&6&lToolsy &8» &7Aby odmowic teleportacji, wpisz &6/tpdeny&7."
+    - "&6&lToolsy &8» &7Prosba o teleportacje wygasnie za &6{TIME} &7sekund."
 tpaccept:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tpaccept (gracz)."
   clearlist: "&6&lToolsy &8» &cNie masz prosb o teleportacje!"
@@ -345,3 +353,13 @@ mail:
     - "&6&lToolsy &8» &6/mail sentlist &7- wyswietla wyslane maile"
     - "&6&lToolsy &8» &6/mail list &7- wyswietla nieodczytane maile"
     - "&6&lToolsy &8» &6/mail readlist &7- wyswietla odczytane maile"
+lore:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/lore <tekst>."
+  lore: "&6&lToolsy &8» &7Opis przedmiotu został zmieniony na:"
+rename:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/rename <tekst>."
+  rename: "&6&lToolsy &8» &7Nazwa przedmiotu zostala zmieniona na: &6{NAME}&7."
+nick:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/nick <nick>."
+  nick: "&6&lToolsy &8» &7Twoj nick zostal zmieniony na: &6{NICK}&7."
+  player: "&6&lToolsy &8» &7Nick gracza &6{PLAYER} &7zostal zmieniony na: &6{NICK}&7."

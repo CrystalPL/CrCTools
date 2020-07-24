@@ -13,6 +13,7 @@ public class User {
     private final String lastName;
     private final String ip;
     private final PermissionAttachment permissionAttachment;
+    private final Map<UUID, Boolean> tpaList = new HashMap<>();
     private boolean msg = true;
     private boolean tpa = true;
     private boolean god = false;
@@ -48,7 +49,11 @@ public class User {
         this.uuid = player.getUniqueId();
         this.lastName = player.getName();
         this.ip = player.getAddress().getAddress().getHostAddress();
-        this.permissionAttachment = Bukkit.getPlayer(uuid).addAttachment(crCTools);
+        this.permissionAttachment = player.addAttachment(crCTools);
+    }
+
+    public Map<UUID, Boolean> getTpaList() {
+        return tpaList;
     }
 
     public Map<UUID, List<Mail>> getReceivedMails() {

@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmptyException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.TpaManager;
+import pl.crystalek.crctools.managers.UserManager;
+import pl.crystalek.crctools.model.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,10 +17,12 @@ import java.util.stream.Collectors;
 public class TpdenyCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final TpaManager tpaManager;
+    private final UserManager userManager;
 
-    public TpdenyCommand(final FileManager fileManager, final TpaManager tpaManager) {
+    public TpdenyCommand(final FileManager fileManager, final TpaManager tpaManager, final UserManager userManager) {
         this.fileManager = fileManager;
         this.tpaManager = tpaManager;
+        this.userManager = userManager;
     }
 
     @Override
@@ -28,10 +32,15 @@ public class TpdenyCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("notconsole"));
             return true;
         }
+        if (!sender.hasPermission(fileManager.getPermission("tpdeny.tpdeny"))) {
+            sender.sendMessage(fileManager.getMsgPermission("tpdeny.tpdeny"));
+            return true;
+        }
         final Player player = (Player) sender;
+        final User user = userManager.getUser(player);
         final List<Player> playerToTp;
         try {
-            playerToTp = tpaManager.getPlayerToTp(player.getUniqueId());
+            playerToTp = tpaManager.getPlayerToTp(user).keySet().stream().map(Bukkit::getPlayer).collect(Collectors.toList());
         } catch (TeleportingPlayerListEmptyException exception) {
             sender.sendMessage(fileManager.getMsg("tpaccept.clearlist"));
             return true;
@@ -65,7 +74,7 @@ public class TpdenyCommand implements CommandExecutor {
     }
 
     private void denyPlayer(final Player player, final Player target) {
-        tpaManager.removeTeleport(player.getUniqueId(), target);
+        tpaManager.removeTeleport(userManager.getUser(player), userManager.getUser(target));
         player.sendMessage(fileManager.getMsg("tpdeny.tpdeny").replace("{PLAYER}", target.getName()));
         if (target.isOnline()) {
             target.sendMessage(fileManager.getMsg("tpdeny.tpdenyplayer"));

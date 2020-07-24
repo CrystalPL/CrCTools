@@ -1,51 +1,38 @@
 package pl.crystalek.crctools.managers;
 
-import org.bukkit.entity.Player;
 import pl.crystalek.crctools.exceptions.TeleportingPlayerListEmptyException;
+import pl.crystalek.crctools.model.User;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class TpaManager {
-    private final Map<UUID, List<Player>> tpaList = new HashMap<>();
 
-    public void addTeleport(final UUID teleporting, final Player user) {
-        if (tpaList.containsKey(teleporting)) {
-            tpaList.get(teleporting).add(user);
-        } else {
-            final List<Player> playerList = new ArrayList<>(1);
-            playerList.add(user);
-            tpaList.put(teleporting, playerList);
-        }
+    public void addTeleport(final User teleportingPlayer, final User playerToTeleport, final boolean option) {
+        teleportingPlayer.getTpaList().put(playerToTeleport.getUuid(), option);
     }
 
-    public boolean removeTeleport(final UUID teleporting, final Player user) {
-        if (checkTeleport(teleporting, user)) {
-            return tpaList.get(teleporting).remove(user);
+    public boolean removeTeleport(final User teleportingPlayer, final User playerToTeleport) {
+        if (checkTeleport(teleportingPlayer, playerToTeleport)) {
+            teleportingPlayer.getTpaList().remove(playerToTeleport.getUuid());
+            return true;
         } else {
             return false;
         }
     }
 
-    public boolean checkTeleport(final UUID teleporting, final Player user) {
-        if (tpaList.get(teleporting) == null) {
-            return false;
-        }
-        if (tpaList.get(teleporting).isEmpty()) {
-            tpaList.remove(teleporting);
-            return false;
-        } else {
-            return tpaList.get(teleporting).contains(user);
-        }
+    public boolean checkTeleport(final User teleportingPlayer, final User playerToTeleport) {
+        final boolean b = teleportingPlayer.getTpaList().get(playerToTeleport.getUuid()) != null;
+        return b;
     }
 
-    public List<Player> getPlayerToTp(final UUID teleporting) throws TeleportingPlayerListEmptyException {
-        if (tpaList.get(teleporting) == null) {
-            throw new TeleportingPlayerListEmptyException("no such player");
-        } else if (tpaList.get(teleporting).isEmpty()) {
-            tpaList.remove(teleporting);
+    public Map<UUID, Boolean> getPlayerToTp(final User teleporting) throws TeleportingPlayerListEmptyException {
+        final Map<UUID, Boolean> tpaList = teleporting.getTpaList();
+        if (tpaList.isEmpty()) {
             throw new TeleportingPlayerListEmptyException("no such player");
         } else {
-            return new ArrayList<>(tpaList.get(teleporting));
+            return new HashMap<>(tpaList);
         }
     }
 }
