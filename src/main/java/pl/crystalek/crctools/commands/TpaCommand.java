@@ -63,7 +63,7 @@ public class TpaCommand implements CommandExecutor {
         Bukkit.getScheduler().scheduleAsyncDelayedTask(crCTools, () -> {
             if (tpaManager.removeTeleport(targetUser, senderUser)) {
                 player.sendMessage(fileManager.getMsg("tpa.barred"));
-                sender.sendMessage(fileManager.getMsg("tpa.barred"));
+                target.sendMessage(fileManager.getMsg("tpa.barred"));
             }
 
         }, fileManager.getInt("acceptteleport") * 20L);

@@ -116,6 +116,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("rename").setExecutor(new RenameCommand(fileManager));
         getCommand("nick").setExecutor(new NickCommand(fileManager));
         getCommand("tpahere").setExecutor(new TpahereCommand(fileManager, userManager, tpaManager, this));
+        getCommand("handgive").setExecutor(new HandGiveCommand(fileManager));
     }
 
     private void registerListeners() {

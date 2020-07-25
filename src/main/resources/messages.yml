@@ -130,11 +130,14 @@ s:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/s <gracz>."
   success: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zostal do ciebie przeteleportowany."
 give:
-  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/give <gracz> <item> <ilosc>."
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/give <gracz/*> <item> <ilosc>."
   fulleq: "&6&lToolsy &8» &cEkwipunek tego gracza jest pełny!"
   give: "&6&lToolsy &8» &7Otrzymales &6{ITEM}&7:&6{DATA} &7w ilosci &6{AMOUNT}&7."
   player: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7otrzymal &6{ITEM}&7:&6{DATA} &7w ilosci &6{AMOUNT}&7."
+  all: "&6&lToolsy &8» &6{PLAYERGIVE} &7na &6{PLAYERTOGIVE} &7graczy otrzymalo przedmioty."
+  numberoutofrange: "&6&lToolsy &8» &cPodaj liczbe z zakresu 1 - 2304!"
 item:
+  fulleq: "&6&lToolsy &8» &cTwoj ekwipunek jest pelny!"
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/i <item> <ilosc>."
 ip:
   ip: "&6&lToolsy &8» &7Twoje ip: &6{IP}&7."
@@ -363,3 +366,5 @@ nick:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/nick <nick>."
   nick: "&6&lToolsy &8» &7Twoj nick zostal zmieniony na: &6{NICK}&7."
   player: "&6&lToolsy &8» &7Nick gracza &6{PLAYER} &7zostal zmieniony na: &6{NICK}&7."
+handgive:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/hadngive <gracz/*> <ilosc>"

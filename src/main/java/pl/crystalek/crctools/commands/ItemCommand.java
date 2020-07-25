@@ -29,27 +29,33 @@ public class ItemCommand implements CommandExecutor {
             player.sendMessage(fileManager.getMsgPermission("item.item"));
             return true;
         }
-        if (args.length != 2) {
+        short amountItem;
+        if (args.length == 1) {
+            amountItem = 64;
+        } else if (args.length == 2) {
+            if (!NumberUtil.isInt(args[1])) {
+                player.sendMessage(fileManager.getMsg("speed.errornumber"));
+                return true;
+            }
+            amountItem = Short.parseShort(args[1]);
+        } else {
             player.sendMessage(fileManager.getMsg("item.usage"));
-            return true;
-        }
-        if (!NumberUtil.isInt(args[1])) {
-            player.sendMessage(fileManager.getMsg("speed.errornumber"));
             return true;
         }
         final PlayerInventory inventory = player.getInventory();
         final ItemStack material;
         try {
-            material = MaterialUtil.getMaterial(args, 0, inventory);
-        } catch (NullPointerException | ArrayIndexOutOfBoundsException | IllegalArgumentException exception) {
+            material = MaterialUtil.getMaterial(args, 0, inventory, amountItem);
+        } catch (final NullPointerException | ArrayIndexOutOfBoundsException | IllegalArgumentException exception) {
+            exception.printStackTrace();
             player.sendMessage(fileManager.getMsg("item.usage"));
             return true;
         } catch (NotDetectedItemException exception) {
-            player.sendMessage(fileManager.getMsg("give.fulleq"));
+            player.sendMessage(fileManager.getMsg("item.fulleq"));
             return true;
         }
         inventory.addItem(material);
-        player.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", args[1]).replace("{DATA}", String.valueOf(material.getData().getData())));
+        player.sendMessage(fileManager.getMsg("give.give").replace("{ITEM}", material.getType().name()).replace("{AMOUNT}", String.valueOf(amountItem)).replace("{DATA}", String.valueOf(material.getData().getData())));
         return true;
     }
 }
