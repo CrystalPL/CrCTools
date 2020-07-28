@@ -368,3 +368,12 @@ nick:
   player: "&6&lToolsy &8» &7Nick gracza &6{PLAYER} &7zostal zmieniony na: &6{NICK}&7."
 handgive:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/hadngive <gracz/*> <ilosc>"
+clear:
+  clear: "&6&lToolsy &8» &7Twoj ekwipunek zostal wyczyszczony!"
+  player: "&6&lToolsy &8» &7Ekwipunek gracza &6{PLAYER} &7zostal wyczyszczony."
+endersee:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/endersee <gracz>."
+  title: "Inventory: {PLAYER}"
+invsee:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/invsee <gracz>."
+  title: "Ender chest: {PLAYER}"

@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class UserManager {
     private final CrCTools crCTools;
-    private final HashMap<UUID, User> users = new HashMap<>();
+    private final Map<UUID, User> users = new HashMap<>();
 
     public UserManager(final CrCTools crCTools) {
         this.crCTools = crCTools;

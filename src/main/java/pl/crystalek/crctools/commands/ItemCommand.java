@@ -47,7 +47,6 @@ public class ItemCommand implements CommandExecutor {
         try {
             material = MaterialUtil.getMaterial(args, 0, inventory, amountItem);
         } catch (final NullPointerException | ArrayIndexOutOfBoundsException | IllegalArgumentException exception) {
-            exception.printStackTrace();
             player.sendMessage(fileManager.getMsg("item.usage"));
             return true;
         } catch (NotDetectedItemException exception) {

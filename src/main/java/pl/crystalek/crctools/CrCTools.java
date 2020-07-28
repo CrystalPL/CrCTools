@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
-    //TODO DODANIE MOZLIWOSCI DAWANIA PRZEDMIOTU WSZYSTKIM GRACZOM DO /GIVE
     //TODO ZROBIENIE ZARZADZANIA KOLORAMI NICKU
     //TODO ZROBIENIE ZARZADZANIA KOLORAMI CHATU
     //TODO ZROBIENIE MOZLIWOSCI TELEPORTOWANIA DO GRACZA OFFLINE
@@ -27,6 +26,7 @@ public final class CrCTools extends JavaPlugin {
     //TODO ZAPISYWANIE WSZYSTKICH IP, DAT Z JAKICH GRACZ SIE LOGUJE
     //TODO WYJEBAC ZMIENIANIE WIADOMOSCI PRZEZ TOOLSCOMMAND Z FILEMANAGER DO TOOLSCOMMAND
     //TODO DODANIE WYBORU, CZY GRACZ MA BYC TELEPORTOWANY, W KTOREJ TARGET WPISAL /TPACCEPT, CZY OD RAZU DO GRACZA
+    //TODO DODANIE WYBORU KOLOROW, CZASU I INNYCH PIERDOL NA ALERCIE
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;
@@ -117,6 +117,9 @@ public final class CrCTools extends JavaPlugin {
         getCommand("nick").setExecutor(new NickCommand(fileManager));
         getCommand("tpahere").setExecutor(new TpahereCommand(fileManager, userManager, tpaManager, this));
         getCommand("handgive").setExecutor(new HandGiveCommand(fileManager));
+        getCommand("clear").setExecutor(new ClearCommand(fileManager));
+        getCommand("endersee").setExecutor(new EnderseeCommand(fileManager));
+        getCommand("invsee").setExecutor(new InvseeCommand(fileManager));
     }
 
     private void registerListeners() {

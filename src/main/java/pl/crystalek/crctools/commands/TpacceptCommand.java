@@ -129,6 +129,6 @@ public class TpacceptCommand implements CommandExecutor {
                     cancel();
                 }
             }
-        }.runTaskTimer(crCTools, 0L, 20L);
+        }.runTaskTimerAsynchronously(crCTools, 0L, 20L);
     }
 }

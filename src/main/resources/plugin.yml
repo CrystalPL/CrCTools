@@ -62,3 +62,8 @@ commands:
   nick:
   tpahere:
   handgive:
+  clear:
+    aliases: ci
+  endersee:
+  invsee:
+    aliases: [inv, inventory]

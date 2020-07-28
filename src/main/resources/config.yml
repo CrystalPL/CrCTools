@@ -118,6 +118,13 @@ permission:
     tpdeny: "CrC.tools.tpdeny"
   tpaccept:
     tpaccept: "CrC.tools.tpaccept"
+  clear:
+    clear: "CrC.tools.clear"
+    player: "CrC.tools.clear.player"
+  endersee:
+    endersee: "CrC.tools.endersee"
+  invsee:
+    invsee: "CrC.tools.invsee"
 
 groups:
   DZBAN:

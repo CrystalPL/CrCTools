@@ -23,8 +23,7 @@ public class TpaManager {
     }
 
     public boolean checkTeleport(final User teleportingPlayer, final User playerToTeleport) {
-        final boolean b = teleportingPlayer.getTpaList().get(playerToTeleport.getUuid()) != null;
-        return b;
+        return teleportingPlayer.getTpaList().get(playerToTeleport.getUuid()) != null;
     }
 
     public Map<UUID, Boolean> getPlayerToTp(final User teleporting) throws TeleportingPlayerListEmptyException {
