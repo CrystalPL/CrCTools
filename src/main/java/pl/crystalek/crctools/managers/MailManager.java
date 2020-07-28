@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-public class MailManager {
+public final class MailManager {
     private final FileManager fileManager;
     private final UserManager userManager;
 

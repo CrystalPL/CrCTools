@@ -12,7 +12,7 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.MaterialUtil;
 import pl.crystalek.crctools.utils.NumberUtil;
 
-public class GiveCommand implements CommandExecutor {
+public final class GiveCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public GiveCommand(final FileManager fileManager) {

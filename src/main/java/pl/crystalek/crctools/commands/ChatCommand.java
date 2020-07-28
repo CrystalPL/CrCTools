@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class ChatCommand implements CommandExecutor {
+public final class ChatCommand implements CommandExecutor {
     private final FileManager fileManager;
     public static boolean CHAT = true;
 

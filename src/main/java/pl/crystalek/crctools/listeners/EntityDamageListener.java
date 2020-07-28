@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import pl.crystalek.crctools.managers.UserManager;
 
-public class EntityDamageListener implements Listener {
+public final class EntityDamageListener implements Listener {
     private final UserManager userManager;
 
     public EntityDamageListener(final UserManager userManager) {

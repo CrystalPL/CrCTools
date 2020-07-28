@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class SuicideCommand implements CommandExecutor {
+public final class SuicideCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public SuicideCommand(final FileManager fileManager) {

@@ -5,7 +5,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.weather.ThunderChangeEvent;
 
-public class ThunderChangeListener implements Listener {
+public final class ThunderChangeListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onThunderChange(final ThunderChangeEvent event) {

@@ -13,7 +13,7 @@ import pl.crystalek.crctools.utils.ChatUtil;
 import java.util.Arrays;
 import java.util.List;
 
-public class LoreCommand implements CommandExecutor {
+public final class LoreCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public LoreCommand(final FileManager fileManager) {

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class KillCommand implements CommandExecutor {
+public final class KillCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public KillCommand(final FileManager fileManager) {

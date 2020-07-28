@@ -12,7 +12,7 @@ import pl.crystalek.crctools.managers.UserManager;
 
 import java.util.List;
 
-public class MsgCommand implements CommandExecutor {
+public final class MsgCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final MsgManager msgManager;
     private final UserManager userManager;

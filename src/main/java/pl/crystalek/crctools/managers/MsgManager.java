@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MsgManager {
-    private Map<Player, Player> msg = new HashMap<>();
-    private List<Player> socialspy = new ArrayList<>();
+public final class MsgManager {
+    private final Map<Player, Player> msg = new HashMap<>();
+    private final List<Player> socialspy = new ArrayList<>();
 
     public Player getMsg(final Player player) {
         return msg.get(player);

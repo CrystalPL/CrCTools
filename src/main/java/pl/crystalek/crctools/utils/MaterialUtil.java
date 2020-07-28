@@ -7,7 +7,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import pl.crystalek.crctools.exceptions.NotDetectedItemException;
 
-public class MaterialUtil {
+public final class MaterialUtil {
     private final static IDLibrary idLibrary = (IDLibrary) Bukkit.getPluginManager().getPlugin("ID-Library");
 
     public static ItemStack getMaterial(final String[] args, int argument, final Inventory inventory, final Short amountItemArgument) throws NotDetectedItemException {

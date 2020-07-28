@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class PermissionCommand implements CommandExecutor {
+public final class PermissionCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final PermissionManager permissionManager;
     private final UserManager userManager;

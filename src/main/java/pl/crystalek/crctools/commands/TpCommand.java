@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class TpCommand implements CommandExecutor {
+public final class TpCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public TpCommand(final FileManager fileManager) {

@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.NumberUtil;
 
-public class SpeedCommand implements CommandExecutor {
+public final class SpeedCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public SpeedCommand(final FileManager fileManager) {

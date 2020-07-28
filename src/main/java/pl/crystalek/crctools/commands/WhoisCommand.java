@@ -15,7 +15,7 @@ import pl.crystalek.crctools.model.User;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class WhoisCommand implements CommandExecutor {
+public final class WhoisCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
     private final DecimalFormat decimalFormat;

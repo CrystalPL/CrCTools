@@ -14,7 +14,7 @@ import pl.crystalek.crctools.model.User;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TpdenyCommand implements CommandExecutor {
+public final class TpdenyCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final TpaManager tpaManager;
     private final UserManager userManager;

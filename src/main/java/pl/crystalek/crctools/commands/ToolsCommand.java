@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToolsCommand implements CommandExecutor {
+public final class ToolsCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public ToolsCommand(final FileManager fileManager) {

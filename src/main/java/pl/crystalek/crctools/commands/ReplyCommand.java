@@ -10,7 +10,7 @@ import pl.crystalek.crctools.managers.MsgManager;
 
 import java.util.List;
 
-public class ReplyCommand implements CommandExecutor {
+public final class ReplyCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final MsgManager msgManager;
 

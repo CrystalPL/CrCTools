@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class WarpinfoCommand implements CommandExecutor {
+public final class WarpinfoCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final WarpManager warpManager;
     private final DecimalFormat decimalFormat;

@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.NumberUtil;
 
-public class GamemodeCommand implements CommandExecutor {
+public final class GamemodeCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public GamemodeCommand(final FileManager fileManager) {

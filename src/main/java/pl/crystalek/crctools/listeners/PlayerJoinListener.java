@@ -14,7 +14,7 @@ import pl.crystalek.crctools.managers.UserManager;
 
 import java.io.IOException;
 
-public class PlayerJoinListener implements Listener {
+public final class PlayerJoinListener implements Listener {
     private final FileManager fileManager;
     private final UserManager userManager;
     private final PermissionManager permissionManager;

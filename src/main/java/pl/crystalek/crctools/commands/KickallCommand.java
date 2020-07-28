@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class KickallCommand implements CommandExecutor {
+public final class KickallCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public KickallCommand(final FileManager fileManager) {

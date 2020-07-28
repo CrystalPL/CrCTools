@@ -1,6 +1,6 @@
 package pl.crystalek.crctools.utils;
 
-public class NumberUtil {
+public final class NumberUtil {
 
     public static boolean isInt(final String number) {
         try {

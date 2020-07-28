@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.ChatUtil;
 
-public class NickCommand implements CommandExecutor {
+public final class NickCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public NickCommand(final FileManager fileManager) {

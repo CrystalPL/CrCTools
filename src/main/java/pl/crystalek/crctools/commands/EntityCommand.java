@@ -9,7 +9,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class EntityCommand implements CommandExecutor {
+public final class EntityCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public EntityCommand(final FileManager fileManager) {

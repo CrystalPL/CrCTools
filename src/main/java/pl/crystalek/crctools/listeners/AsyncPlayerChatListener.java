@@ -14,7 +14,7 @@ import pl.crystalek.crctools.utils.ChatUtil;
 import java.util.Comparator;
 import java.util.List;
 
-public class AsyncPlayerChatListener implements Listener {
+public final class AsyncPlayerChatListener implements Listener {
     private final FileManager fileManager;
     private final PermissionManager permissionManager;
     private final UserManager userManager;

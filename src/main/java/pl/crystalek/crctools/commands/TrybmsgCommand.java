@@ -5,10 +5,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
-import pl.crystalek.crctools.model.User;
 import pl.crystalek.crctools.managers.UserManager;
+import pl.crystalek.crctools.model.User;
 
-public class TrybmsgCommand implements CommandExecutor {
+public final class TrybmsgCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
 

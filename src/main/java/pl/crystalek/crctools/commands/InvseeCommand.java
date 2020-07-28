@@ -10,7 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.PlayerInventory;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class InvseeCommand implements CommandExecutor {
+public final class InvseeCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public InvseeCommand(final FileManager fileManager) {

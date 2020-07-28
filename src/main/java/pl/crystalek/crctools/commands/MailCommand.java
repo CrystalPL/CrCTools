@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class MailCommand implements CommandExecutor {
+public final class MailCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final MailManager mailManager;
 

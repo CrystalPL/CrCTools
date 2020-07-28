@@ -16,7 +16,7 @@ import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class FileManager {
+public final class FileManager {
     private final CrCTools crCTools;
     private final UserManager userManager;
     private final File messagesFile;

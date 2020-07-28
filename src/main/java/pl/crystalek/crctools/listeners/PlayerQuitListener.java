@@ -9,7 +9,7 @@ import pl.crystalek.crctools.managers.UserManager;
 
 import java.io.IOException;
 
-public class PlayerQuitListener implements Listener {
+public final class PlayerQuitListener implements Listener {
     private final FileManager fileManager;
     private final UserManager userManager;
 

@@ -13,7 +13,7 @@ import pl.crystalek.crctools.model.User;
 import java.io.File;
 import java.io.IOException;
 
-public class DelhomeCommand implements CommandExecutor {
+public final class DelhomeCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
 

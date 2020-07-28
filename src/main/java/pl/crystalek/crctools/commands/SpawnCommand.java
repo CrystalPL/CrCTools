@@ -11,7 +11,7 @@ import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.TeleportUtil;
 
-public class SpawnCommand implements CommandExecutor {
+public final class SpawnCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final CrCTools crCTools;
 

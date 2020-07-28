@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.WarpManager;
 
-public class DelwarpCommand implements CommandExecutor {
+public final class DelwarpCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final WarpManager warpManager;
 

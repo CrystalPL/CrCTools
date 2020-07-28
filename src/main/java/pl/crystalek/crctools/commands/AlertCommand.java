@@ -13,7 +13,7 @@ import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.ChatUtil;
 
-public class AlertCommand implements CommandExecutor {
+public final class AlertCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final CrCTools crCTools;
 

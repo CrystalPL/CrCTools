@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class RepairCommand implements CommandExecutor {
+public final class RepairCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     final private Material[] repairableMaterials = new Material[]{

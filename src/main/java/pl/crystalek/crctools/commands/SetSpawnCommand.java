@@ -11,7 +11,7 @@ import pl.crystalek.crctools.managers.FileManager;
 
 import java.text.DecimalFormat;
 
-public class SetSpawnCommand implements CommandExecutor {
+public final class SetSpawnCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final DecimalFormat decimalFormat;
     private final CrCTools crCTools;

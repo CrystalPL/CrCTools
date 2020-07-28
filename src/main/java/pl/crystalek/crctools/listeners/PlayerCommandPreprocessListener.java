@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class PlayerCommandPreprocessListener implements Listener {
+public final class PlayerCommandPreprocessListener implements Listener {
     private final FileManager fileManager;
 
     public PlayerCommandPreprocessListener(final FileManager fileManager) {

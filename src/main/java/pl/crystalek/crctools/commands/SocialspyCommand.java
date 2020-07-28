@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.MsgManager;
 
-public class SocialspyCommand implements CommandExecutor {
+public final class SocialspyCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final MsgManager msgManager;
 

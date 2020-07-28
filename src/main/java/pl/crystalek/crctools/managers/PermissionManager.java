@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class PermissionManager {
+public final class PermissionManager {
     private final FileManager fileManager;
     private final CrCTools crCTools;
     private final UserManager userManager;

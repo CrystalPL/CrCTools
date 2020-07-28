@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class HomeCommand implements CommandExecutor {
+public final class HomeCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
     private final CrCTools crCTools;

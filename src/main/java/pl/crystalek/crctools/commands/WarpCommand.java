@@ -9,7 +9,7 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.WarpManager;
 import pl.crystalek.crctools.utils.TeleportUtil;
 
-public class WarpCommand implements CommandExecutor {
+public final class WarpCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final WarpManager warpManager;
     private final CrCTools crCTools;

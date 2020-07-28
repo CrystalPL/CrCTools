@@ -11,7 +11,7 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.MaterialUtil;
 import pl.crystalek.crctools.utils.NumberUtil;
 
-public class ItemCommand implements CommandExecutor {
+public final class ItemCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public ItemCommand(final FileManager fileManager) {

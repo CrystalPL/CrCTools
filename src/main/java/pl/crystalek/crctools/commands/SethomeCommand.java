@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-public class SethomeCommand implements CommandExecutor {
+public final class SethomeCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
     private final DecimalFormat decimalFormat;

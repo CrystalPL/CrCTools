@@ -6,7 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import pl.crystalek.crctools.CrCTools;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class TeleportUtil {
+public final class TeleportUtil {
 
     public static void teleportTimer(final Player player, final Location locationToTp, final FileManager fileManager, final CrCTools crCTools) {
         new BukkitRunnable() {

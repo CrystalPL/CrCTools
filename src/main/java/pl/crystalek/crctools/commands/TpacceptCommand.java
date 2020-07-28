@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class TpacceptCommand implements CommandExecutor {
+public final class TpacceptCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final CrCTools crCTools;
     private final TpaManager tpaManager;

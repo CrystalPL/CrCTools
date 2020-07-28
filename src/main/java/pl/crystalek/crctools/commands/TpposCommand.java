@@ -12,7 +12,7 @@ import pl.crystalek.crctools.managers.FileManager;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class TpposCommand implements CommandExecutor {
+public final class TpposCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final DecimalFormat decimalFormat;
 

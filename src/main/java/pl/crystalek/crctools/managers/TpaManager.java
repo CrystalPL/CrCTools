@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class TpaManager {
+public final class TpaManager {
 
     public void addTeleport(final User teleportingPlayer, final User playerToTeleport, final boolean option) {
         teleportingPlayer.getTpaList().put(playerToTeleport.getUuid(), option);

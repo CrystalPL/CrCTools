@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class WarpManager {
+public final class WarpManager {
     private final CrCTools crCTools;
     private final DecimalFormat decimalFormat;
     private final Map<String, Warp> warpList = new HashMap<>();

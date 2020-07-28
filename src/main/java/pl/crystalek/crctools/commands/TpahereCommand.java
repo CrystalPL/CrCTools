@@ -11,7 +11,7 @@ import pl.crystalek.crctools.managers.TpaManager;
 import pl.crystalek.crctools.managers.UserManager;
 import pl.crystalek.crctools.model.User;
 
-public class TpahereCommand implements CommandExecutor {
+public final class TpahereCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
     private final TpaManager tpaManager;

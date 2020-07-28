@@ -6,7 +6,7 @@ import pl.crystalek.crctools.managers.FileManager;
 
 import java.io.IOException;
 
-public class AutoSave {
+public final class AutoSave {
 
     public AutoSave(final CrCTools crCTools, final FileManager fileManager) {
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(crCTools, () -> {

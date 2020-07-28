@@ -8,7 +8,7 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.UserManager;
 import pl.crystalek.crctools.model.User;
 
-public class TptoggleCommand implements CommandExecutor {
+public final class TptoggleCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final UserManager userManager;
 

@@ -7,7 +7,7 @@ import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.util.List;
 
-public class AutoMessage {
+public final class AutoMessage {
     int i;
 
     public AutoMessage(final CrCTools crCTools, final FileManager fileManager) {

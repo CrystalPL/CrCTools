@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatUtil {
+public final class ChatUtil {
 
     public static String fixColor(final String string) {
         return ChatColor.translateAlternateColorCodes('&', string);

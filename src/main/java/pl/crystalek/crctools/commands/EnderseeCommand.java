@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class EnderseeCommand implements CommandExecutor {
+public final class EnderseeCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public EnderseeCommand(final FileManager fileManager) {

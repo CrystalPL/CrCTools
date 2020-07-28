@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class UserManager {
+public final class UserManager {
     private final CrCTools crCTools;
     private final Map<UUID, User> users = new HashMap<>();
 

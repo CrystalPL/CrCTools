@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class HealCommand implements CommandExecutor {
+public final class HealCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public HealCommand(final FileManager fileManager) {

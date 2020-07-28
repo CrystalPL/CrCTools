@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 
-public class FeedCommand implements CommandExecutor {
+public final class FeedCommand implements CommandExecutor {
     private final FileManager fileManager;
 
     public FeedCommand(final FileManager fileManager) {

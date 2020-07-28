@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.WarpManager;
 
-public class SetwarpCommand implements CommandExecutor {
+public final class SetwarpCommand implements CommandExecutor {
     private final FileManager fileManager;
     private final WarpManager warpManager;
 
