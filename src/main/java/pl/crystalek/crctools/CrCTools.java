@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
-    //TODO FORMAT DO POPRAWY XDD
     //TODO ZROBIENIE ZARZADZANIA KOLORAMI CHATU
     //TODO ZROBIENIE MOZLIWOSCI TELEPORTOWANIA DO GRACZA OFFLINE
     //TODO FORMAT CHATU
