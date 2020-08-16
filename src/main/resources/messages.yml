@@ -153,7 +153,8 @@ god:
 whois:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/whois <gracz>."
   whois:
-    - "&6&lToolsy &8» &6Nick: &7{PLAYER}"
+    - "&6&lToolsy &8» &6Oryginalny nick: &7{PLAYER}"
+    - "&6&lToolsy &8» &6Wyswietlany nick: &7{DISPLAYNAME}"
     - "&6&lToolsy &8» &6Ban: &7{BAN}"
     - "&6&lToolsy &8» &6Poziom: &7{LEVEL}"
     - "&6&lToolsy &8» &6Latanie: &7{FLY}"
@@ -283,6 +284,8 @@ permissions:
   removepermissionsender: "&6&lToolsy &8» &7Uprawnienie &6{PERMISSION} &7zostalo usuniete graczowi &6{PLAYER}&7."
   setpriority: "&6&lToolsy &8» &7Priorytet grupy &6{GROUP} &7zostal ustawiony na: &6{PRIORITY}&7."
   setprefix: "&6&lToolsy &8» &7Prefix grupy &6{GROUP} &7zostal ustawiony na: &6{PREFIX}&7."
+  setformat: "&6&lToolsy &8» &7Format grupy &6{GROUP} &7zostal ustawiony na &6{FORMAT}&7."
+  setdefaultgroup: "&6&lToolsy &8» &7Domyslna grupa uprawnien zostala ustawiona na: &6{GROUP}&7."
   playerinfo:
     - "&6&lToolsy &8» &7Informacje o graczu: &6{PLAYER}&7."
     - "&6&lToolsy &8» &7Grupy uprawnien: &6{GROUPS}&7."
@@ -308,6 +311,8 @@ permissions:
     - "&6&lToolsy &8» &6/cp group priority <grupa> <priorytet> &7- ustwia priorytet wyswietlania grupy"
     - "&6&lToolsy &8» &6/cp group prefix <grupa> <prefix> &7- ustwia prefix wyswietlania grupy"
     - "&6&lToolsy &8» &6/cp group clear <gracz> &7- czysci grupy lub permisje gracza"
+    - "&6&lToolsy &8» &6/cp group format <grupa> <format> &7- ustawia format wyswietlania chatu"
+    - "&6&lToolsy &8» &6/cp group default <grupa> &7- ustawia domyslna grupe uprawnien"
     - "&6&lToolsy &8» &6/cp info <gracz> &7- wyswietla informacje o grupach i uprawnieniach gracza"
     - "&6&lToolsy &8» &6/cp clear <gracz> &7- czysci grupy lub permisje gracza"
     - "&6&lToolsy &8» &6/cp add <gracz> <permisja> &7- dodaje uprawnienie graczowi"
@@ -363,7 +368,7 @@ rename:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/rename <tekst>."
   rename: "&6&lToolsy &8» &7Nazwa przedmiotu zostala zmieniona na: &6{NAME}&7."
 nick:
-  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/nick <nick>."
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/nick (nick, kolor) (kolor)."
   nick: "&6&lToolsy &8» &7Twoj nick zostal zmieniony na: &6{NICK}&7."
   player: "&6&lToolsy &8» &7Nick gracza &6{PLAYER} &7zostal zmieniony na: &6{NICK}&7."
 handgive:
@@ -377,3 +382,14 @@ endersee:
 invsee:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/invsee <gracz>."
   title: "Ender chest: {PLAYER}"
+color:
+  error: "&6&lToolsy &8» &cTo nie jest kolor!"
+  nickchange: "&6&lToolsy &8» &7Twoj kolor nicku zostal zmieniony na {COLOR}&7."
+  nickchangeplayer: "&6&lToolsy &8» &7Kolor nicku gracza &6{PLAYER} &7zostal zmieniony na {COLOR}&7."
+  messagechange: "&6&lToolsy &8» &7Twoj kolor pisania zostal zmieniony na {COLOR}example&7."
+  messagechangeplayer: "&6&lToolsy &8» &7Kolor pisania gracza &6{PLAYER} &7zostal zmieniony na {COLOR}example&7."
+  usage:
+    - "&6&lToolsy &8» &6/color nick <gracz> <kolor> &7- ustawia kolor nicku gracza"
+    - "&6&lToolsy &8» &6/color nick <kolor> &7- ustawia kolor nicku"
+    - "&6&lToolsy &8» &6/color message <gracz> <kolor> &7- ustawia kolor pisania gracza"
+    - "&6&lToolsy &8» &6/color message <kolor> &7- ustawia kolor pisania"

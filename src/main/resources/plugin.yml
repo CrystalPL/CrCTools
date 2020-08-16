@@ -67,3 +67,4 @@ commands:
   endersee:
   invsee:
     aliases: [inv, inventory]
+  color:

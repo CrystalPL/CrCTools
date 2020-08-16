@@ -1,5 +1,6 @@
 package pl.crystalek.crctools.commands;
 
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -43,6 +44,18 @@ public final class PermissionCommand implements CommandExecutor {
             return true;
         }
         if (args[0].equalsIgnoreCase("group")) {
+            if (args[1].equalsIgnoreCase("format")) {
+                final String join = StringUtils.join(args, ' ', 3, args.length);
+                if (args.length >= 4) {
+                    try {
+                        permissionManager.setFormat(args[2], join);
+                        sender.sendMessage(fileManager.getMsg("permissions.setformat").replace("{GROUP}", args[2]).replace("{FORMAT}", join));
+                    } catch (final GroupExistException exception) {
+                        sender.sendMessage(fileManager.getMsg("permissions.groupdoesntexist"));
+                    }
+                    return true;
+                }
+            }
             if (args.length == 3) {
                 if (args[1].equalsIgnoreCase("delete")) {
                     try {
@@ -72,6 +85,7 @@ public final class PermissionCommand implements CommandExecutor {
                                 .replace("{DATE}", group.getCreateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                                 .replace("{PREFIX}", group.getPrefix())
                                 .replace("{PRIORITY}", String.valueOf(group.getPriority()))
+                                .replace("{FORMAT}", group.getFormat())
                                 .replace("{MEMBERS}", membersList));
                     }
                 } else if (args[1].equalsIgnoreCase("permissions")) {
@@ -94,6 +108,13 @@ public final class PermissionCommand implements CommandExecutor {
                     } catch (final IOException | GroupHasException | GroupExistException exception) {
                         exception.printStackTrace();
                     }
+                } else if (args[1].equalsIgnoreCase("default")) {
+                    try {
+                        permissionManager.setDefaultGroup(args[2]);
+                        sender.sendMessage(fileManager.getMsg("permissions.setdefaultgroup").replace("{GROUP}", args[2]));
+                    } catch (final GroupExistException exception) {
+                        sender.sendMessage(fileManager.getMsg("permissions.groupdoesntexist"));
+                    }
                 } else {
                     printHelp(sender);
                 }
@@ -112,7 +133,7 @@ public final class PermissionCommand implements CommandExecutor {
                 }
                 return true;
             }
-            if (args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("clone") || args[1].equalsIgnoreCase("create") || args[1].equalsIgnoreCase("priority") || args[1].equalsIgnoreCase("prefix")) {
+            if (args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("clone") || args[1].equalsIgnoreCase("create") || args[1].equalsIgnoreCase("priority") || args[1].equalsIgnoreCase("prefix") || args[1].equalsIgnoreCase("default")) {
                 if (args.length != 4) {
                     printHelp(sender);
                     return true;

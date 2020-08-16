@@ -3,7 +3,9 @@ teleporttime: 5
 autosave: 300
 automessagetime: 60
 alerttime: 10
-defaultgroup: "DZBAN"
+defaultgroup: "Gracz"
+defaultnickcolor: "&6"
+defaultmessagecolor: "&7"
 automessage:
   - "&1&lTEST 5G MOC 500%"
   - "&2&lTEST 5G MOC 500%"
@@ -20,124 +22,25 @@ automessage:
   - "&c&lTEST 5G MOC 500%"
 spawn:
   world: world
-  x: '95.3'
-  y: '77'
-  z: '418.3'
-permission:
-  feed:
-    feed: "CrC.tools.feed"
-    player: "CrC.tools.feed.player"
-  heal:
-    heal: "CrC.tools.heal"
-    player: "CrC.tools.heal.player"
-  tppos:
-    tppos: "CrC.tools.tppos"
-    player: "CrC.tools.tppos.player"
-  exp:
-    exp: "CrC.tools.exp"
-    player: "CrC.tools.exp.player"
-  fly:
-    fly: "CrC.tools.fly"
-    player: "CrC.tools.fly.player"
-  speed:
-    speed: "CrC.tools.speed"
-    player: "CrC.tools.speed.player"
-  tools:
-    tools: "CrC.tools.tools"
-  socialspy:
-    socialspy: "CrC.tools.socialspy"
-  gamemode:
-    gamemode: "CrC.tools.gamemode"
-    player: "CrC.tools.gamemode.player"
-  repair:
-    repair: "CrC.tools.repair"
-  tp:
-    tp: "CrC.tools.tp"
-    player: "CrC.tools.tp.player"
-  s:
-    s: "CrC.tools.s"
-  give:
-    give: "CrC.tools.give"
-  item:
-    item: "CrC.tools.item"
-  ip:
-    player: "CrC.tools.ip"
-  kick:
-    all: "CrC.tools.kick.all"
-    player: "CrC.tools.kick.player"
-    bypass: "CrC.tools.kick.bypass"
-  god:
-    god: "CrC.tools.god"
-    player: "CrC.tools.god.player"
-  whois:
-    whois: "CrC.tools.whois"
-  kill:
-    kill: "CrC.tools.kill"
-  warp:
-    setwarp: "CrC.tools.warp.set"
-    delwarp: "CrC.tools.warp.del"
-    info: "CrC.tools.warp.info"
-  sethome:
-    player: "CrC.tools.sethome.player"
-  delhome:
-    player: "CrC.tools.delhome.player"
-  home:
-    player: "CrC.tools.home.player"
-  setspawn:
-    setspawn: "CrC.tools.setspawn"
-  spawn:
-    player: "CrC.tools.spawn.player"
-  entity:
-    clear: "CrC.tools.entity.clear"
-  reload:
-    reload: "CrC.tools.reload"
-  chat:
-    chat: "CrC.tools.chat"
-    bypass: "CrC.tools.chat.bypass"
-  permissions:
-    permission: "CrC.tools.permission"
-  alert:
-    alert: "CrC.tools.alert"
-  tpall:
-    tpall: "CrC.tools.tpall"
-    bypass: "CrC.tools.tpall.bypass"
-  lore:
-    lore: "CrC.tools.lore"
-  rename:
-    rename: "CrC.tools.rename"
-  nick:
-    nick: "CrC.tools.nick"
-    player: "CrC.tools.nick.player"
-  tpahere:
-    tpahere: "CrC.tools.tpahere"
-  tpa:
-    tpa: "CrC.tools.tpa"
-  tptoggle:
-    tptoggle: "CrC.tools.tptoggle"
-  tpdeny:
-    tpdeny: "CrC.tools.tpdeny"
-  tpaccept:
-    tpaccept: "CrC.tools.tpaccept"
-  clear:
-    clear: "CrC.tools.clear"
-    player: "CrC.tools.clear.player"
-  endersee:
-    endersee: "CrC.tools.endersee"
-  invsee:
-    invsee: "CrC.tools.invsee"
-
+  x: '0'
+  y: '67'
+  z: '0'
 groups:
-  DZBAN:
+  Wlasciciel:
     date: '2020-06-30 10:19:52'
     author: Crystal_PL
-    prefix: DZBAN
-    priority: 2
-    permissions: {}
+    prefix: "&8&l[&4&lWlasciciel&8&l]"
+    priority: 13
+    format: "{PREFIX} &a&l{NICK} &8» {MESSAGE}"
+    permissions:
+      - "CrC.tools.permission"
     members: []
-  DZBANEK:
+  Gracz:
     date: '2020-06-30 10:19:52'
     author: Crystal_PL
-    prefix: DZBANEK123
+    prefix: "&8[&7Gracz&8]"
     priority: 1
-    permissions: {}
+    format: "{PREFIX} &a&l{NICK} &8» {MESSAGE}"
+    permissions:
+      - "CrC.tools.chat"
     members: []

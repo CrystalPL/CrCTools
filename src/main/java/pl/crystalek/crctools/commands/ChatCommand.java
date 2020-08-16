@@ -24,7 +24,6 @@ public final class ChatCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("chat.usage"));
             return true;
         }
-
         if (args[0].equalsIgnoreCase("clear")) {
             clearChat();
             printMessage(sender, "chat.clear");

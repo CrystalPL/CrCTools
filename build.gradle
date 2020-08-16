@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "5.0.0"
+}
 compileJava.options.encoding = 'UTF-8'
 
 group = pluginGroup
@@ -19,6 +22,14 @@ repositories {
     }
     flatDir {
         dirs 'libs'
+    }
+}
+
+shadowJar {
+    minimize()
+    final String dest = System.getenv("DESTINATION")
+    if (dest != null) {
+        destinationDirectory.set(new File(dest))
     }
 }
 

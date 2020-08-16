@@ -1,0 +1,108 @@
+permission:
+  feed:
+    feed: "CrC.tools.feed"
+    player: "CrC.tools.feed.player"
+  heal:
+    heal: "CrC.tools.heal"
+    player: "CrC.tools.heal.player"
+  tppos:
+    tppos: "CrC.tools.tppos"
+    player: "CrC.tools.tppos.player"
+  exp:
+    exp: "CrC.tools.exp"
+    player: "CrC.tools.exp.player"
+  fly:
+    fly: "CrC.tools.fly"
+    player: "CrC.tools.fly.player"
+  speed:
+    speed: "CrC.tools.speed"
+    player: "CrC.tools.speed.player"
+  tools:
+    tools: "CrC.tools.tools"
+  socialspy:
+    socialspy: "CrC.tools.socialspy"
+  gamemode:
+    gamemode: "CrC.tools.gamemode"
+    player: "CrC.tools.gamemode.player"
+  repair:
+    repair: "CrC.tools.repair"
+  tp:
+    tp: "CrC.tools.tp"
+    player: "CrC.tools.tp.player"
+  s:
+    s: "CrC.tools.s"
+  give:
+    give: "CrC.tools.give"
+  item:
+    item: "CrC.tools.item"
+  ip:
+    player: "CrC.tools.ip"
+  kick:
+    all: "CrC.tools.kick.all"
+    player: "CrC.tools.kick.player"
+    bypass: "CrC.tools.kick.bypass"
+  god:
+    god: "CrC.tools.god"
+    player: "CrC.tools.god.player"
+  whois:
+    whois: "CrC.tools.whois"
+  kill:
+    kill: "CrC.tools.kill"
+  warp:
+    setwarp: "CrC.tools.warp.set"
+    delwarp: "CrC.tools.warp.del"
+    info: "CrC.tools.warp.info"
+  sethome:
+    player: "CrC.tools.sethome.player"
+  delhome:
+    player: "CrC.tools.delhome.player"
+  home:
+    player: "CrC.tools.home.player"
+  setspawn:
+    setspawn: "CrC.tools.setspawn"
+  spawn:
+    player: "CrC.tools.spawn.player"
+  entity:
+    clear: "CrC.tools.entity.clear"
+  reload:
+    reload: "CrC.tools.reload"
+  chat:
+    chat: "CrC.tools.chat"
+    bypass: "CrC.tools.chat.bypass"
+  permissions:
+    permission: "CrC.tools.permission"
+  alert:
+    alert: "CrC.tools.alert"
+  tpall:
+    tpall: "CrC.tools.tpall"
+    bypass: "CrC.tools.tpall.bypass"
+  lore:
+    lore: "CrC.tools.lore"
+  rename:
+    rename: "CrC.tools.rename"
+  nick:
+    nick: "CrC.tools.nick"
+    player: "CrC.tools.nick.player"
+  tpahere:
+    tpahere: "CrC.tools.tpahere"
+  tpa:
+    tpa: "CrC.tools.tpa"
+  tptoggle:
+    tptoggle: "CrC.tools.tptoggle"
+  tpdeny:
+    tpdeny: "CrC.tools.tpdeny"
+  tpaccept:
+    tpaccept: "CrC.tools.tpaccept"
+  clear:
+    clear: "CrC.tools.clear"
+    player: "CrC.tools.clear.player"
+  endersee:
+    endersee: "CrC.tools.endersee"
+  invsee:
+    invsee: "CrC.tools.invsee"
+  color:
+    color: "CrC.tools.color"
+    nick: "CrC.tools.color.nick"
+    nickplayer: "CrC.tools.color.nick.player"
+    message: "CrC.tools.color.message"
+    messageplayer: "CrC.tools.color.message.player"

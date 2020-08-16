@@ -34,6 +34,11 @@ public final class PermissionManager {
         if (!groups.containsKey(groupName)) {
             throw new GroupExistException("Group doesn't exist!");
         }
+        final YamlConfiguration playerFile = fileManager.getPlayerFile(player);
+        final List<String> groupsFromPlayer = playerFile.getStringList("groups");
+        if (groupsFromPlayer.contains(groupName)) {
+            throw new GroupExistException("This player has a this group");
+        }
         if (Bukkit.getPlayer(player) != null) {
             final User user = userManager.getUser(Bukkit.getPlayer(player));
             if (user.getPermissionGroups().contains(groupName)) {
@@ -41,13 +46,8 @@ public final class PermissionManager {
             }
             user.getPermissionGroups().add(groupName);
         }
-        final YamlConfiguration playerFile = fileManager.getPlayerFile(player);
-        final List<String> groups = playerFile.getStringList("groups");
-        if (groups.contains(groupName)) {
-            throw new GroupExistException("This player has a this group");
-        }
-        groups.add(groupName);
-        playerFile.set("groups", groups);
+        groupsFromPlayer.add(groupName);
+        playerFile.set("groups", groupsFromPlayer);
         final List<String> members = getGroup(groupName).getMembers();
         members.add(player);
         crCTools.getConfig().set("groups." + groupName + ".members", members);
@@ -112,13 +112,13 @@ public final class PermissionManager {
 
     public void addGroupPermission(final String groupName, final String permission) throws GroupExistException {
         if (!groups.containsKey(groupName)) {
-            throw new GroupExistException("Group doesn't!");
+            throw new GroupExistException("Group doesn't exist!");
         }
         final FileConfiguration config = crCTools.getConfig();
         getGroup(groupName).addPermission(permission);
         config.set("groups." + groupName + ".permissions", new ArrayList<>(getGroupPermission(groupName)));
         crCTools.saveConfig();
-        //TODO DODANIE MOZLIWOSCI DODAWANIA DODANEGO UPRAWNIENIA WSZYSTKI MGRACZOM KTORZY POSIADAJA OWA GRUPE
+        //TODO DODANIE MOZLIWOSCI DODAWANIA DODANEGO UPRAWNIENIA WSZYSTKIM GRACZOM KTORZY POSIADAJA OWA GRUPE
     }
 
     public void removeGroupPermission(final String groupName, final String permission) throws GroupExistException {
@@ -129,7 +129,7 @@ public final class PermissionManager {
         getGroup(groupName).removePermission(permission);
         config.set("groups." + groupName + ".permissions", new ArrayList<>(getGroupPermission(groupName)));
         crCTools.saveConfig();
-        //TODO DODANIE MOZLIWOSCI USUWANIA USUNIETEGO UPRAWNIENIA WSZYSTKI MGRACZOM KTORZY POSIADAJA OWA GRUPE
+        //TODO DODANIE MOZLIWOSCI USUWANIA USUNIETEGO UPRAWNIENIA WSZYSTKIM GRACZOM KTORZY POSIADAJA OWA GRUPE
     }
 
     public void cloneGroup(final String fromGroup, final String toGroup) throws GroupExistException {
@@ -158,12 +158,14 @@ public final class PermissionManager {
         final String groupPath = "groups." + groupName;
         final LocalDateTime localDateTime = LocalDateTime.now();
         final String date = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        final Group group = new Group(localDateTime, player, groupName, priority);
         groups.put(groupName, new Group(localDateTime, player, groupName, priority));
         config.createSection(groupPath);
         config.set(groupPath + ".date", date);
         config.set(groupPath + ".author", player);
         config.set(groupPath + ".prefix", groupName);
         config.set(groupPath + ".priority", priority);
+        config.set(groupPath + ".format", group.getFormat());
         config.createSection(groupPath + ".permissions");
         config.createSection(groupPath + ".members");
         crCTools.saveConfig();
@@ -205,6 +207,46 @@ public final class PermissionManager {
         playerFile.save(new File(fileManager.getUsers(), player + ".yml"));
     }
 
+    public void setPrefix(final String groupName, final String prefix) throws GroupExistException {
+        if (!groups.containsKey(groupName)) {
+            throw new GroupExistException("Group doesn't exist!");
+        }
+        getGroup(groupName).setPrefix(prefix);
+        final FileConfiguration config = crCTools.getConfig();
+        config.set("groups." + groupName + ".prefix", prefix);
+        crCTools.saveConfig();
+    }
+
+    public void setPriority(final String groupName, final byte priority) throws GroupExistException {
+        if (!groups.containsKey(groupName)) {
+            throw new GroupExistException("Group doesn't exist!");
+        }
+        final FileConfiguration config = crCTools.getConfig();
+        getGroup(groupName).setPriority(priority);
+        config.set("groups." + groupName + ".priority", priority);
+        crCTools.saveConfig();
+    }
+
+    public void setFormat(final String groupName, final String format) throws GroupExistException {
+        if (!groups.containsKey(groupName)) {
+            throw new GroupExistException("Group doesn't exist!");
+        }
+        final FileConfiguration config = crCTools.getConfig();
+        getGroup(groupName).setFormat(format);
+        config.set("groups." + groupName + ".format", format);
+        crCTools.saveConfig();
+    }
+
+    public void setDefaultGroup(final String newDefaultGroup) throws GroupExistException {
+        if (!groups.containsKey(newDefaultGroup)) {
+            throw new GroupExistException("Group doesn't exist!");
+        }
+        final FileConfiguration config = crCTools.getConfig();
+        config.set("defaultgroup", newDefaultGroup);
+        crCTools.saveConfig();
+        crCTools.reloadConfig();
+    }
+
     public void loadGroups() {
         final FileConfiguration config = crCTools.getConfig();
         if (config.getConfigurationSection("groups") != null) {
@@ -219,7 +261,8 @@ public final class PermissionManager {
                                 config.getString(string + ".prefix"),
                                 (byte) config.getInt(string + ".priority"),
                                 config.getStringList(string + ".members"),
-                                config.getStringList(string + ".permissions")));
+                                config.getStringList(string + ".permissions"),
+                                config.getString(string + ".format")));
             }
         }
     }
@@ -242,25 +285,5 @@ public final class PermissionManager {
 
     public Map<String, Group> getGroups() {
         return groups;
-    }
-
-    public void setPrefix(final String groupName, final String prefix) throws GroupExistException {
-        if (!groups.containsKey(groupName)) {
-            throw new GroupExistException("Group doesn't exist!");
-        }
-        getGroup(groupName).setPrefix(prefix);
-        final FileConfiguration config = crCTools.getConfig();
-        config.set("groups." + groupName + ".prefix", prefix);
-        crCTools.saveConfig();
-    }
-
-    public void setPriority(final String groupName, final byte priority) throws GroupExistException {
-        if (!groups.containsKey(groupName)) {
-            throw new GroupExistException("Group doesn't exist!");
-        }
-        getGroup(groupName).setPriority(priority);
-        final FileConfiguration config = crCTools.getConfig();
-        config.set("groups." + groupName + ".priority", priority);
-        crCTools.saveConfig();
     }
 }

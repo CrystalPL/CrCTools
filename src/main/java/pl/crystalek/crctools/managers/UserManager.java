@@ -22,12 +22,12 @@ public final class UserManager {
         users.put(player.getUniqueId(), new User(player, crCTools));
     }
 
-    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final Map<String, Location> homeList, final List<String> groupList) {
-        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, homeList, crCTools, groupList));
+    public void addUser(final Player player, final UUID uuid, final String ip, final boolean msg, final boolean tpa, final boolean god, final String displayName, final String nickColor, final String messageColor, final Map<String, Location> homeList, final List<String> groupList) {
+        users.put(player.getUniqueId(), new User(uuid, ip, msg, tpa, god, displayName, nickColor, messageColor, homeList, crCTools, groupList));
     }
 
-    public void addUser(final Player player, final UUID uuid, final String lastName, final String ip, final boolean msg, final boolean tpa, final boolean god, final List<String> groupList) {
-        users.put(player.getUniqueId(), new User(uuid, lastName, ip, msg, tpa, god, crCTools, groupList));
+    public void addUser(final Player player, final UUID uuid, final String ip, final boolean msg, final boolean tpa, final boolean god, final String displayName, final String nickColor, final String messageColor, final List<String> groupList) {
+        users.put(player.getUniqueId(), new User(uuid, ip, msg, tpa, god, crCTools, displayName, nickColor, messageColor, groupList));
     }
 
     public void removeUser(final Player player) {

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public final class CrCTools extends JavaPlugin {
-    //TODO ZROBIENIE ZARZADZANIA KOLORAMI NICKU
+    //TODO FORMAT DO POPRAWY XDD
     //TODO ZROBIENIE ZARZADZANIA KOLORAMI CHATU
     //TODO ZROBIENIE MOZLIWOSCI TELEPORTOWANIA DO GRACZA OFFLINE
     //TODO FORMAT CHATU
@@ -24,9 +24,18 @@ public final class CrCTools extends JavaPlugin {
     //TODO DODANIE WYBORU, CZY W MAILACH PRZECZYTANE MA BYC NAPISANE TAK/NIE, CZY TRUE/FALSE
     //TODO DODANIE WYBORU, CZY MAJA BYC ZAPISYWANE DATY LOGOWAN GRACZY
     //TODO ZAPISYWANIE WSZYSTKICH IP, DAT Z JAKICH GRACZ SIE LOGUJE
-    //TODO WYJEBAC ZMIENIANIE WIADOMOSCI PRZEZ TOOLSCOMMAND Z FILEMANAGER DO TOOLSCOMMAND
+    //TODO WYJEBAC ZMIENIANIE WIADOMOSCI Z FILEMANAGER DO TOOLSCOMMAND
     //TODO DODANIE WYBORU, CZY GRACZ MA BYC TELEPORTOWANY, W KTOREJ TARGET WPISAL /TPACCEPT, CZY OD RAZU DO GRACZA
     //TODO DODANIE WYBORU KOLOROW, CZASU I INNYCH PIERDOL NA ALERCIE
+    //TODO ZROBIENEI KOMENDY LICZACEJ POBYT GRACZA NA SERWERZE
+    //TODO PRZENIESIENIE WSZYSTKICH TAKSOW
+    //TODO DODANIE KOMENDY /PING
+    //TODO POPRAWIC GUI W ENDERSEE I INVSEE, NIE MOZNA DAWAC GRACZOWI PRZEDMIOTU - PACKETY
+    //TODO DODANEI W CONFIGU KOLOROW, KTORE MOGA BYC UZWANE PRZEZ GRACZA PODCZAS PISANIA, USTAWIANIA KOLORU PISANIA, USTAWIANAI KOLORU NICKU
+    //TODO POWIADOMIENIE O LICZBIE OTRZYMANYCH WIADOMOSCI PRZY WEJSCIU GRACZA NA SERWER
+    //TODO DODANIE OPCJI W CONFIGU, CZY NA START MA BYC WYSWIETLANA ILOSC MAILI
+    //TODO ZAPISYWANIE NOWEJ WARTOSCI EXPA PRZY KOMENDZIE
+    //TODO ZROBIENIE KOMENDY /GC
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;
@@ -114,12 +123,13 @@ public final class CrCTools extends JavaPlugin {
         getCommand("mail").setExecutor(new MailCommand(fileManager, mailManager));
         getCommand("lore").setExecutor(new LoreCommand(fileManager));
         getCommand("rename").setExecutor(new RenameCommand(fileManager));
-        getCommand("nick").setExecutor(new NickCommand(fileManager));
+        getCommand("nick").setExecutor(new NickCommand(fileManager, userManager));
         getCommand("tpahere").setExecutor(new TpahereCommand(fileManager, userManager, tpaManager, this));
         getCommand("handgive").setExecutor(new HandGiveCommand(fileManager));
         getCommand("clear").setExecutor(new ClearCommand(fileManager));
         getCommand("endersee").setExecutor(new EnderseeCommand(fileManager));
         getCommand("invsee").setExecutor(new InvseeCommand(fileManager));
+        getCommand("color").setExecutor(new ColorCommand(fileManager, userManager));
     }
 
     private void registerListeners() {

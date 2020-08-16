@@ -44,6 +44,7 @@ public final class WhoisCommand implements CommandExecutor {
             for (final String msg : msgList) {
                 sender.sendMessage(msg
                         .replace("{PLAYER}", player.getName())
+                        .replace("{DISPLAYNAME}", player.getDisplayName())
                         .replace("{BAN}", String.valueOf(player.isBanned()))
                         .replace("{LEVEL}", String.valueOf(player.getLevel()))
                         .replace("{FLY}", String.valueOf(player.getAllowFlight()))
@@ -60,17 +61,18 @@ public final class WhoisCommand implements CommandExecutor {
                         .replace("{UUID}", user.getUuid().toString()));
             }
         } else {
-            YamlConfiguration playerFile;
+            final YamlConfiguration playerFile;
             try {
                 playerFile = fileManager.getPlayerFile(args[0]);
-            } catch (NullPointerException exception) {
+            } catch (final NullPointerException exception) {
                 sender.sendMessage(fileManager.getMsg("cantexist"));
                 return true;
             }
             final OfflinePlayer player = Bukkit.getOfflinePlayer(args[0]);
             for (final String msg : msgList) {
                 sender.sendMessage(msg
-                        .replace("{PLAYER}", playerFile.getString("nick"))
+                        .replace("{PLAYER}", player.getName())
+                        .replace("{DISPLAYNAME}", playerFile.getString("nick"))
                         .replace("{BAN}", String.valueOf(player.isBanned()))
                         .replace("{LEVEL}", String.valueOf(playerFile.getInt("food")))
                         .replace("{FLY}", "false")

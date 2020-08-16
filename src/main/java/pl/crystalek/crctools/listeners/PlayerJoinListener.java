@@ -11,6 +11,7 @@ import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.MailManager;
 import pl.crystalek.crctools.managers.PermissionManager;
 import pl.crystalek.crctools.managers.UserManager;
+import pl.crystalek.crctools.utils.ChatUtil;
 
 import java.io.IOException;
 
@@ -37,8 +38,9 @@ public final class PlayerJoinListener implements Listener {
             fileManager.loadPlayer(player);
         } else {
             userManager.addUser(player);
-            fileManager.savePlayer(player);
             permissionManager.addGroup(player.getName(), crCTools.getConfig().getString("defaultgroup"));
+            player.setDisplayName(ChatUtil.fixColor(crCTools.getConfig().getString("defaultmessagecolor")) + player.getName());
+            fileManager.savePlayer(player);
         }
         permissionManager.loadPermission(player);
         mailManager.loadMessage(player);

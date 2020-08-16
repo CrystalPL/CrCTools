@@ -8,6 +8,7 @@ import pl.crystalek.crctools.commands.ChatCommand;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.PermissionManager;
 import pl.crystalek.crctools.managers.UserManager;
+import pl.crystalek.crctools.model.Group;
 import pl.crystalek.crctools.model.User;
 import pl.crystalek.crctools.utils.ChatUtil;
 
@@ -37,14 +38,15 @@ public final class AsyncPlayerChatListener implements Listener {
             final User user = userManager.getUser(player);
             final List<String> permissionGroups = user.getPermissionGroups();
             permissionGroups.sort(Comparator.comparing(permissionManager::getGroup));
-            final String format = "{PREFIX} {NICK} &8» &7{MESSAGE}"
-                    .replace("{PREFIX}", permissionManager.getGroup(permissionGroups.get(0)).getPrefix())
+            final Group group = permissionManager.getGroup(permissionGroups.get(0));
+            final String format = group.getFormat()
+                    .replace("{PREFIX}", group.getPrefix())
                     .replace("{NICK}", "%1$s")
                     .replace("{MESSAGE}", "%2$s")
                     .replace("{LVL}", String.valueOf(player.getLevel()))
                     .replace("{FOODLVL}", String.valueOf(player.getFoodLevel()));
             event.setFormat(ChatUtil.fixColor(format));
-            event.setMessage(ChatUtil.fixColor(event.getMessage()));
+            event.setMessage(ChatUtil.fixColor(user.getMessageColor() + event.getMessage()));
         }
     }
 }

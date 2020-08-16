@@ -20,15 +20,18 @@ public final class FileManager {
     private final CrCTools crCTools;
     private final UserManager userManager;
     private final File messagesFile;
+    private final File permissionsFile;
     private final File users;
     private final Map<String, YamlConfiguration> usersConfiguration = new HashMap<>();
     private final DecimalFormat decimalFormat;
-    private YamlConfiguration yamlConfiguration;
+    private YamlConfiguration messagesConfiguration;
+    private YamlConfiguration permissionsConfiguration;
 
     public FileManager(final CrCTools crCTools, final UserManager userManager, final DecimalFormat decimalFormat) {
         this.crCTools = crCTools;
         this.userManager = userManager;
         messagesFile = new File(crCTools.getDataFolder(), "messages.yml");
+        permissionsFile = new File(crCTools.getDataFolder(), "permissions.yml");
         users = new File(crCTools.getDataFolder(), "users");
         this.decimalFormat = decimalFormat;
     }
@@ -37,23 +40,31 @@ public final class FileManager {
         if (!messagesFile.exists()) {
             crCTools.saveResource("messages.yml", true);
         }
+        if (!permissionsFile.exists()) {
+            crCTools.saveResource("permissions.yml", true);
+        }
         if (!users.exists()) {
             users.mkdir();
         }
-        yamlConfiguration = YamlConfiguration.loadConfiguration(messagesFile);
+        messagesConfiguration = YamlConfiguration.loadConfiguration(messagesFile);
+        permissionsConfiguration = YamlConfiguration.loadConfiguration(permissionsFile);
         crCTools.reloadConfig();
     }
 
     public void loadPlayer(final Player player) {
         final YamlConfiguration configuration = usersConfiguration.get(player.getName());
+        final String nick = configuration.getString("nick");
+        final String nickcolor = configuration.getString("nickcolor");
         if (configuration.getConfigurationSection("homes") == null) {
             userManager.addUser(player,
                     UUID.fromString(configuration.getString("uuid")),
-                    configuration.getString("nick"),
                     configuration.getString("ip"),
                     configuration.getBoolean("msg"),
                     configuration.getBoolean("tpa"),
                     configuration.getBoolean("god"),
+                    nick,
+                    nickcolor,
+                    configuration.getString("messagecolor"),
                     configuration.getStringList("groups"));
         } else {
             final List<String> keyList = new ArrayList<>(configuration.getConfigurationSection("homes").getKeys(false));
@@ -67,14 +78,17 @@ public final class FileManager {
             }
             userManager.addUser(player,
                     UUID.fromString(configuration.getString("uuid")),
-                    configuration.getString("nick"),
                     configuration.getString("ip"),
                     configuration.getBoolean("msg"),
                     configuration.getBoolean("tpa"),
                     configuration.getBoolean("god"),
+                    nick,
+                    nickcolor,
+                    configuration.getString("messagecolor"),
                     homes,
                     configuration.getStringList("groups"));
         }
+        player.setDisplayName(ChatUtil.fixColor(nickcolor) + nick);
     }
 
     public void savePlayer(final Player player) throws IOException {
@@ -84,7 +98,9 @@ public final class FileManager {
         final Map<UUID, List<Mail>> receivedMails = user.getReceivedMails();
         final Map<UUID, List<Mail>> sentMails = user.getSentMails();
         configuration.set("uuid", user.getUuid().toString());
-        configuration.set("nick", user.getLastName());
+        configuration.set("nick", user.getDisplayName());
+        configuration.set("nickcolor", user.getNickColor());
+        configuration.set("messagecolor", user.getMessageColor());
         configuration.set("msg", user.isMsg());
         configuration.set("tpa", user.isTpa());
         configuration.set("god", user.isGod());
@@ -130,19 +146,19 @@ public final class FileManager {
     }
 
     public String getPermission(final String pathPermission) {
-        return crCTools.getConfig().getString("permission." + pathPermission);
+        return permissionsConfiguration.getString("permission." + pathPermission);
     }
 
     public String getMsgPermission(final String pathPermission) {
-        return ChatUtil.fixColor(yamlConfiguration.getString("nopermission").replace("{PERMISSION}", getPermission(pathPermission)));
+        return ChatUtil.fixColor(messagesConfiguration.getString("nopermission").replace("{PERMISSION}", getPermission(pathPermission)));
     }
 
     public String getMsg(final String pathMessage) {
-        return ChatUtil.fixColor(yamlConfiguration.getString(pathMessage));
+        return ChatUtil.fixColor(messagesConfiguration.getString(pathMessage));
     }
 
     public List<String> getMsgList(final String pathMessage) {
-        return ChatUtil.fixColor(yamlConfiguration.getStringList(pathMessage));
+        return ChatUtil.fixColor(messagesConfiguration.getStringList(pathMessage));
     }
 
     public int getInt(final String path) {
@@ -150,28 +166,28 @@ public final class FileManager {
     }
 
     public ConfigurationSection getConfigurationSection(final String path) {
-        return yamlConfiguration.getConfigurationSection(path);
+        return messagesConfiguration.getConfigurationSection(path);
     }
 
     public boolean setValuePath(final String path, final String value) throws IOException {
-        if (!yamlConfiguration.contains(path)) {
+        if (!messagesConfiguration.contains(path)) {
             return false;
         }
-        if (yamlConfiguration.getStringList(path) == null) {
+        if (messagesConfiguration.getStringList(path) == null) {
             return false;
         }
-        final List<String> stringList = yamlConfiguration.getStringList(path);
+        final List<String> stringList = messagesConfiguration.getStringList(path);
         if (stringList.size() == 0) {
-            yamlConfiguration.set(path, value);
+            messagesConfiguration.set(path, value);
         } else {
             if (value.equals("clear")) {
                 stringList.remove(stringList.get(stringList.size() - 1));
             } else {
                 stringList.add(value);
             }
-            yamlConfiguration.set(path, stringList);
+            messagesConfiguration.set(path, stringList);
         }
-        yamlConfiguration.save(messagesFile);
+        messagesConfiguration.save(messagesFile);
         return true;
     }
 

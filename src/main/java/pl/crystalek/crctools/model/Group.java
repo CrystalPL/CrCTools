@@ -13,14 +13,16 @@ public class Group implements Comparable<Group> {
     private List<String> members = new ArrayList<>();
     private Set<String> permissions = new HashSet<>();
     private byte priority;
+    private String format = "{PREFIX} &a&l{NICK} &8» {MESSAGE}";
 
-    public Group(final LocalDateTime createTime, final String author, final String prefix, final byte priority, final List<String> members, final List<String> permissions) {
+    public Group(final LocalDateTime createTime, final String author, final String prefix, final byte priority, final List<String> members, final List<String> permissions, final String format) {
         this.createTime = createTime;
         this.author = author;
         this.prefix = prefix;
         this.priority = priority;
         this.members = members;
         this.permissions = new HashSet<>(permissions);
+        this.format = format;
     }
 
     public Group(final LocalDateTime createTime, final String author, final String prefix, final byte priority) {
@@ -28,6 +30,14 @@ public class Group implements Comparable<Group> {
         this.author = author;
         this.prefix = prefix;
         this.priority = priority;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(final String format) {
+        this.format = format;
     }
 
     public LocalDateTime getCreateTime() {
@@ -50,7 +60,7 @@ public class Group implements Comparable<Group> {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
+    public void setPrefix(final String prefix) {
         this.prefix = prefix;
     }
 
@@ -76,12 +86,6 @@ public class Group implements Comparable<Group> {
 
     @Override
     public int compareTo(final Group group) {
-        if (group.priority > priority) {
-            return 1;
-        } else if (group.priority < priority) {
-            return -1;
-        } else {
-            return 0;
-        }
+        return Byte.compare(group.priority, priority);
     }
 }
