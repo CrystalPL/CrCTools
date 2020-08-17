@@ -126,6 +126,7 @@ tp:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/tp <gracz> (gracz)."
   sender: "&6&lToolsy &8» &7Gracz &6{PLAYER1} &7zostal przeteleportowany do gracza &6{PLAYER2}&7."
   player: "&6&lToolsy &8» &7Zostales przeteleportowany do gracza &6{PLAYER}&7."
+  error: "&6&lToolsy &8» &cNie mozesz teleportowac sie sam do siebie!"
 s:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/s <gracz>."
   success: "&6&lToolsy &8» &7Gracz &6{PLAYER} &7zostal do ciebie przeteleportowany."

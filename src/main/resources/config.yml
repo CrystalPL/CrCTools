@@ -31,7 +31,7 @@ groups:
     author: Crystal_PL
     prefix: "&8&l[&4&lWlasciciel&8&l]"
     priority: 13
-    format: "{PREFIX} &a&l{NICK} &8» {MESSAGE}"
+    format: "{PREFIX} &4&l{NICK} &8» {MESSAGE}"
     permissions:
       - "CrC.tools.permission"
     members: []
@@ -40,7 +40,7 @@ groups:
     author: Crystal_PL
     prefix: "&8[&7Gracz&8]"
     priority: 1
-    format: "{PREFIX} &a&l{NICK} &8» {MESSAGE}"
+    format: "{PREFIX} &b{NICK} &8» {MESSAGE}"
     permissions:
       - "CrC.tools.chat"
     members: []

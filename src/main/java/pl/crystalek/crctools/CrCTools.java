@@ -11,6 +11,8 @@ import pl.crystalek.crctools.tasks.AutoSave;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 public final class CrCTools extends JavaPlugin {
     //TODO ZROBIENIE MOZLIWOSCI TELEPORTOWANIA DO GRACZA OFFLINE
@@ -34,6 +36,7 @@ public final class CrCTools extends JavaPlugin {
     //TODO DODANIE OPCJI W CONFIGU, CZY NA START MA BYC WYSWIETLANA ILOSC MAILI
     //TODO ZAPISYWANIE NOWEJ WARTOSCI EXPA PRZY KOMENDZIE
     //TODO ZROBIENIE KOMENDY /GC
+    //TODO DODANIE KOMENDY /KICK
     private FileManager fileManager;
     private TpaManager tpaManager;
     private MsgManager msgManager;
@@ -47,6 +50,7 @@ public final class CrCTools extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         decimalFormat = new DecimalFormat();
+        decimalFormat.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
         userManager = new UserManager(this);
         fileManager = new FileManager(this, userManager, decimalFormat);
         tpaManager = new TpaManager();
