@@ -398,3 +398,7 @@ color:
     - "&6&lToolsy &8» &6/color nick <kolor> &7- ustawia kolor nicku"
     - "&6&lToolsy &8» &6/color message <gracz> <kolor> &7- ustawia kolor pisania gracza"
     - "&6&lToolsy &8» &6/color message <kolor> &7- ustawia kolor pisania"
+ping:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/ping (gracz)."
+  ping: "&6&lToolsy &8» &7Twoj ping wynosi: &6{PING}&7."
+  player: "&6&lToolsy &8» &7Pinga gracza &6{PLAYER} &7wynosi: &6{PING} &7ms."

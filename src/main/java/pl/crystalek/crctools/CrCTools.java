@@ -26,7 +26,6 @@ public final class CrCTools extends JavaPlugin {
     //TODO DODANIE WYBORU KOLOROW, CZASU I INNYCH PIERDOL NA ALERCIE
     //TODO ZROBIENEI KOMENDY LICZACEJ POBYT GRACZA NA SERWERZE
     //TODO PRZENIESIENIE WSZYSTKICH TAKSOW
-    //TODO DODANIE KOMENDY /PING
     //TODO POPRAWIC GUI W ENDERSEE I INVSEE, NIE MOZNA DAWAC GRACZOWI PRZEDMIOTU - PACKETY
     //TODO DODANEI W CONFIGU KOLOROW, KTORE MOGA BYC UZWANE PRZEZ GRACZA PODCZAS PISANIA, USTAWIANIA KOLORU PISANIA, USTAWIANAI KOLORU NICKU
     //TODO POWIADOMIENIE O LICZBIE OTRZYMANYCH WIADOMOSCI PRZY WEJSCIU GRACZA NA SERWER
@@ -129,6 +128,7 @@ public final class CrCTools extends JavaPlugin {
         getCommand("endersee").setExecutor(new EnderseeCommand(fileManager));
         getCommand("invsee").setExecutor(new InvseeCommand(fileManager));
         getCommand("color").setExecutor(new ColorCommand(fileManager, userManager));
+        getCommand("ping").setExecutor(new PingCommand(fileManager));
     }
 
     private void registerListeners() {

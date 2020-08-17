@@ -109,3 +109,5 @@ permission:
     nickplayer: "CrC.tools.color.nick.player"
     message: "CrC.tools.color.message"
     messageplayer: "CrC.tools.color.message.player"
+  ping:
+    player: "CrC.tools.ping.player"
