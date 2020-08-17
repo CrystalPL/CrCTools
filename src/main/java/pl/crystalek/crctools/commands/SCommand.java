@@ -28,6 +28,10 @@ public final class SCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsgPermission("s.s"));
             return true;
         }
+        if (sender.getName().equalsIgnoreCase(args[0])) {
+            sender.sendMessage(fileManager.getMsg("tp.error"));
+            return true;
+        }
         if (Bukkit.getPlayer(args[0]) == null) {
             sender.sendMessage(fileManager.getMsg("offlineplayer"));
             return true;

@@ -50,6 +50,8 @@ public final class MailCommand implements CommandExecutor {
                     sender.sendMessage(fileManager.getMsg("mail.senderror"));
                 } catch (final NullPointerException exception) {
                     sender.sendMessage(fileManager.getMsg("cantexist"));
+                } catch (final IllegalArgumentException exception) {
+                    sender.sendMessage(fileManager.getMsg("mail.error"));
                 }
                 return true;
             } else if (args[0].equalsIgnoreCase("remove")) {

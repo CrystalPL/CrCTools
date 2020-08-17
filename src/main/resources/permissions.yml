@@ -53,10 +53,13 @@ permission:
     delwarp: "CrC.tools.warp.del"
     info: "CrC.tools.warp.info"
   sethome:
+    sethome: "CrC.tools.sethome"
     player: "CrC.tools.sethome.player"
   delhome:
+    delhome: "CrC.tools.delhome"
     player: "CrC.tools.delhome.player"
   home:
+    home: "CrC.tools.home"
     player: "CrC.tools.home.player"
   setspawn:
     setspawn: "CrC.tools.setspawn"

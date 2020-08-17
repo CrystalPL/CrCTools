@@ -62,6 +62,22 @@ public class User {
         this.messageColor = config.getString("defaultmessagecolor");
     }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public PermissionAttachment getPermissionAttachment() {
+        return permissionAttachment;
+    }
+
+    public Map<UUID, Boolean> getTpaList() {
+        return tpaList;
+    }
+
     public String getDisplayName() {
         return displayName;
     }
@@ -86,51 +102,6 @@ public class User {
         this.messageColor = messageColor;
     }
 
-    public Map<UUID, Boolean> getTpaList() {
-        return tpaList;
-    }
-
-    public Map<UUID, List<Mail>> getReceivedMails() {
-        return receivedMails;
-    }
-
-    public void setReceivedMails(final Map<UUID, List<Mail>> receivedMails) {
-        this.receivedMails = receivedMails;
-    }
-
-    public Map<UUID, List<Mail>> getSentMails() {
-        return sentMails;
-    }
-
-    public void setSentMails(final Map<UUID, List<Mail>> sentMails) {
-        this.sentMails = sentMails;
-    }
-
-    public void addHome(final String name, final Location location) {
-        this.homeList.put(name, location);
-    }
-
-    public Location getHome(final String name) {
-        return this.homeList.get(name);
-    }
-
-    public void removeHome(final String name) {
-        this.homeList.remove(name);
-    }
-
-    public Map<String, Location> getHome() {
-        return homeList;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-
     public boolean isMsg() {
         return msg;
     }
@@ -151,15 +122,35 @@ public class User {
         return god;
     }
 
-    public void setGod(boolean god) {
+    public void setGod(final boolean god) {
         this.god = god;
     }
 
-    public PermissionAttachment getPermissionAttachment() {
-        return permissionAttachment;
+    public Map<UUID, List<Mail>> getReceivedMails() {
+        return receivedMails;
+    }
+
+    public void setReceivedMails(final Map<UUID, List<Mail>> receivedMails) {
+        this.receivedMails = receivedMails;
+    }
+
+    public Map<UUID, List<Mail>> getSentMails() {
+        return sentMails;
+    }
+
+    public void setSentMails(final Map<UUID, List<Mail>> sentMails) {
+        this.sentMails = sentMails;
+    }
+
+    public Map<String, Location> getHomeList() {
+        return homeList;
     }
 
     public List<String> getPermissionGroups() {
         return permissionGroups;
+    }
+
+    public void setPermissionGroups(final List<String> permissionGroups) {
+        this.permissionGroups = permissionGroups;
     }
 }

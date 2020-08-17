@@ -180,6 +180,8 @@ kill:
 setwarp:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/setwarp <nazwa>."
   create: "&6&lToolsy &8» &7Warp zostal pomyslnie utworzony!"
+  error: "&6&lToolsy &8» &cNie mozesz uzyc kropki w nazwie warpu!"
+  exist: "&6&lToolsy &8» &cTaki warp juz istnieje!"
 delwarp:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/delwarp <nazwa>."
   delete: "&6&lToolsy &8» &7Warp zostal pomyslnie usuniety!"
@@ -202,6 +204,7 @@ sethome:
   sethome: "&6&lToolsy &8» &7Nowy dom zostal ustawiony!"
   sethomeplayersender: "&6&lToolsy &8» &7Nowy dom &6{HOME} &7zostal ustawiony przez &6{PLAYER}&7."
   player: "&6&lToolsy &8» &7Nowy dom &6{HOME} &7dla gracza &6{PLAYER} &7zostal ustawiony!"
+  error: "&6&lToolsy &8» &cNie mozesz uzyc kropki w nazwie home'a!"
 delhome:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/delhome <nazwa> (gracz)."
   error: "&6&lToolsy &8» &cNie masz takiego domu!"
@@ -339,6 +342,7 @@ mail:
   clear: "&6&lToolsy &8» &7Maile zostaly usuniete"
   removeerror: "&6&lToolsy &8» &cNie masz takiej wiadomosci!"
   sendsameplayer: "&6&lToolsy &8» &cNie mozesz wyslac maila sam do siebie!"
+  error: "&6&lToolsy &8» &cNie mozesz uzyc kropki w temacie maila!"
   clearhover:
     - "&7Autor: &6{AUTHOR}&7."
     - "&7Data wyslania: &6{DATE}&7."

@@ -1,6 +1,7 @@
 package pl.crystalek.crctools.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +13,7 @@ import pl.crystalek.crctools.model.User;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public final class DelhomeCommand implements CommandExecutor {
     private final FileManager fileManager;
@@ -24,18 +26,23 @@ public final class DelhomeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(fileManager.getMsg("notconsole"));
-            return true;
-        }
         if (args.length == 1) {
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(fileManager.getMsg("notconsole"));
+                return true;
+            }
+            if (!sender.hasPermission(fileManager.getPermission("delhome.delhome"))) {
+                sender.sendMessage(fileManager.getMsgPermission("delhome.delhome"));
+                return true;
+            }
             final Player player = (Player) sender;
             final User user = userManager.getUser(player);
-            if (user.getHome(args[0]) == null) {
+            final Map<String, Location> homeList = user.getHomeList();
+            if (homeList.get(args[0]) == null) {
                 sender.sendMessage(fileManager.getMsg("delhome.error"));
                 return true;
             }
-            user.removeHome(args[0]);
+            homeList.remove(args[0]);
             final YamlConfiguration playerFile = fileManager.getPlayerFile(player.getName());
             playerFile.set("homes." + args[0], null);
             sender.sendMessage(fileManager.getMsg("delhome.delhome"));
@@ -65,11 +72,12 @@ public final class DelhomeCommand implements CommandExecutor {
             } else {
                 final Player player = Bukkit.getPlayer(args[1]);
                 final User user = userManager.getUser(player);
-                if (user.getHome(args[0]) == null) {
+                final Map<String, Location> homeList = user.getHomeList();
+                if (homeList.get(args[0]) == null) {
                     sender.sendMessage(fileManager.getMsg("delhome.errorplayer"));
                     return true;
                 }
-                user.removeHome(args[0]);
+                homeList.remove(args[0]);
                 playerFile.set("homes." + args[0], null);
                 player.sendMessage(fileManager.getMsg("delhome.delhomeplayersender").replace("{PLAYER}", sender.getName()).replace("{HOME}", args[0]));
             }

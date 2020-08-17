@@ -25,8 +25,11 @@ public final class MailManager {
         this.userManager = userManager;
     }
 
-    public void sendMessage(final String senderName, final String receiverName, final String topic, final String message) throws IOException, MailExistException {
+    public void sendMessage(final String senderName, final String receiverName, final String topic, final String message) throws IOException, MailExistException, IllegalArgumentException {
         //TODO DODANIE LIMITU WYSYLANYCH/ODBIERANYCH MAILI DLA POSZCZEGOLNEJ RANGI
+        if (topic.contains(".")) {
+            throw new IllegalArgumentException("you cannot use a period!");
+        }
         final YamlConfiguration playerSender = fileManager.getPlayerFile(senderName);
         final YamlConfiguration playerReceiver = fileManager.getPlayerFile(receiverName);
         ConfigurationSection sentMails = playerSender.getConfigurationSection("mail.sent");

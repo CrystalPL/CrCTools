@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import pl.crystalek.crctools.exceptions.WarpExistException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.WarpManager;
 
@@ -30,8 +31,14 @@ public final class SetwarpCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("setwarp.usage"));
             return true;
         }
-        sender.sendMessage(fileManager.getMsg("setwarp.create"));
-        warpManager.addWarp(args[0], (Player) sender);
+        try {
+            warpManager.createWarp(args[0], (Player) sender);
+            sender.sendMessage(fileManager.getMsg("setwarp.create"));
+        } catch (final IllegalArgumentException exception) {
+            sender.sendMessage(fileManager.getMsg("setwarp.error"));
+        } catch (final WarpExistException exception) {
+            sender.sendMessage(fileManager.getMsg("setwarp.exist"));
+        }
         return true;
     }
 }

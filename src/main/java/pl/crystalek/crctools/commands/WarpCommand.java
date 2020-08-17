@@ -26,7 +26,7 @@ public final class WarpCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("notconsole"));
             return true;
         }
-        if (warpManager.printWarpList(sender, args, warpManager, fileManager)) return true;
+        if (warpManager.printWarpList(sender, args, fileManager)) return true;
 
         TeleportUtil.teleportTimer((Player) sender, warpManager.getWarp(args[0]).getLocation(), fileManager, crCTools);
         return true;

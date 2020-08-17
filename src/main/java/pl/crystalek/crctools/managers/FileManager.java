@@ -116,7 +116,7 @@ public final class FileManager {
         configuration.set("food", player.getFoodLevel());
         configuration.set("permissions", permissions);
         configuration.set("groups", user.getPermissionGroups());
-        final Map<String, Location> home = user.getHome();
+        final Map<String, Location> home = user.getHomeList();
         final List<String> keys = new ArrayList<>(home.keySet());
         if (!home.isEmpty() || !keys.isEmpty()) {
             for (String string : keys) {

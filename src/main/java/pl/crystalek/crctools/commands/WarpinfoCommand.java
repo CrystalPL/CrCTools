@@ -29,7 +29,7 @@ public final class WarpinfoCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsgPermission("warp.info"));
             return true;
         }
-        if (warpManager.printWarpList(sender, args, warpManager, fileManager)) return true;
+        if (warpManager.printWarpList(sender, args, fileManager)) return true;
 
         final List<String> msgList = fileManager.getMsgList("warpinfo.info");
         final Warp warp = warpManager.getWarp(args[0]);

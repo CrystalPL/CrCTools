@@ -3,6 +3,7 @@ package pl.crystalek.crctools.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import pl.crystalek.crctools.exceptions.WarpExistException;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.managers.WarpManager;
 
@@ -25,12 +26,12 @@ public final class DelwarpCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("delwarp.usage"));
             return true;
         }
-        if (!warpManager.checkWarp(args[0])) {
+        try {
+            warpManager.deleteWarp(args[0]);
+            sender.sendMessage(fileManager.getMsg("delwarp.delete"));
+        } catch (final WarpExistException exception) {
             sender.sendMessage(fileManager.getMsg("delwarp.warpexist"));
-            return true;
         }
-        warpManager.removeWarp(args[0]);
-        sender.sendMessage(fileManager.getMsg("delwarp.delete"));
         return true;
     }
 }

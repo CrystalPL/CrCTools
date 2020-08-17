@@ -31,14 +31,18 @@ public final class HomeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(fileManager.getMsg("notconsole"));
+            return true;
+        }
         if (args.length <= 1) {
-            if (!(sender instanceof Player)) {
-                sender.sendMessage(fileManager.getMsg("notconsole"));
+            if (!sender.hasPermission(fileManager.getPermission("home.home"))) {
+                sender.sendMessage(fileManager.getMsgPermission("home.home"));
                 return true;
             }
             final Player player = (Player) sender;
             final User user = userManager.getUser(player);
-            final Map<String, Location> homeList = user.getHome();
+            final Map<String, Location> homeList = user.getHomeList();
             if (args.length == 0) {
                 final List<String> nameList = new ArrayList<>(homeList.keySet());
                 if (nameList.isEmpty()) {
@@ -47,8 +51,8 @@ public final class HomeCommand implements CommandExecutor {
                 }
                 final String homes = nameList.stream().collect(Collectors.joining(fileManager.getMsg("interlude")));
                 sender.sendMessage(fileManager.getMsg("home.list").replace("{LIST}", homes));
-            } else if (args.length == 1) {
-                if (user.getHome(args[0]) == null) {
+            } else {
+                if (homeList.get(args[0]) == null) {
                     sender.sendMessage(fileManager.getMsg("delhome.error"));
                     return true;
                 }

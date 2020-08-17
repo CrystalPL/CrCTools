@@ -7,6 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.exceptions.WarpExistException;
 import pl.crystalek.crctools.model.Warp;
 
 import java.text.DecimalFormat;
@@ -25,7 +26,13 @@ public final class WarpManager {
         this.decimalFormat = decimalFormat;
     }
 
-    public void addWarp(final String name, final Player player) {
+    public void createWarp(final String name, final Player player) throws IllegalArgumentException, WarpExistException {
+        if (name.contains(".")) {
+            throw new IllegalArgumentException("you cannot use a period!");
+        }
+        if (warpList.containsKey(name)) {
+            throw new WarpExistException("warp does exist!");
+        }
         final Location location = player.getLocation();
         final LocalDateTime localDateTime = LocalDateTime.now();
         final String date = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -43,7 +50,10 @@ public final class WarpManager {
         crCTools.saveConfig();
     }
 
-    public void removeWarp(final String name) {
+    public void deleteWarp(final String name) throws WarpExistException {
+        if (!warpList.containsKey(name)) {
+            throw new WarpExistException("warp doesn't exist!");
+        }
         warpList.remove(name);
         crCTools.getConfig().set("warps." + name, null);
         crCTools.saveConfig();
@@ -51,10 +61,6 @@ public final class WarpManager {
 
     public Warp getWarp(final String name) {
         return warpList.get(name);
-    }
-
-    public boolean checkWarp(final String name) {
-        return warpList.get(name) != null;
     }
 
     public void loadWarps() {
@@ -76,7 +82,7 @@ public final class WarpManager {
         }
     }
 
-    public boolean printWarpList(final CommandSender sender, final String[] args, final WarpManager warpManager, final FileManager fileManager) {
+    public boolean printWarpList(final CommandSender sender, final String[] args, final FileManager fileManager) {
         if (args.length != 1) {
             final Set<String> strings = warpList.keySet();
             final List<String> warpList = new ArrayList<>(strings);
@@ -86,10 +92,6 @@ public final class WarpManager {
             }
             final String warps = warpList.stream().collect(Collectors.joining(fileManager.getMsg("interlude")));
             sender.sendMessage(fileManager.getMsg("warp.list").replace("{WARPS}", warps));
-            return true;
-        }
-        if (!warpManager.checkWarp(args[0])) {
-            sender.sendMessage(fileManager.getMsg("delwarp.warpexist"));
             return true;
         }
         return false;
