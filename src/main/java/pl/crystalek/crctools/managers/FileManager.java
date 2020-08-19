@@ -48,6 +48,7 @@ public final class FileManager {
         }
         messagesConfiguration = YamlConfiguration.loadConfiguration(messagesFile);
         permissionsConfiguration = YamlConfiguration.loadConfiguration(permissionsFile);
+        crCTools.saveDefaultConfig();
         crCTools.reloadConfig();
     }
 
@@ -163,6 +164,10 @@ public final class FileManager {
 
     public int getInt(final String path) {
         return crCTools.getConfig().getInt(path);
+    }
+
+    public boolean getBoolean(final String path) {
+        return crCTools.getConfig().getBoolean(path);
     }
 
     public ConfigurationSection getConfigurationSection(final String path) {

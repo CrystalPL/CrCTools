@@ -4,8 +4,10 @@ autosave: 300
 automessagetime: 60
 alerttime: 10
 defaultgroup: "Gracz"
-defaultnickcolor: "&6"
+defaultnickcolor: ""
 defaultmessagecolor: "&7"
+kickbroadcast: true
+chat: true
 automessage:
   - "&1&lTEST 5G MOC 500%"
   - "&2&lTEST 5G MOC 500%"
@@ -20,11 +22,6 @@ automessage:
   - "&d&lTEST 5G MOC 500%"
   - "&f&lTEST 5G MOC 500%"
   - "&c&lTEST 5G MOC 500%"
-spawn:
-  world: world
-  x: '0'
-  y: '67'
-  z: '0'
 groups:
   Wlasciciel:
     date: '2020-06-30 10:19:52'

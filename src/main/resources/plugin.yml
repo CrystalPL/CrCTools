@@ -69,3 +69,4 @@ commands:
     aliases: [inv, inventory]
   color:
   ping:
+  kick:

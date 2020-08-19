@@ -4,14 +4,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.ServerOptions;
 import pl.crystalek.crctools.managers.FileManager;
 
 public final class ChatCommand implements CommandExecutor {
     private final FileManager fileManager;
-    public static boolean CHAT = true;
+    private final CrCTools crCTools;
 
-    public ChatCommand(final FileManager fileManager) {
+    public ChatCommand(final FileManager fileManager, final CrCTools crCTools) {
         this.fileManager = fileManager;
+        this.crCTools = crCTools;
     }
 
     @Override
@@ -24,42 +28,49 @@ public final class ChatCommand implements CommandExecutor {
             sender.sendMessage(fileManager.getMsg("chat.usage"));
             return true;
         }
+        final FileConfiguration config = crCTools.getConfig();
         if (args[0].equalsIgnoreCase("clear")) {
             clearChat();
             printMessage(sender, "chat.clear");
         } else if (args[0].equalsIgnoreCase("off")) {
-            if (!CHAT) {
+            if (!ServerOptions.isChat()) {
                 sender.sendMessage(fileManager.getMsg("chat.erroroff"));
                 return true;
             }
-            CHAT = false;
+            config.set("chat", false);
+            ServerOptions.setChat(false);
             printMessage(sender, "chat.chatoff");
         } else if (args[0].equalsIgnoreCase("on")) {
-            if (CHAT) {
+            if (ServerOptions.isChat()) {
                 sender.sendMessage(fileManager.getMsg("chat.erroron"));
                 return true;
             }
-            CHAT = true;
+            config.set("chat", true);
+            ServerOptions.setChat(true);
             printMessage(sender, "chat.chaton");
         } else if (args[0].equalsIgnoreCase("offc")) {
-            if (!CHAT) {
+            if (!ServerOptions.isChat()) {
                 sender.sendMessage(fileManager.getMsg("chat.erroroff"));
                 return true;
             }
-            CHAT = false;
+
+            config.set("chat", false);
+            ServerOptions.setChat(false);
             clearChat();
             printMessage(sender, "chat.chatoff");
         } else if (args[0].equalsIgnoreCase("onc")) {
-            if (CHAT) {
+            if (ServerOptions.isChat()) {
                 sender.sendMessage(fileManager.getMsg("chat.erroron"));
                 return true;
             }
-            CHAT = true;
+            config.set("chat", true);
+            ServerOptions.setChat(true);
             clearChat();
             printMessage(sender, "chat.chaton");
         } else {
             sender.sendMessage(fileManager.getMsg("chat.usage"));
         }
+        crCTools.saveConfig();
         return true;
     }
 

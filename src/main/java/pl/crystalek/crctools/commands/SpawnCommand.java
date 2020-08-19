@@ -5,9 +5,9 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.ServerOptions;
 import pl.crystalek.crctools.managers.FileManager;
 import pl.crystalek.crctools.utils.TeleportUtil;
 
@@ -27,17 +27,11 @@ public final class SpawnCommand implements CommandExecutor {
             return true;
         }
         Player player = (Player) sender;
-        final FileConfiguration configuration = crCTools.getConfig();
-        final String string = "spawn";
-        final Location location;
-        try {
-            location = new Location(Bukkit.getWorld(configuration.getString(string + ".world")),
-                    Double.parseDouble(configuration.getString(string + ".x")),
-                    Double.parseDouble(configuration.getString(string + ".y")),
-                    Double.parseDouble(configuration.getString(string + ".z")));
-        } catch (final IllegalArgumentException exception) {
+        final Location spawnLocation = ServerOptions.getSpawnLocation();
+        if (spawnLocation == null) {
             sender.sendMessage(fileManager.getMsg("spawn.error"));
             return true;
+
         }
         if (args.length == 1) {
             if (!player.hasPermission(fileManager.getPermission("spawn.player"))) {
@@ -50,7 +44,7 @@ public final class SpawnCommand implements CommandExecutor {
             }
             player = Bukkit.getPlayer(args[0]);
         }
-        TeleportUtil.teleportTimer(player, location, fileManager, crCTools);
+        TeleportUtil.teleportTimer(player, spawnLocation, fileManager, crCTools);
         return true;
     }
 }

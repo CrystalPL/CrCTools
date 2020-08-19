@@ -38,7 +38,7 @@ public final class NickCommand implements CommandExecutor {
             final Player player = (Player) sender;
             final User user = userManager.getUser(player);
             final String nick = ChatColor.stripColor(args[0]);
-            final YamlConfiguration playerFile = fileManager.getPlayerFile(args[0]);
+            final YamlConfiguration playerFile = fileManager.getPlayerFile(sender.getName());
             playerFile.set("nick", nick);
             player.setDisplayName(user.getNickColor() + nick);
             user.setDisplayName(nick);

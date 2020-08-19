@@ -39,7 +39,7 @@ public final class PlayerJoinListener implements Listener {
         } else {
             userManager.addUser(player);
             permissionManager.addGroup(player.getName(), crCTools.getConfig().getString("defaultgroup"));
-            player.setDisplayName(ChatUtil.fixColor(crCTools.getConfig().getString("defaultmessagecolor")) + player.getName());
+            player.setDisplayName(ChatUtil.fixColor(crCTools.getConfig().getString("defaultnickcolor")) + player.getName());
             fileManager.savePlayer(player);
         }
         permissionManager.loadPermission(player);

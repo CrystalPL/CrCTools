@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import pl.crystalek.crctools.CrCTools;
+import pl.crystalek.crctools.ServerOptions;
 import pl.crystalek.crctools.managers.FileManager;
 
 import java.text.DecimalFormat;
@@ -48,6 +49,7 @@ public final class SetSpawnCommand implements CommandExecutor {
         configuration.set(string + ".y", y);
         configuration.set(string + ".z", z);
         crCTools.saveConfig();
+        ServerOptions.setSpawnLocation(location);
         for (final String message : fileManager.getMsgList("setspawn.setspawn")) {
             player.sendMessage(message.replace("{WORLD}", location.getWorld().getName()).replace("{X}", x).replace("{Y}", y).replace("{Z}", z));
         }
