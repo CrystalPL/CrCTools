@@ -111,3 +111,5 @@ permission:
     messageplayer: "CrC.tools.color.message.player"
   ping:
     player: "CrC.tools.ping.player"
+  gc:
+    gc: ""

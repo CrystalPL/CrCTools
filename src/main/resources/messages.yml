@@ -417,3 +417,19 @@ ping:
   usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/ping (gracz)."
   ping: "&6&lToolsy &8» &7Twoj ping wynosi: &6{PING}&7."
   player: "&6&lToolsy &8» &7Pinga gracza &6{PLAYER} &7wynosi: &6{PING} &7ms."
+gc:
+  usage: "&6&lToolsy &8» &cPoprawne uzycie: &7/gc."
+  gc:
+    - "&6&lToolsy &8» &7TPS: &6{TPS}&7."
+    - "&6&lToolsy &8» &7Rdzenie: &6{CORES}&7."
+    - "&6&lToolsy &8» &7Watki: &6{THREADS}&7."
+    - "&6&lToolsy &8» &7Pamiec:"
+    - "   - &7Calkowita: &6{MEMORY}&7."
+    - "   - &7Wolna: &6{FREEMEMORY}&7."
+    - "   - &7Zarezerwowana: &6{TOTALMEMORY}&7."
+    - "&6&lToolsy &8» &7Mapy:"
+  world:
+    - " &6{WORLD}"
+    - "   - &7Chunki: &6{CHUNKS}"
+    - "   - &7Entites: &6{ENTITES}"
+    - "   - &7Zywe entities: &6{LIVEENTITES}"

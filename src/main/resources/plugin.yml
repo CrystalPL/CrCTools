@@ -70,3 +70,4 @@ commands:
   color:
   ping:
   kick:
+  gc:

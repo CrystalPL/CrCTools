@@ -103,6 +103,7 @@ public class ServerStart {
         crCTools.getCommand("color").setExecutor(new ColorCommand(fileManager, userManager));
         crCTools.getCommand("ping").setExecutor(new PingCommand(fileManager));
         crCTools.getCommand("kick").setExecutor(new KickCommand(fileManager));
+        crCTools.getCommand("gc").setExecutor(new GcCommand(fileManager, decimalFormat));
     }
 
     private void registerListeners() {
